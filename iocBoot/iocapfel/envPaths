@@ -1,0 +1,7 @@
+epicsEnvSet("ARCH","linux-arm")
+epicsEnvSet("IOC","iocapfel")
+epicsEnvSet("TOP","/home/panda/EPICS/apps/apfel")
+epicsEnvSet("SNCSEQ","/home/epics/EPICS/EPICS-3.14.12.4/base/../modules/soft/seq/seq-2.1.16")
+epicsEnvSet("ASYN","/home/epics/EPICS/EPICS-3.14.12.4/base/../modules/soft/asyn/asyn4-23")
+epicsEnvSet("STREAM","/home/epics/EPICS/EPICS-3.14.12.4/base/../modules/soft/StreamDevice")
+epicsEnvSet("EPICS_BASE","/home/epics/EPICS/EPICS-3.14.12.4/base")
