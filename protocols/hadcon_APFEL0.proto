@@ -9,61 +9,124 @@ ExtraInput    = Ignore;
 # a generic command interface.
 # After processing finishes, the record contains the reply.
 
-key = "SHOW";
+key = "APFEL";
 recvKey = "%*{\nRECV|RECV} "$key" ";
 
-unused_mem_start_intr {
+setDac {
+#Example of command field(OUT, "@hadcon_APFEL0.proto setDac($(DAC),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+
+	Terminator  = LF;
+	cc="9";
+	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
+}
+
+readDac {
+#Example of command field(INP, "@hadcon_APFEL0.proto readDac($(DAC),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+
     ExtraInput = Ignore;
 	Terminator  = LF;
-	cc="unused_mem_start";
-	in $recvKey" "$cc" %x";
+	cc="A";
+	ic="dac";
+
+	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5 0";	
+   
+	in $recvKey" "$ic" port/pinSet/side/dac/chipId:'/\$5/\$3/\$4/\$1/\$2%x";	
 }
 
-unused_mem_intr {
-    ExtraInput = Ignore;
-	Terminator  = LF;
-	cc="unused_mem";
-	in $recvKey" "$cc" %x";
+autoCalibration {
+#Example of command field(OUT, "@hadcon_APFEL0.proto autoCalibration($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+
+	Terminator = LF;
+	cc="B";
+	out $key" "$cc" \$1 \$2 \$3 \$4";	
 }
 
-free_mem_intr {
-    ExtraInput = Ignore;
-	Terminator  = LF;
-	cc="free_mem";
-	in $recvKey" "$cc" %x";
+testPulse {
+#Example of command field(OUT, "@hadcon_APFEL0.proto testPulse($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+
+	Terminator = LF;
+	cc="C";
+	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
 }
 
-request_mem_intr {
-	Terminator  = LF;
-	cc="mem";
-	out $key" "$cc;
+testPulseSeq {
+#Example of command field(OUT, "@hadcon_APFEL0.proto testPulseSeq($(channel),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+
+	Terminator = LF;
+	cc="D";
+	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
 }
 
-request_mem_start_intr {
-	Terminator  = LF;
-	cc="mem_start";
-	out $key" "$cc;
+setAmplitude {
+#Example of command field(OUT, "@hadcon_APFEL0.proto setAmplitude($(channel),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+
+	Terminator = LF;
+	cc="E";
+	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	
 }
 
-request_unused_mem_intr {
-	Terminator  = LF;
-	cc="unused_mem";
-	out $key" "$cc;
+resetAmplitude {
+#Example of command field(OUT, "@hadcon_APFEL0.proto resetAmplitude($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+
+	Terminator = LF;
+	cc="F";
+	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	
 }
 
-request_unused_mem_start_intr {
-	Terminator  = LF;
-	cc="unused_mem_start";
-	out $key" "$cc;
+listId {
+#Example of command field(OUT, "@hadcon_APFEL0.proto listId($(nChannels)) $(device)") 
+
+	Terminator = LF;
+	cc="10";
+	out $key" "$cc" 1 \$1";	
 }
 
-request_all_errors_intr {
-	Terminator  = LF;
-	cc="all_errors";
-	out $key" "$cc;
+listIdStatus_intr {
+#Example of command field(INP, "@hadcon_APFEL0.proto listIdStatus($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+
+	Terminator = LF;
+	ic="list";
+	in $key" "$cc" |port|pinSet|side|chipId |\$4|\$2|\$3|\$1| %{no|yes}";	
 }
 
-request_all_intr {
-	Terminator  = LF;
-	out $key;
+RECV APFEL list |port|pinSet|side|chipId |A|1|1|f| no
+
+setTrigger {
+#Example of command field(OUT, "@hadcon_APFEL0.proto setTrigger $(device)") 
+#    requieres calc(out) record
+
+	Terminator = LF;
+	cc="11";
+	out $key" "$cc" %(A){OFF|ON} %(B)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(C)x";  	
 }
+
+requestTrigger {
+#Example of command field(OUT, "@hadcon_APFEL0.proto requestTrigger $(device)") 
+#    requieres calc(out) record
+
+	Terminator = LF;
+	cc="11";
+	out $key" "$cc;	
+}
+
+readTrigger_intr {
+#Example of command field(OUT, "@hadcon_APFEL0.proto readTrigger_intr $(device)") 
+#    requieres calc(out) record
+
+	Terminator = LF;
+	ic="trigger";
+	in $recvKey" "$ic" %(A){OFF|ON} %(B)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(C)x";
+}
+
+readTrigger {
+#Example of command field(OUT, "@hadcon_APFEL0.proto readTrigger $(device)") 
+#    requieres calc(out) record
+
+	Terminator = LF;
+	requestTrigger;
+	readTrigger_intr;
+}
+
+
+
+
