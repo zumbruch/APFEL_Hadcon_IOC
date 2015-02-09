@@ -13,6 +13,10 @@ include $(TOP)/configure/CONFIG
 DB += hadcon_global.db
 DB += hadcon_debug_global.db
 DB += hadcon_stats.db
+DB += apfelHadcon.db
+DB += apfelChipId.db
+DB += apfelDac.db
+
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add

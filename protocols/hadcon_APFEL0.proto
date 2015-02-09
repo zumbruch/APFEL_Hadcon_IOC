@@ -77,22 +77,22 @@ testPulseSeq {
 	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
 }
 
-setAmplitude {
-#Example of command field(OUT, "@$(protocolFile) setAmplitude($(channel),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+setAmplification {
+#Example of command field(OUT, "@$(protocolFile) setAmplification($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
 
 	Terminator = LF;
 	cc="E";
 	dummy;
-	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	
+	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
 }
 
-resetAmplitude {
-#Example of command field(OUT, "@$(protocolFile) resetAmplitude($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+resetAmplification {
+#Example of command field(OUT, "@$(protocolFile) resetAmplification($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
 
 	Terminator = LF;
 	cc="F";
 	dummy;
-	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	
+	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
 }
 
 listId {
