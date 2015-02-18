@@ -12,6 +12,7 @@
 # port          = $(port         )
 # channel       = $(channel      )
 
+# dacMonitorChannel            = $(dacMonitorChannel)
 # dacLowAmplificationLimitLow  = $(dacLowAmplificationLimitLow)
 # dacLowAmplificationLimitHigh = $(dacLowAmplificationLimitHigh)
 # dacHighAmplificationLimitLow = $(dacHighAmplificationLimitLow)
@@ -19,7 +20,7 @@
 
 record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplificationCheck$(SUFFIX)_") {
   field(CALC, "(F&&(A<D||A>E))||(!F&&(A<B||A>C))")
-  field(INPA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dacMonitorChannel)$(SUFFIX)")
+  field(INPA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dacMonitorChannel)$(SUFFIX).RVAL")
   field(INPB, "$(dacLowAmplificationLimitLow)")
   field(INPC, "$(dacLowAmplificationLimitHigh)")
   field(INPD, "$(dacHighAmplificationLimitLow)")
@@ -44,7 +45,7 @@ record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplitudeS
 
 record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):resetAmplitude$(SUFFIX)") {
   field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) resetAmplitude($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
+  field(OUT, "@$(protocolFile) resetAmplitude($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
   field(DOL, "$(channel)")
   field(OMSL, "closed_loop")
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplificationCheck$(SUFFIX)_ PP MS")
@@ -52,7 +53,7 @@ record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):resetAmpli
 
 record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):setAmplitude$(SUFFIX)") {
   field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) setAmplitude($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
+  field(OUT, "@$(protocolFile) setAmplitude($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
   field(DOL, "$(channel)")
   field(OMSL, "closed_loop")
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplificationCheck$(SUFFIX)_ PP MS")

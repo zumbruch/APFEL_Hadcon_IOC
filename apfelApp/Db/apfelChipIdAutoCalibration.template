@@ -21,7 +21,7 @@
 record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX)") {
   field(DESC, "autocalibration")
   field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
+  field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
 }
 
 record(calcout, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)") {

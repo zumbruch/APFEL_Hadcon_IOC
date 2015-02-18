@@ -11,8 +11,8 @@ recvKey = "%*{\nRECV|RECV} "$key" ";
 #generic addresses
 # requires calc(out) record
 #   A: chipId
-#   B: pinSetIndex
-#   C: sideSelect
+#   B: pinSet
+#   C: sideSelection
 #   D: port
 #   E: dac
 genSendAddress = "%(A)x %(B)x %(C)x %(D)#{A=1|C=3|F=6}";
@@ -26,7 +26,7 @@ dummy
 ## write dac
 
 setDac {
-	# Example of command field(OUT, "@$(protocolFile) setDac($(DAC),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(OUT, "@$(protocolFile) setDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="9";
 	dummy;
@@ -37,8 +37,8 @@ genSetDac {
 	# Example of command field(OUT, "@$(protocolFile) genSetDac $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
 	#   E: dac
 
@@ -50,7 +50,7 @@ genSetDac {
 ## read dac
 
 reqestDac {
-	# Example of command field(INP, "@$(protocolFile) requestDac($(DAC),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(INP, "@$(protocolFile) requestDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="A";
 	dummy; 
@@ -61,8 +61,8 @@ genRequestDac {
 	# Example of command field(OUT, "@$(protocolFile) genRequestDac $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
 	#   E: dac
 
@@ -72,7 +72,7 @@ genRequestDac {
 }
 
 receiveDac {
-	# Example of command field(INP, "@$(protocolFile) receiveDac($(DAC),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(INP, "@$(protocolFile) receiveDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	ic="dac";
 	in $recvKey" "$ic" port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
@@ -82,8 +82,8 @@ genReceiveDac {
 	# Example of command field(OUT, "@$(protocolFile) genReceiveDac $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
 	#   E: dac
 
@@ -92,7 +92,7 @@ genReceiveDac {
 }
 
 readDac {
-	# Example of command field(INP, "@$(protocolFile) readDac($(DAC),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(INP, "@$(protocolFile) readDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	requestDac;
 	receiveDac;
@@ -102,8 +102,8 @@ genReadDac {
 	# Example of command field(INP, "@$(protocolFile) genReadDac $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
 	#   E: dac
 
@@ -113,7 +113,7 @@ genReadDac {
 
 
 autoCalibration {
-	# Example of command field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="B";
 	dummy;
@@ -124,8 +124,8 @@ genAutoCalibration {
 	# Example of command field(OUT, "@$(protocolFile) genAutoCalibration $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
 
 	cc="B";
@@ -134,7 +134,7 @@ genAutoCalibration {
 }
 
 testPulse {
-	# Example of command field(OUT, "@$(protocolFile) testPulse($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(OUT, "@$(protocolFile) testPulse($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="C";
 	dummy;
@@ -145,8 +145,8 @@ genTestPulse {
 	# Example of command field(OUT, "@$(protocolFile) genTestPulse $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
     
 	cc="C";
@@ -156,7 +156,7 @@ genTestPulse {
 
 
 testPulseSeq {
-	# Example of command field(OUT, "@$(protocolFile) testPulseSeq($(channel),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(OUT, "@$(protocolFile) testPulseSeq($(channel),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="D";
 	dummy;
@@ -167,8 +167,8 @@ genTestPulseSeq {
 	# Example of command field(OUT, "@$(protocolFile) genTestPulseSeq $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
 	#   E: channel
 	#   F: height
@@ -179,7 +179,7 @@ genTestPulseSeq {
 }
 
 setAmplification {
-	# Example of command field(OUT, "@$(protocolFile) setAmplification($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(OUT, "@$(protocolFile) setAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="E";
 	dummy;
@@ -190,8 +190,8 @@ genSetAmplification {
 	# Example of command field(OUT, "@$(protocolFile) genSetAmplification $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
     
 	cc="E";
@@ -200,7 +200,7 @@ genSetAmplification {
 }
 
 resetAmplification {
-	# Example of command field(OUT, "@$(protocolFile) resetAmplification($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(OUT, "@$(protocolFile) resetAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="F";
 	dummy;
@@ -211,8 +211,8 @@ genResetAmplification {
 	# Example of command field(OUT, "@$(protocolFile) genResetAmplification $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
     
 	cc="F";
@@ -229,7 +229,7 @@ listId {
 }
 
 listIdStatus_intr {
-	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)") 
+	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	ic="list";
 	in $key" "$cc" port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
@@ -239,8 +239,8 @@ genListIdStatus_intr {
 	# Example of command field(OUT, "@$(protocolFile) ListIdStatus_intr $(device)") 
 	# requires calc(out) record
 	#   A: chipId
-	#   B: pinSetIndex
-	#   C: sideSelect
+	#   B: pinSet
+	#   C: sideSelection
 	#   D: port
     
 	ic="list";

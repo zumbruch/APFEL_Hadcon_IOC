@@ -71,8 +71,6 @@ record(mbbo, "$(PREFIX)$(NAME):portNumber$(SUFFIX)_") {
 }
 
 record(dfanout, "$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_") {
-  field(UDF, "0")
-  field(VAL, "$(port)")
   field(OUTA, "$(PREFIX)$(NAME):port$(SUFFIX)")
   field(OUTB, "$(PREFIX)$(NAME):connector$(SUFFIX)")
 }

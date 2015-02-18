@@ -95,9 +95,9 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set$(SUFFIX)") {
   field(EOFF, "$(EOFF)")
   field(LOPR, "$(LOPR)")
   field(HOPR, "$(HOPR)")
-  field(DRVL, "$(DRVL)"
-  field(DRVH, "$(DRVH)"
-  field(OUT, "@$(protocolFile) setDac($(dac),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
+  field(DRVL, "$(DRVL)")
+  field(DRVH, "$(DRVH)")
+  field(OUT, "@$(protocolFile) setDac($(dac),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
 }
 
 record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:set$(SUFFIX)") {
@@ -108,8 +108,8 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:set$(SUFFIX)") {
   field(EOFF, "$(EOFF)")
   field(LOPR, "$(LOPR)")
   field(HOPR, "$(HOPR)")
-  field(DRVL, "$(DRVL)"
-  field(DRVH, "$(DRVH)"
+  field(DRVL, "$(DRVL)")
+  field(DRVH, "$(DRVH)")
   field(DTYP, "Raw Soft Channel")
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:set_df$(SUFFIX)")
 }
@@ -122,9 +122,9 @@ record(ai, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX)")
   field(LINR, "SLOPE")
   field(ESLO, "$(ESLO)")
   field(EOFF, "$(EOFF)")
-  field(LOPR, "0")
+  field(LOPR, "$(LOPR)")
   field(HOPR, "$(HOPR)")
-  field(INP, "@$(protocolFile) receiveDac($(dac),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
+  field(INP, "@$(protocolFile) receiveDac($(dac),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive_df$(SUFFIX)_")
 }
 
@@ -142,9 +142,9 @@ record(ai, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read$(SUFFIX)") {
   field(LINR, "SLOPE")
   field(ESLO, "$(ESLO)")
   field(EOFF, "$(EOFF)")
-  field(LOPR, "0")
+  field(LOPR, "$(LOPR)")
   field(HOPR, "$(HOPR)")
-  field(INP, "@$(protocolFile) readDac($(dac),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
+  field(INP, "@$(protocolFile) readDac($(dac),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read_df$(SUFFIX)_")
 }
 
@@ -157,8 +157,8 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac)$(SUFFIX)") {
   field(EOFF, "$(EOFF)")
   field(LOPR, "$(LOPR)")
   field(HOPR, "$(HOPR)")
-  field(DRVL, "$(DRVL)"
-  field(DRVH, "$(DRVH)"
+  field(DRVL, "$(DRVL)")
+  field(DRVH, "$(DRVH)")
 }
 
 record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive_df$(SUFFIX)_") {
