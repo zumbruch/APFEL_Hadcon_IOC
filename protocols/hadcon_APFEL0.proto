@@ -16,10 +16,9 @@ recvKey = "%*{\nRECV|RECV} "$key" ";
 #   D: port
 #   E: dac
 genSendAddress = "%(A)x %(B)x %(C)x %(D)#{A=1|C=3|F=6}";
-genRecvAddress = "port:%(D)#{A=1|C=3|F=6} pinSet:%(B)x side:%(C)x chip:%(A)x"
+genRecvAddress = "port:%(D)#{A=1|C=3|F=6} pinSet:%(B)x side:%(C)x chip:%(A)x";
 
-dummy 
-{
+dummy {
 	out "";
 }
 
@@ -49,12 +48,13 @@ genSetDac {
 
 ## read dac
 
-reqestDac {
+requestDac {
 	# Example of command field(INP, "@$(protocolFile) requestDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="A";
 	dummy; 
-	out $key" "$cc" \$1 \$2 \$3 \$4 \$5 0";	 
+#	out $key" "$cc" \$1 \$2 \$3 \$4 \$5 0";	 
+	out $key" A \$1 \$2 \$3 \$4 \$5 0";	 
 }
 
 genRequestDac {
@@ -75,7 +75,8 @@ receiveDac {
 	# Example of command field(INP, "@$(protocolFile) receiveDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	ic="dac";
-	in $recvKey" "$ic" port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
+#	in $recvKey" "$ic" port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
+	in $recvKey" dac port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
 }
 
 genReceiveDac {
@@ -232,7 +233,7 @@ listIdStatus_intr {
 	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	ic="list";
-	in $key" "$cc" port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
+	in $key" "$ic" port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
 }
 
 genListIdStatus_intr {

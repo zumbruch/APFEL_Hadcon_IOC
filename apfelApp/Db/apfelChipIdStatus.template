@@ -15,7 +15,7 @@
 record(bi, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):status$(SUFFIX)") {
   field(SCAN, "I/O Intr")
   field(DTYP, "stream")
-  field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
+  field(INP, "@$(protocolFile) listIdStatus_intr($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
   field(VAL, "0")
   field(ZNAM, "no")
   field(ONAM, "yes")

@@ -34,6 +34,8 @@ dbLoadRecords ("../../db/hadcon_global.db"      , "device=hadcon2,HADCON=${HOSTN
 #dbLoadRecords("../../db/hadcon_debug_global.db", "device=hadcon2,HADCON=${HOSTNAME}:1, PREFIX=, SUFFIX=")
 dbLoadRecords("../../db/hadcon_stats.db", "IOC=${HOSTNAME}")
 
+dbLoadRecords("../../db/apfelChipId.db", "device=hadcon2")
+
 ## Load $(HOSTNAME) specific record instances
 
 #< st_${HOSTNAME}.cmd

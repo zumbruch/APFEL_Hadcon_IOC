@@ -115,7 +115,7 @@ record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:
 record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq$(SUFFIX)") {
   field(DESC, "test pulse, sequence")
   field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) testPulseSeq(1, $(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
+  field(OUT, "@$(protocolFile) testPulseSeq(1,$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
 }
 
 #record(sscan, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):testPulse:loop$(SUFFIX)") {
