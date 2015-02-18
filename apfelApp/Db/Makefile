@@ -15,7 +15,6 @@ DB += hadcon_debug_global.db
 DB += hadcon_stats.db
 DB += apfelHadcon.db
 DB += apfelChipId.db
-DB += apfelDac.db
 
 
 #----------------------------------------------------

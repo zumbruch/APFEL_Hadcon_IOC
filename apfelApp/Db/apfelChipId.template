@@ -4,40 +4,51 @@
 #! DBDEND
 
 
-record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):autocalibrate$(SUFFIX)") {
-  field(DTYP, "Soft Channel")
-  field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
-}
+# PREFIX                 = $(PREFIX)
+# NAME                   = $(NAME)
+# SUFFIX                 = $(SUFFIX)
+# chipId                 = $(chipId)
+# pinSet                 = $(pinSet)
+# sideSelection          = $(sideSelection)
+# port                   = $(port)
+# ADDRESS                = $(ADDRESS)
+# defaultTestPulseHeight = $(defaultTestPulseHeight)
 
-record(bi, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):status$(SUFFIX)") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "stream")
-  field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
-  field(VAL, "0")
-  field(ZNAM, "no")
-  field(ONAM, "yes")
-}
+###
+# address  (list id)
+include "apfelChipIdAddress.template"
 
-record(longout, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)") {
-  field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) genAutoCalibration $(device)")
-}
+###
+# status  (list id)
 
-record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):setAmplitude$(SUFFIX)") {
-  field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) setAmplitude($(channel),$(chipId),$(pinSetIndex),$(sideSelect),$(port)) $(device)")
-}
+include "apfelChipIdStatus.template"
 
-record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):ch$(channel):amplification$(SUFFIX)2") {
-  field(DTYP, "stream")
-  field(ZNAM, "L")
-  field(ONAM, "H")
-}
+###
+# autocalibration
+
+include "apfelChipIdAutoCalibration.template"
+
+###
+# test pulse
+
+include "apfelChipIdTestPulse.template"
+
+###
+# amplification
+
+include "apfelChipIdAmplification.template"
+
+###
+# dac x 4
+
+substitute "dac=1"
+include "apfelDac.template"
+substitute "dac=2"
+include "apfelDac.template"
+substitute "dac=3"
+include "apfelDac.template"
+substitute "dac=4"
+include "apfelDac.template"
 
 #! Further lines contain data used by VisualDCT
-#! View(3780,3497,1.7)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):autocalibrate$(SUFFIX)",2260,2076,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):autocalibrate$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):status$(SUFFIX)",2260,2180,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):status$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)",2480,2076,0,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):setAmplitude$(SUFFIX)",2480,2296,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):setAmplitude$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):ch$(channel):amplification$(SUFFIX)2",2260,2362,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipID):ch$(channel):amplification$(SUFFIX)2")
+#! View(0,0,1.9)

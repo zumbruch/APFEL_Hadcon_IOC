@@ -24,7 +24,8 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 SNCSEQ=$(EPICS_HOME)/modules/soft/seq/seq-2.1.16
 ASYN=$(EPICS_HOME)/modules/soft/asyn/asyn4-23
 STREAM=$(EPICS_HOME)/modules/soft/StreamDevice/StreamDevice-2-6
-
+SSCAN=$(EPICS_HOME)/modules/support/sscan/sscan-2-10
+CALC=$(EPICS_HOME)/modules/support/calc/calc-3-4
 # EPICS_BASE usually appears last so other apps can override stuff:
 EPICS_BASE=$(EPICS_HOME)/base
 EPICS_HOME=/home/epics/EPICS/EPICS-3.14.12.4

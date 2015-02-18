@@ -25,6 +25,11 @@ drvAsynSerialPortConfigure("hadcon2","/dev/ttyUSB0",0,0,0)
 
 
 ## Load record instances
+##sscan
+#dbLoadRecords("$(SSCAN)/sscanApp/Db/standardScans.db","P=xxx:,MAXPTS1=2000,MAXPTS2=1000,MAXPTS3=1000,MAXPTS4=10,MAXPTSH=2000")
+#dbLoadRecords("$(SSCAN)/sscanApp/Db/saveData.db","P=xxx:")
+#dbLoadRecords("$(SSCAN)/sscanApp/Db/scanProgress.db","P=xxx:scanProgress:")
+
 dbLoadRecords ("../../db/hadcon_global.db"      , "device=hadcon2,HADCON=${HOSTNAME}:1, PREFIX=, SUFFIX=")
 #dbLoadRecords("../../db/hadcon_debug_global.db", "device=hadcon2,HADCON=${HOSTNAME}:1, PREFIX=, SUFFIX=")
 dbLoadRecords("../../db/hadcon_stats.db", "IOC=${HOSTNAME}")

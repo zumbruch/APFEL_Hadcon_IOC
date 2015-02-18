@@ -8,7 +8,8 @@ include $(TOP)/configure/CONFIG
 
 PROD_LIBS += stream
 PROD_LIBS += asyn
-#PROD_LIBS += calc
+PROD_LIBS += sscan
+PROD_LIBS += scanProgress
 
 LIBRARY_IOC += apfelSupport
 
@@ -30,7 +31,10 @@ apfel_DBD += asyn.dbd
 apfel_DBD += drvAsynSerialPort.dbd
 apfel_DBD += stream.dbd
 apfel_DBD += initTrace.dbd
-
+apfel_DBD += sscan.dbd
+apfel_DBD += sscanSupport.dbd
+apfel_DBD += sscanProgressSupport.dbd
+             
 # Include dbd files from all support applications:
 #apfel_DBD += xxx.dbd
 

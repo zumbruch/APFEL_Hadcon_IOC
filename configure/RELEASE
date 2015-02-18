@@ -22,10 +22,12 @@
 TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
 # If using the sequencer, point SNCSEQ at its top directory:
-SNCSEQ=$(EPICS_BASE)/../modules/soft/seq/seq-2.1.16
+#SNCSEQ=$(EPICS_BASE)/../modules/soft/seq/seq-2.1.16
 
-ASYN=$(EPICS_BASE)/../modules/soft/asyn/asyn4-23
-STREAM=$(EPICS_BASE)/../modules/soft/StreamDevice
+#ASYN=$(EPICS_BASE)/../modules/soft/asyn/asyn4-23
+#STREAM=$(EPICS_BASE)/../modules/soft/StreamDevice
+#SSCAN=$(EPICS_BASE)/../modules/support/sscan/sscan-2-10
+#CALC=$(EPICS_BASE)/../modules/support/calc/calc-3-4
 
 # EPICS_BASE usually appears last so other apps can override stuff:
 EPICS_BASE=/home/epics/EPICS/EPICS-3.14.12.4/base
