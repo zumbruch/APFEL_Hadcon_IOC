@@ -1,0 +1,16 @@
+
+record(ao, "PANDA:APFEL:A:ps1:s1:id1:dac1:set") {
+  field(DESC, "set dac #1")
+  field(DTYP, "stream")
+  field(EGU, "mV")
+  field(LINR, "LINEAR")
+  field(ASLO, "3.0")
+  field(AOFF, "0.")
+  field(LOPR, "0")
+  field(HOPR, "3069")
+  field(DRVL, "0")
+  field(DRVH, "0x3ff")
+  field(IVOA, "Don't drive outputs")
+  field(OUT, "@hadcon_APFEL0.proto setDac(1,1,1,1,A) $(device,undefined)")
+}
+

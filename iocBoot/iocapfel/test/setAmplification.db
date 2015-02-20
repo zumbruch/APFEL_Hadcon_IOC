@@ -1,0 +1,60 @@
+
+###
+# amplification
+
+# channel       = 1
+
+# dacMonitorChannel            = 4
+# dacLowAmplificationLimitLow  = 1200
+# dacLowAmplificationLimitHigh = 1600
+# dacHighAmplificationLimitLow = 1601
+# dacHighAmplificationLimitHigh= 2200
+
+record(calcout, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplificationCheck_") {
+  field(CALC, "(F&&(A<D||A>E))||(!F&&(A<B||A>C))")
+  field(INPA, "PANDA:APFEL:A:ps1:s1:id1:dac4.RVAL")
+  field(INPB, "1200")
+  field(INPC, "1600")
+  field(INPD, "1601")
+  field(INPE, "2200")
+  field(INPF, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplification.VAL")
+  field(OUT, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplification.VAL NPP MS")
+  field(DOPT, "Use OCAL")
+  field(HIGH, "1")
+  field(HSV, "MINOR")
+  field(OCAL, "F")
+}
+
+record(longout, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplitudeSelect_") {
+  field(OUT, "PANDA:APFEL:A:ps1:s1:id1:ch1:resetAmplification.PROC CA")
+  field(SIML, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplification.VAL")
+  field(VAL, "1")
+  field(DOL, "1")
+  field(OMSL, "closed_loop")
+  field(SIOL, "PANDA:APFEL:A:ps1:s1:id1:ch1:setAmplification.PROC CA")
+  field(SIMS, "NO_ALARM")
+}
+
+record(longout, "PANDA:APFEL:A:ps1:s1:id1:ch1:resetAmplification") {
+  field(DTYP, "stream")
+  field(OUT, "@hadcon_APFEL0.proto resetAmplification(1,1,1,A) $(device,undefined)")
+  field(DOL, "1")
+  field(OMSL, "closed_loop")
+  field(FLNK, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplificationCheck_ PP MS")
+}
+
+record(longout, "PANDA:APFEL:A:ps1:s1:id1:ch1:setAmplification") {
+  field(DTYP, "stream")
+  field(OUT, "@hadcon_APFEL0.proto setAmplification(1,1,1,A) $(device,undefined)")
+  field(DOL, "1")
+  field(OMSL, "closed_loop")
+  field(FLNK, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplificationCheck_ PP MS")
+}
+
+record(bo, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplification") {
+  field(FLNK, "PANDA:APFEL:A:ps1:s1:id1:ch1:amplitudeSelect_")
+  field(ZNAM, "L")
+  field(ONAM, "H")
+  field(UDF, "0")
+}
+

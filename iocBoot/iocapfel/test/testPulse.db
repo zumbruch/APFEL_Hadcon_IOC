@@ -1,0 +1,127 @@
+
+###
+# test pulse
+
+# defaultTestPulseHeight = 0x1
+# channel                = 1
+###
+#
+# test pulse
+#
+record(longout, "PANDA:APFEL:A:ps1:s1:id1:testPulse:single") {
+  field(DESC, "test pulse, single")
+  field(DTYP, "stream")
+  field(OUT, "@hadcon_APFEL0.proto testPulse(1,1,1,A) $(device,undefined)")
+}
+
+record(mbbo, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height") {
+  field(DESC, "test pulse, sequence, height")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(FVVL, "5")
+  field(SXVL, "6")
+  field(SVVL, "7")
+  field(EIVL, "8")
+  field(NIVL, "9")
+  field(TEVL, "10")
+  field(ELVL, "11")
+  field(TVVL, "12")
+  field(TTVL, "13")
+  field(FTVL, "14")
+  field(FFVL, "15")
+  field(ZRST, "ALL")
+  field(ONST, "0001")
+  field(TWST, "0010")
+  field(THST, "0011")
+  field(FRST, "0100")
+  field(FVST, "0101")
+  field(SXST, "0110")
+  field(SVST, "0111")
+  field(EIST, "1000")
+  field(NIST, "1001")
+  field(TEST, "1010")
+  field(ELST, "1011")
+  field(TVST, "1100")
+  field(TTST, "1101")
+  field(FTST, "1110")
+  field(FFST, "1111")
+  field(IVOA, "Don't drive outputs")
+  field(IVOV, "0")
+}
+
+record(seq, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height:sweep_1_") {
+#record(seq, "abc:ch1") {
+  field(SELM, "Mask")
+  field(DOL1, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.ONVL")
+  field(DOL2, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.TWVL")
+  field(DOL3, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.THVL")
+  field(DOL4, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.FRVL")
+  field(DOL5, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.FVVL")
+  field(DOL6, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.SXVL")
+  field(DOL7, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.SVVL")
+  field(LNK1, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK2, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK3, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK4, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK5, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK6, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK7, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(DOL8, "0x7F")
+  field(LNK8, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height:sweep_2_.SELN PP")
+  field(DOL9, "0x200")
+  field(LNK9, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height:sweep_2_.SELN PP")
+  field(LNKA, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(FLNK, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height:sweep_2_")
+  field(SELL, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height:isSweep_ PP")
+  field(DOLA, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height")
+  field(DESC, "test pulse, sweep, channel 1")
+}
+
+record(seq, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height:sweep_2_") {
+  field(SELM, "Mask")
+  field(DOL1, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.EIVL")
+  field(DOL2, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.NIVL")
+  field(DOL3, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.TEVL")
+  field(DOL4, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.ELVL")
+  field(DOL5, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.TVVL")
+  field(DOL6, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.TTVL")
+  field(DOL7, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.FTVL")
+  field(DOL8, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height.FFVL")
+  field(LNK1, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK2, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK3, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK4, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK5, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK6, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK7, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(LNK8, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq PP")
+  field(DOLA, "0")
+  field(LNKA, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:start")
+  field(DESC, "test pulse, sweep, channel 1")
+}
+
+record(longout, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq") {
+  field(DESC, "test pulse, sequence")
+  field(DTYP, "stream")
+  field(OUT, "@hadcon_APFEL0.proto testPulseSeq(1,1,1,1,A) $(device,undefined)")
+}
+
+record(calcout, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height:isSweep_") {
+  field(CALC, "A==0?B:C")
+  field(INPA, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height PP")
+  field(INPB, "0x3F")
+  field(INPC, "0x300")
+}
+
+record(bo, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:start") {
+  field(DESC, "test pulse, start,  channel 1")
+  field(DOL, "1")
+  field(OUT, "PANDA:APFEL:A:ps1:s1:id1:ch1:tp:seq:height:sweep_1_.PROC")
+  field(ZNAM, "START")
+  field(ONAM, "RUN")
+  field(UDF, "0")
+}
+

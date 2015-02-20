@@ -1,0 +1,41 @@
+
+###
+# status  (list id)
+
+# PREFIX                 = PANDA:
+# NAME                   = APFEL
+# SUFFIX                 = 
+# chipId                 = 1
+# pinSet                 = 1
+# sideSelection          = 1
+# port                   = A
+# ADDRESS                = A:ps1:s1
+# defaultTestPulseHeight = 0x1
+
+###
+#
+# status  (list id)
+#
+record(bi, "PANDA:APFEL:A:ps1:s1:id1:status") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "stream")
+  field(INP, "@hadcon_APFEL0.proto listIdStatus_intr(1,1,1,A) $(device,undefined)")
+  field(VAL, "0")
+  field(ZNAM, "no")
+  field(ONAM, "yes")
+}
+
+
+record(longout, "PANDA:APFEL:listId") {
+  field(DESC, "request available ids")
+  field(UDF, "0")
+  field(DTYP, "stream")
+  field(OUT, "@hadcon_APFEL0.proto listId $(device,undefined)")
+  field(DRVH, "254")
+  field(DRVL, "1")
+  field(HOPR, "254")
+  field(LOPR, "1")
+  field(IVOA, "Set output to IVOV")
+  field(IVOV, "254")
+}
+

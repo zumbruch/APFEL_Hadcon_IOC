@@ -1,0 +1,52 @@
+record(ai, "PANDA:APFEL:A:ps1:s1:id1:dac1:receive") {
+  field(DESC, "receive dac #1")
+  field(SCAN, "I/O Intr")
+  field(DTYP, "stream")
+  field(EGU, "mV")
+  field(LINR, "LINEAR")
+  field(ASLO, "3.0")
+  field(AOFF, "0.")
+  field(LOPR, "0")
+  field(HOPR, "3069")
+  field(INP, "@hadcon_APFEL0.proto receiveDac(1,1,1,1,A) $(device,undefined)")
+  field(FLNK, "PANDA:APFEL:A:ps1:s1:id1:dac1:receive_df_")
+}
+
+record(ai, "PANDA:APFEL:A:ps1:s1:id1:dac1:read") {
+  field(DESC, "read dac #1")
+  field(DTYP, "stream")
+  field(EGU, "mV")
+  field(LINR, "LINEAR")
+  field(ASLO, "3.0")
+  field(AOFF, "0.")
+  field(LOPR, "0")
+  field(HOPR, "3069")
+  field(INP, "@hadcon_APFEL0.proto readDac(1,1,1,1,A) $(device,undefined)")
+  field(FLNK, "PANDA:APFEL:A:ps1:s1:id1:dac1:read_df_")
+}
+
+record(ao, "PANDA:APFEL:A:ps1:s1:id1:dac1") {
+  field(DESC, "set dac #1")
+  field(DTYP, "Raw Soft Channel")
+  field(EGU, "mV")
+  field(LINR, "LINEAR")
+  field(ASLO, "3.0")
+  field(AOFF, "0.")
+  field(LOPR, "0")
+  field(HOPR, "3069")
+  field(DRVL, "0")
+  field(DRVH, "0x3ff")
+}
+
+record(dfanout, "PANDA:APFEL:A:ps1:s1:id1:dac1:receive_df_") {
+  field(OUTA, "PANDA:APFEL:A:ps1:s1:id1:dac1")
+  field(DOL, "PANDA:APFEL:A:ps1:s1:id1:dac1:receive")
+  field(OMSL, "closed_loop")
+}
+
+record(dfanout, "PANDA:APFEL:A:ps1:s1:id1:dac1:read_df_") {
+  field(OUTA, "PANDA:APFEL:A:ps1:s1:id1:dac1")
+  field(DOL, "PANDA:APFEL:A:ps1:s1:id1:dac1:read")
+  field(OMSL, "closed_loop")
+}
+

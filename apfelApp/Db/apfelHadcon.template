@@ -7,6 +7,7 @@
 record(longout, "$(PREFIX)$(NAME):listId$(SUFFIX)") {
   field(DESC, "request available ids")
   field(UDF, "0")
+  field(DTYP, "stream")
   field(OUT, "@$(protocolFile) listId $(device)")
   field(DRVH, "254")
   field(DRVL, "1")
