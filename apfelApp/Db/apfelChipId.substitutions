@@ -2,7 +2,7 @@ file apfelChipId.template {
 pattern {
     protocolFile, PREFIX, NAME, SUFFIX,                
 	chipId, pinSet, sideSelection, port, portNumber, ADDRESS,
-	defaultTestPulseHeight, EGU, ESLO, EOFF, LOPR, HOPR, DRVL, DRVH, 
+	defaultTestPulseHeight, EGU, ASLO, AOFF, LOPR, HOPR, DRVL, DRVH, 
 	dacMonitorChannel, dacLowAmplificationLimitLow, dacLowAmplificationLimitHigh, dacHighAmplificationLimitLow, dacHighAmplificationLimitHigh
 }               
 

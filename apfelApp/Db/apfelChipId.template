@@ -39,7 +39,11 @@ include "apfelChipIdTestPulse.template"
 ###
 # amplification
 
+substitute "channel=1"
 include "apfelChipIdAmplification.template"
+substitute "channel=2"
+include "apfelChipIdAmplification.template"
+
 
 ###
 # dac x 4

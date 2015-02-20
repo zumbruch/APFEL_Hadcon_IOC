@@ -222,11 +222,11 @@ genResetAmplification {
 }
 
 listId {
-	# Example of command field(OUT, "@$(protocolFile) listId($(nChannels)) $(device)") 
+	# Example of command field(OUT, "@$(protocolFile) listId $(device)") 
 
 	cc="10";
 	dummy;
-	out $key" "$cc" 1 \$1";	
+	out $key" "$cc" 1 %x";	
 }
 
 listIdStatus_intr {
