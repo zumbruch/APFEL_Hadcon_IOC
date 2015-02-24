@@ -36,11 +36,13 @@ drvAsynSerialPortConfigure("hadcon2","/dev/ttyUSB0",0,0,0)
 
 #dbLoadRecords("../../../db/apfelChipId.db", "device=hadcon2")
 #dbLoadRecords("setDac.db", "device=hadcon2")
-#dbLoadRecords("readDac.db", "device=hadcon2")
+dbLoadRecords("readDac.db", "device=hadcon2")
 #dbLoadRecords("autoCalib.db", "device=hadcon2")
 #dbLoadRecords("testPulse.db", "device=hadcon2")
 #dbLoadRecords("setAmplification.db", "device=hadcon2")
-dbLoadRecords("listId.db", "device=hadcon2")
+#dbLoadRecords("listId.db", "device=hadcon2")
+
+#var streamDebug 1
 
 ## Load $(HOSTNAME) specific record instances
 

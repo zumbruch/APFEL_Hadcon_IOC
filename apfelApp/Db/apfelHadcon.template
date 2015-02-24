@@ -4,18 +4,7 @@
 #! DBDEND
 
 
-record(longout, "$(PREFIX)$(NAME):listId$(SUFFIX)") {
-  field(DESC, "request available ids")
-  field(UDF, "0")
-  field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) listId $(device)")
-  field(DRVH, "254")
-  field(DRVL, "1")
-  field(HOPR, "254")
-  field(LOPR, "1")
-  field(IVOA, "Set output to IVOV")
-  field(IVOV, "254")
-}
+
 
 #! Further lines contain data used by VisualDCT
 #! View(4724,4974,2.3)

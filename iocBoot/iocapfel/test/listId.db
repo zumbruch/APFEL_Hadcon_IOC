@@ -26,7 +26,7 @@ record(bi, "PANDA:APFEL:A:ps1:s1:id1:status") {
 }
 
 
-record(longout, "PANDA:APFEL:listId") {
+record(longout, "PANDA:APFEL:A:ps1:s1:listId") {
   field(DESC, "request available ids")
   field(UDF, "0")
   field(DTYP, "stream")
@@ -38,4 +38,5 @@ record(longout, "PANDA:APFEL:listId") {
   field(IVOA, "Set output to IVOV")
   field(IVOV, "254")
 }
+
 
