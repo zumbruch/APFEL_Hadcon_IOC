@@ -42,7 +42,7 @@ dbLoadRecords("readDac.db", "device=hadcon2")
 #dbLoadRecords("setAmplification.db", "device=hadcon2")
 #dbLoadRecords("listId.db", "device=hadcon2")
 
-#var streamDebug 1
+var streamDebug 1
 
 ## Load $(HOSTNAME) specific record instances
 

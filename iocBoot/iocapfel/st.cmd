@@ -33,8 +33,7 @@ drvAsynSerialPortConfigure("hadcon2","/dev/ttyUSB0",0,0,0)
 dbLoadRecords ("../../db/hadcon_global.db"      , "device=hadcon2,HADCON=${HOSTNAME}:1, PREFIX=, SUFFIX=")
 #dbLoadRecords("../../db/hadcon_debug_global.db", "device=hadcon2,HADCON=${HOSTNAME}:1, PREFIX=, SUFFIX=")
 dbLoadRecords("../../db/hadcon_stats.db", "IOC=${HOSTNAME}")
-
-dbLoadRecords("../../db/apfelChipId.db", "device=hadcon2")
+dbLoadRecords("../../db/apfelChipId.db", "chipId=1, pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
 dbLoadRecords("../../db/apfelHadcon.db", "device=hadcon2")
 
 ## Load $(HOSTNAME) specific record instances

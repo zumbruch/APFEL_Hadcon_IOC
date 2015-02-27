@@ -46,7 +46,7 @@ include "apfelChipIdAmplification.template"
 
 
 ###
-# dac x 4
+# dac x 4 + all
 
 substitute "dac=1"
 include "apfelDac.template"
@@ -56,6 +56,9 @@ substitute "dac=3"
 include "apfelDac.template"
 substitute "dac=4"
 include "apfelDac.template"
+
+# dac all
+include "apfelDacAll.template"
 
 #! Further lines contain data used by VisualDCT
 #! View(0,0,1.9)

@@ -54,8 +54,8 @@ requestDac {
 
 	cc="A";
 	dummy; 
-#	out $key" "$cc" \$1 \$2 \$3 \$4 \$5 0";	 
-	out $key" A \$1 \$2 \$3 \$4 \$5 0";	 
+#	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	 
+	out $key" A \$1 \$2 \$3 \$4 \$5";	 
 }
 
 genRequestDac {
@@ -69,7 +69,7 @@ genRequestDac {
 
 	cc="A";
 	dummy; 
-	out $key" "$cc" %(E)x "$genSendAddress" 0";	 
+	out $key" "$cc" %(E)x "$genSendAddress;	 
 }
 
 receiveDac {
@@ -78,6 +78,9 @@ receiveDac {
 	ic="dac";
 #	in $recvKey" "$ic" port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
 	in "RECV APFEL dac port:\$5 pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
+	
+	@mismatch{
+	}
 }
 
 genReceiveDac {
@@ -95,9 +98,16 @@ genReceiveDac {
 
 readDac {
 	# Example of command field(INP, "@$(protocolFile) readDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+	ReplyTimeout  = 400;
+	ReadTimeout   = 50;
 
 	requestDac;
 	receiveDac;
+
+	@mismatch{
+     in "ERRA \"APFEL\" -1 \"port:\$5 pinSet:\$3 side:\$4 chip:\$2 dac:\$1 - read validity check failed, raw value:%*x"
+	}
+
 }
 
 genReadDac {
