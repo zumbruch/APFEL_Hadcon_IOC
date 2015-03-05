@@ -90,7 +90,6 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set$(SUFFIX)") {
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:hex:refresh$(SUFFIX)_")
 }
 
-
 record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):hex$(SUFFIX)") {
   field(DESC, "hex dac #$(dac)")
   field(DRVL, "$(DRVL)")
@@ -212,7 +211,6 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:hex$(SUFFIX)")
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:hex:conv1$(SUFFIX)_")
 }
 
-
 record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_") {
   field(DESC, "write dac #$(dac)")
   field(DTYP, "stream")
@@ -225,10 +223,10 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_") 
 
 
 record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_") {
-  field(SCAN, "10 second")
   field(CALC, "A<4?1:15")
   field(INPA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.SEVR")
   field(OUT, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL PP MS")
+  field(OOPT, "Every Time")
 }
 
 record(mbbi, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)") {
@@ -240,16 +238,17 @@ record(mbbi, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUF
   field(FFST, "undefined")
 }
 
+
 record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2") {
-  field(SCAN, "10 second")
   field(CALC, "A<4?0:15")
   field(INPA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac)$(SUFFIX).SEVR")
   field(OUT, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL PP MS")
+  field(OOPT, "Every Time")
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(2157,1520,1.0)
-#! SpreadsheetView(R,"dfanout",Column("HSV","true",37),Column("LOLO","true",32),Column("SDIS","true",27),Column("ASG","true",4),Column("FLNK","true",7),Column("LSV","true",38),Column("HHSV","true",35),Column("LOPR","true",43),Column("EGU","true",40),Column("MDEL","true",45),Column("PREC","true",41),Column("ACKT","true",30),Column("PRIO","true",29),Column("HIHI","true",31),Column("DISS","true",28),Column("ADEL","true",44),Column("TSEL","true",25),Column("LOW","true",34),Column("DISV","true",26),Column("OUTF","false",17),Column("OUTG","false",18),Column("HYST","true",39),Column("OUTH","true",19),Column("TSE","true",24),Column("LLSV","true",36),Column("SELM","true",8),Column("SELL","true",9),Column("PINI","true",21),Column("DTYP","true",6),Column("OMSL","false",12),Column("Comment","true",2),Column("HIGH","true",33),Column("OUTA","false",11),Column("OUTB","false",13),Column("EVNT","true",23),Column("OUTC","false",14),Column("SCAN","true",20),Column("OUTD","false",15),Column("OUTE","false",16),Column("DOL","false",10),Column("Name","false",1),Column("VAL","false",46),Column("UDF","false",5),Column("PHAS","true",22),Column("DESC","false",3),Column("HOPR","true",42))
+#! View(2080,1611,1.0)
+#! SpreadsheetView(R,"dfanout",Column("LOLO","true",32),Column("HSV","true",37),Column("SDIS","true",27),Column("ASG","true",4),Column("FLNK","true",7),Column("HHSV","true",35),Column("LSV","true",38),Column("EGU","true",40),Column("LOPR","true",43),Column("MDEL","true",45),Column("ACKT","true",30),Column("PREC","true",41),Column("PRIO","true",29),Column("HIHI","true",31),Column("DISS","true",28),Column("ADEL","true",44),Column("TSEL","true",25),Column("LOW","true",34),Column("DISV","true",26),Column("OUTF","false",17),Column("OUTG","false",18),Column("HYST","true",39),Column("OUTH","true",19),Column("TSE","true",24),Column("SELM","true",8),Column("LLSV","true",36),Column("PINI","true",21),Column("SELL","true",9),Column("DTYP","true",6),Column("OMSL","false",12),Column("Comment","true",2),Column("HIGH","true",33),Column("OUTA","false",11),Column("EVNT","true",23),Column("OUTB","false",13),Column("SCAN","true",20),Column("OUTC","false",14),Column("OUTD","false",15),Column("OUTE","false",16),Column("Name","false",1),Column("DOL","false",10),Column("VAL","false",46),Column("PHAS","true",22),Column("UDF","false",5),Column("DESC","false",3),Column("HOPR","true",42))
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX)",2560,1991,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX).ASLO",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX).ASLO")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX).AOFF",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX).AOFF")
@@ -408,8 +407,6 @@ record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(S
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.FLNK")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.SEVR",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.SEVR")
-#! Box(Box0,1080,1580,2360,2280,1,16776960,null)
-#! TextBox(TB0,1120,1620,1380,1660,0,"Dialog",26,1,16776960,"set dac (dec/hex)",null)
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_",2460,2388,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL")
@@ -423,3 +420,5 @@ record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(S
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.INPA",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.INPA")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2/INPA")
 #! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2/INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac)$(SUFFIX).SEVR",3480,2270,16777215,"",0)
+#! Box(Box0,1080,1580,2360,2280,1,16776960,null)
+#! TextBox(TB0,1120,1620,1380,1660,0,"Dialog",26,1,16776960,"set dac (dec/hex)",null)
