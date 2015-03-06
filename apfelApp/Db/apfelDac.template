@@ -59,7 +59,7 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac)$(SUFFIX)") {
   field(DRVL, "$(DRVL)")
   field(DRVH, "$(DRVH)")
   field(OUT, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):hex$(SUFFIX) PP MS")
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2")
+  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2 PP MS")
 }
 
 record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive_df$(SUFFIX)_") {
@@ -229,13 +229,19 @@ record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(S
   field(OOPT, "Every Time")
 }
 
+
 record(mbbi, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)") {
   field(PINI, "YES")
-  field(VAL, "15")
+  field(VAL, "9")
   field(ZRST, "done")
   field(ONST, "updating")
   field(TEST, "old")
   field(FFST, "undefined")
+  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_ PP")
+  field(ZRSV, "NO_ALARM")
+  field(ONSV, "NO_ALARM")
+  field(FFSV, "INVALID")
+  field(UNSV, "INVALID")
 }
 
 
@@ -246,8 +252,24 @@ record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(S
   field(OOPT, "Every Time")
 }
 
+
+record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_") {
+  field(CALC, "A==1?15:A")
+  field(OUT, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX) CA")
+  field(INPB, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.SEVR")
+  field(INPC, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac)$(SUFFIX).SEVR")
+  field(OOPT, "On Change")
+}
+
+
+record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_") {
+  field(DLY1, "10.0")
+  field(DOL1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL")
+  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.A CA")
+}
+
 #! Further lines contain data used by VisualDCT
-#! View(2080,1611,1.0)
+#! View(2125,2169,1.0)
 #! SpreadsheetView(R,"dfanout",Column("LOLO","true",32),Column("HSV","true",37),Column("SDIS","true",27),Column("ASG","true",4),Column("FLNK","true",7),Column("HHSV","true",35),Column("LSV","true",38),Column("EGU","true",40),Column("LOPR","true",43),Column("MDEL","true",45),Column("ACKT","true",30),Column("PREC","true",41),Column("PRIO","true",29),Column("HIHI","true",31),Column("DISS","true",28),Column("ADEL","true",44),Column("TSEL","true",25),Column("LOW","true",34),Column("DISV","true",26),Column("OUTF","false",17),Column("OUTG","false",18),Column("HYST","true",39),Column("OUTH","true",19),Column("TSE","true",24),Column("SELM","true",8),Column("LLSV","true",36),Column("PINI","true",21),Column("SELL","true",9),Column("DTYP","true",6),Column("OMSL","false",12),Column("Comment","true",2),Column("HIGH","true",33),Column("OUTA","false",11),Column("EVNT","true",23),Column("OUTB","false",13),Column("SCAN","true",20),Column("OUTC","false",14),Column("OUTD","false",15),Column("OUTE","false",16),Column("Name","false",1),Column("DOL","false",10),Column("VAL","false",46),Column("PHAS","true",22),Column("UDF","false",5),Column("DESC","false",3),Column("HOPR","true",42))
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX)",2560,1991,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX).ASLO",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):receive$(SUFFIX).ASLO")
@@ -408,17 +430,37 @@ record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(S
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.SEVR",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.SEVR")
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_",2460,2388,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT",16711782,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_/OUT")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.INPA",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.INPA")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_.INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.SEVR")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)",2800,2460,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)")
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_/OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL",2760,2620,16711782,"",0)
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)",2820,2511,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).FLNK")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_")
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2",3160,2388,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.OUT",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.OUT")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.OUT",16711782,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.OUT")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2/OUT")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.INPA",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.INPA")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2.INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2/INPA")
 #! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2/INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac)$(SUFFIX).SEVR",3480,2270,16777215,"",0)
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_2/OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL",2780,2620,16711782,"",0)
 #! Box(Box0,1080,1580,2360,2280,1,16776960,null)
 #! TextBox(TB0,1120,1620,1380,1660,0,"Dialog",26,1,16776960,"set dac (dec/hex)",null)
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_",3240,2774,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.A",16711782,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.A")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.OUT",16711782,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.OUT")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_3/OUT")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.INPB",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.INPB")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.INPB","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write$(SUFFIX)_.SEVR")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.INPC",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.INPC")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.INPC","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_3/INPC")
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_3/INPC","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac)$(SUFFIX).SEVR",3480,2490,16777215,"",0)
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status$(SUFFIX)_3/OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL",2760,2830,16711782,"",0)
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_",2980,2782,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_.DOL1",52326,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_.DOL1")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_.DOL1","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_4/DOL1")
+#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_.LNK1",16711782,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_.LNK1")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_.LNK1","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:check$(SUFFIX)_.A")
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):set:status:wait$(SUFFIX)_4/DOL1","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).VAL",3220,2810,52326,"",0)
