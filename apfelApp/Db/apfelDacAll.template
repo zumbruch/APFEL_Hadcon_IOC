@@ -59,11 +59,20 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write:seq:DLY$(SUFFIX
   field(VAL, "$(WRITE_ALL_DELAY)")
 }
 
-record(fanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:read:start$(SUFFIX)") {
-  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac1:read$(SUFFIX)")
-  field(LNK2, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac2:read$(SUFFIX)")
-  field(LNK3, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac3:read$(SUFFIX)")
-  field(LNK4, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac4:read$(SUFFIX)")
+record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:read:start$(SUFFIX)") {
+  field(DESC, "read dac All")
+  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac1:read$(SUFFIX) PP")
+  field(LNK2, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac2:read$(SUFFIX) PP")
+  field(LNK3, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac3:read$(SUFFIX) PP")
+  field(LNK4, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac4:read$(SUFFIX) PP")
+  field(DOL1, "1")
+  field(DOL2, "1")
+  field(DOL3, "1")
+  field(DOL4, "1")
+  field(DLY1, "$(READ_ALL_DELAY)")
+  field(DLY2, "$(READ_ALL_DELAY)")
+  field(DLY3, "$(READ_ALL_DELAY)")
+  field(DLY4, "$(READ_ALL_DELAY)")
 }
 
 record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:set$(SUFFIX)") {
