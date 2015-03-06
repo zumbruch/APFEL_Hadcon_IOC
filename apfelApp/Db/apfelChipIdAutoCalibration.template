@@ -20,7 +20,7 @@ record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX)"
   field(DESC, "autocalibration")
   field(DTYP, "stream")
   field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_")
+  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
 }
 
 record(calcout, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)") {
@@ -30,7 +30,7 @@ record(calcout, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)") {
   field(INPB, "$(PREFIX)$(NAME):pinSet$(SUFFIX)")
   field(INPC, "$(PREFIX)$(NAME):sideSelection$(SUFFIX)")
   field(INPD, "$(PREFIX)$(NAME):port$(SUFFIX)")
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2")
+  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
 }
 
 record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)") {
@@ -39,79 +39,17 @@ record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX
   field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:read:start$(SUFFIX).PROC")
 }
 
-record(calc, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_") {
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_")
-  field(CALC, "A<4?1:15")
-  field(INPA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).SEVR")
-}
-
-record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_") {
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
-  field(OUTA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac1:read:status$(SUFFIX).VAL PP MS")
-  field(OUTB, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac2:read:status$(SUFFIX).VAL PP MS")
-  field(OUTC, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac3:read:status$(SUFFIX).VAL PP MS")
-  field(OUTD, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac4:read:status$(SUFFIX).VAL PP MS")
-  field(DOL, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_")
-}
-
-record(calc, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2") {
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2")
-  field(CALC, "A<4?1:15")
-  field(INPA, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).SEVR")
-}
-
-record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2") {
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
-  field(OUTA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac1:read:status$(SUFFIX).VAL PP MS")
-  field(OUTB, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac2:read:status$(SUFFIX).VAL PP MS")
-  field(OUTC, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac3:read:status$(SUFFIX).VAL PP MS")
-  field(OUTD, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac4:read:status$(SUFFIX).VAL PP MS")
-  field(DOL, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2")
-}
-
 #! Further lines contain data used by VisualDCT
 #! View(0,93,1.0)
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX)",60,148,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).SEVR",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).SEVR")
+#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
 #! Record("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)",60,366,0,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK")
-#! Link("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2")
+#! Link("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPA",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPA")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPB",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPB")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPC",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPC")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPD",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPD")
-#! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).SEVR",16777215,0,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).SEVR")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)",940,462,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)",360,342,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX).LNK1",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX).LNK1")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_",320,182,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.INPA",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.INPA")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).SEVR")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.VAL",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.VAL")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_",620,240,16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.OUTA",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.OUTA")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.OUTB",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.OUTB")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.OUTC",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.OUTC")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.OUTD",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.OUTD")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.DOL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.DOL")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_.DOL","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_.VAL")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2",320,482,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.VAL",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.VAL")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.INPA",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.INPA")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.INPA","$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).SEVR")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2",620,520,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.OUTA",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.OUTA")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.OUTB",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.OUTB")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.OUTC",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.OUTC")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.OUTD",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.OUTD")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.DOL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.DOL")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:set_df$(SUFFIX)_2.DOL","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:status:check$(SUFFIX)_2.VAL")
