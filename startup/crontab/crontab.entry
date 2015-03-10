@@ -1,0 +1,3 @@
+MAILTO=""
+@reboot sleep 60 && ~/crontab/start_procServ_EPICS_apfel_IOC.sh
+36 10 * * * sleep 60 && ~/crontab/start_procServ_EPICS_apfel_IOC.sh
