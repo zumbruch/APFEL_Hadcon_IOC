@@ -25,7 +25,7 @@ record(longout, "$(PREFIX)$(NAME):$(ADDRESS):listId$(SUFFIX)") {
   field(DESC, "request available ids")
   field(UDF, "0")
   field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) listId $(device)")
+  field(OUT, "@$(protocolFile) listId($(pinSet),$(sideSelection),$(port)) $(device)")
   field(DRVH, "254")
   field(DRVL, "1")
   field(HOPR, "254")
