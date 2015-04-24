@@ -49,7 +49,7 @@ receiveDac {
 
 	ic="dac";
 #	in $recvKey" "$ic" port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
-	in "RECV APFEL dac port:\$5 pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
+	in "RECV APFEL dac \$5 \$3 \$4 \$2 dac:\$1 %x";	
 }
 
 readDac {
@@ -61,7 +61,7 @@ readDac {
 	receiveDac;
 
 	@mismatch{
-     in "ERRA -1 APFEL dac \$5 \$3 \$4 \$2 dac:\$1\_-\_read validity check failed, raw value:%x"
+     in "ERRA -1 \"APFEL dac \$5 \$3 \$4 \$2 dac:\$1\_-\_read validity check failed, raw value:%x\""
 	}
 
 }
@@ -139,7 +139,7 @@ listIdStatus_intr {
 
 	ic="list";
 #	in $recvKey" "$ic" port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
-	in "RECV APFEL list port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
+	in "RECV APFEL list \$4 \$2 \$3 \$1 %{no|yes}";	
 }
 
 

@@ -12,6 +12,7 @@
 # sideSelection   = $(sideSelection)
 # port            = $(port)
 # WRITE_ALL_DELAY = $(WRITE_ALL_DELAY)
+# READ_ALL_DELAY  = $(READ_ALL_DELAY)
 record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_") {
   field(DESC, "write dac All")
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write:seq$(SUFFIX)_")
