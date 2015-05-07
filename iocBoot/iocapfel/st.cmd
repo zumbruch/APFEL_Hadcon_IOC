@@ -30,6 +30,8 @@ dbLoadRecords ("../../db/hadcon_global.db"      , "device=hadcon2,HADCON=${HOSTN
 #dbLoadRecords("../../db/hadcon_debug_global.db", "device=hadcon2,HADCON=${HOSTNAME}:1, PREFIX=, SUFFIX=")
 dbLoadRecords("../../db/hadcon_stats.db", "IOC=${HOSTNAME}")
 
+dbLoadRecords("../../db/apfelHadcon.db", "PREFIX=, device=hadcon2")
+
 ##port A, portNumber 1
 ### sideSelection 0
 #### pinSet 1

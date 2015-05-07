@@ -23,6 +23,12 @@ dummy {
 	out "";
 }
 
+debug {
+    ExtraInput = Ignore;
+    in "%s"; in "%39c"
+}
+
+
 ## write dac
 
 setDac {
@@ -55,7 +61,7 @@ receiveDac {
 readDac {
 	# Example of command field(INP, "@$(protocolFile) readDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 	ReplyTimeout  = 400;
-	ReadTimeout   = 50;
+	ReadTimeout   = 500;
 
 	requestDac;
 	receiveDac;

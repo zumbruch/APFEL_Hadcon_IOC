@@ -27,3 +27,4 @@ PING {
     key = "PING";
 	in $key " %39c";
 }
+
