@@ -34,9 +34,10 @@ record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write:seq$(SUFFIX)_"
   field(DLY4, "$(WRITE_ALL_DELAY)")
 }
 
+
 record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:read:start$(SUFFIX)") {
   field(DESC, "read dac All")
-  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac1:read$(SUFFIX).PROC CPP")
+  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac1:read$(SUFFIX).PROC CA")
   field(LNK2, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac2:read$(SUFFIX).PROC CA")
   field(LNK3, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac3:read$(SUFFIX).PROC CA")
   field(LNK4, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac4:read$(SUFFIX).PROC CA")
@@ -108,7 +109,7 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:set:hex$(SUFFIX)") {
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(2298,1562,0.9)
+#! View(2429,1524,0.9)
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_",3680,2296,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_.FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_.FLNK")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write:seq$(SUFFIX)_")
