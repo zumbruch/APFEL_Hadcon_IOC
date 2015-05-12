@@ -140,6 +140,18 @@ listIdRange {
 	out $key" "$cc" 1 \$4 %x \$1 \$2 \$3";	
 }
 
+listIdRange_co {
+	# expecting a calcout record calling this protocol
+	# A: minChipId
+	# B: nChips
+	# C: stepSize
+	# Example of command field(OUT, "@$(protocolFile) listIdRange($(pinSet),$(sideSelection),$(port))) $(device)") 
+
+	cc="20";
+	dummy;
+	out $key" "$cc" 1 %(B)x %(A)x \$1 \$2 \$3";	
+}
+
 listIdStatus_intr {
 	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
@@ -154,10 +166,13 @@ listIdStatus_intr {
 setTrigger {
 	# Example of command field(OUT, "@$(protocolFile) setTrigger $(device)") 
 	# requires calc(out) record
-
+    # A: status
+    # B: pin
+    # C: port
+    
 	cc="11";
 	dummy;
-	out $key" "$cc" %(A){OFF|ON} %(B)#{A=1|C=3|F=6} %(C)x";  	
+	out $key" "$cc" %(A){OFF|ON} %(C)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(B)x";  	
 }
 
 requestTrigger {
@@ -167,16 +182,18 @@ requestTrigger {
 	Terminator = LF;
 	cc="11";
 	dummy;
-	out $key" "$cc;	
+	out $key" 11";	
 }
 
 
 readTrigger_intr {
 	# Example of command field(OUT, "@$(protocolFile) readTrigger_intr $(device)") 
 	# requires calc(out) record
+    # A: status
+    # B: pin
+    # C: port
 
-	ic="trigger";
-	in "RECV APFEL "$ic" %(A){OFF|ON} %(B)#{A=1|C=3|F=6} %(C)x";
+	in "RECV APFEL trigger %(A){OFF|ON} %(C)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(B)x";
 }
 
 readTrigger {

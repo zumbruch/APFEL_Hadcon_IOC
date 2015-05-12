@@ -30,7 +30,7 @@ dbLoadRecords ("../../db/hadcon_global.db"      , "device=hadcon2,HADCON=${HOSTN
 #dbLoadRecords("../../db/hadcon_debug_global.db", "device=hadcon2,HADCON=${HOSTNAME}:1, PREFIX=, SUFFIX=")
 dbLoadRecords("../../db/hadcon_stats.db", "IOC=${HOSTNAME}")
 
-dbLoadRecords("../../db/apfelHadcon.db", "PREFIX=, device=hadcon2")
+dbLoadRecords("../../db/apfelHadcon.db", "PREFIX=, HADCON=${HOSTNAME}:1, device=hadcon2")
 
 ##port A, portNumber 1
 ### sideSelection 0
@@ -41,10 +41,10 @@ dbLoadRecords("../../db/apfelHadcon.db", "PREFIX=, device=hadcon2")
 #dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=4,   pinSet=1, sideSelection=0, port=A, portNumber=1, device=hadcon2")
 #dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=255, pinSet=1, sideSelection=0, port=A, portNumber=1, device=hadcon2")
 #### pinSet 2
-#dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=1,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
-#dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=2,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
-#dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=3,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
-#dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=4,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+# dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=1,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+# dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=2,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+# dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=3,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+# dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=4,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
 #dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=255, pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
 ## sideSelection 1
 ### pinSet 1
@@ -52,7 +52,7 @@ dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=1,   pinSet=1, s
 dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=2,   pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
 dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=3,   pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
 dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=4,   pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
-dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=255, pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=255, pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
 #### pinSet 2
 #dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=1,   pinSet=2, sideSelection=1, port=A, portNumber=1, device=hadcon2")
 #dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=2,   pinSet=2, sideSelection=1, port=A, portNumber=1, device=hadcon2")
@@ -117,7 +117,6 @@ dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=255, pinSet=1, s
 #dbLoadRecords("../../db/apfelChipId.db", "PREFIX=PANDA:, chipId=255, pinSet=2, sideSelection=1, port=F, portNumber=6, device=hadcon2")
 #
 
-dbLoadRecords("../../db/apfelHadcon.db",  "PREFIX=PANDA:, device=hadcon2")
 
 var streamDebug 0
 ## Load $(HOSTNAME) specific record instances
