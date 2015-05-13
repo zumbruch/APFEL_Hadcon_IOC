@@ -33,10 +33,11 @@ record(calcout, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)") {
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
 }
 
+
 record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)") {
   field(DLY1, "0.15")
   field(DOL1, "1")
-  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:read:start$(SUFFIX).PROC")
+  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:read:start$(SUFFIX).PROC CA")
 }
 
 #! Further lines contain data used by VisualDCT

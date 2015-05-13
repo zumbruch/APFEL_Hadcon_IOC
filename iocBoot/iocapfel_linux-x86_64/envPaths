@@ -1,5 +1,5 @@
-epicsEnvSet("ARCH","linux-arm")
-epicsEnvSet("IOC","iocapfel")
+epicsEnvSet("ARCH","linux-x86_64")
+epicsEnvSet("IOC","iocapfel_linux-x86_64")
 epicsEnvSet("TOP","/home/epics/playground/PANDA/apfelhadcon_ioc")
 epicsEnvSet("EPICS_BASE","/home/epics/EPICS/EPICS-3.14.12.4/base")
 epicsEnvSet("SNCSEQ","/home/epics/EPICS/EPICS-3.14.12.4/base/../modules/soft/seq/seq-2.1.16")
