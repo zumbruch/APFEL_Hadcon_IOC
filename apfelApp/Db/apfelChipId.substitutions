@@ -1,6 +1,8 @@
 file apfelChipId.template {
 pattern {
-    protocolFile, PREFIX, NAME, SUFFIX,                
+    protocolFile, 
+#   PREFIX, 
+    NAME, SUFFIX,                
 #	chipId, pinSet, sideSelection, port, portNumber, 
 	ADDRESS,
 	defaultTestPulseHeight, EGU, ASLO, AOFF, LOPR, HOPR, DRVL, DRVH, DRVL_HEX, DRVH_HEX, 
@@ -8,10 +10,12 @@ pattern {
 	WRITE_ALL_DELAY, READ_ALL_DELAY
 }               
 
-	{ "hadcon_APFEL0.proto" "PANDA:" "APFEL" "" 
+	{ "hadcon_APFEL0.proto" 
+#	  "PANDA:" 
+	  "APFEL" "" 
 #	  "1" "1" "1" "A" "1" 
 	  "$(port):ps$(pinSet):s$(sideSelection)" 
 	  "0x1" "mV" "3.0" "0." "0" "3069" "0" "3069" "0" "0x3ff" "4" "1200" "1600" "1601" "2200" 
-	  "0.1" "0.05"}  
+	  "0.2" "0.2"}  
 
 }

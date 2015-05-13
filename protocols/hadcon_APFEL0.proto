@@ -23,6 +23,12 @@ dummy {
 	out "";
 }
 
+debug {
+    ExtraInput = Ignore;
+    in "%s"; in "%39c"
+}
+
+
 ## write dac
 
 setDac {
@@ -32,6 +38,174 @@ setDac {
 	dummy;
 	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
 }
+
+## read dac
+requestDac {
+	# Example of command field(INP, "@$(protocolFile) requestDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	cc="A";
+	dummy; 
+#	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	 
+	out $key" A \$1 \$2 \$3 \$4 \$5";	 
+}
+
+
+receiveDac {
+	# Example of command field(INP, "@$(protocolFile) receiveDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	ic="dac";
+#	in $recvKey" "$ic" port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
+	in "RECV APFEL dac \$5 \$3 \$4 \$2 dac:\$1 %x";	
+}
+
+readDac {
+	# Example of command field(INP, "@$(protocolFile) readDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+	ReplyTimeout  = 400;
+	ReadTimeout   = 500;
+
+	requestDac;
+	receiveDac;
+
+	@mismatch{
+     in "ERRA -1 \"APFEL dac \$5 \$3 \$4 \$2 dac:\$1\_-\_read validity check failed, raw value:%x\""
+	}
+
+}
+
+
+autoCalibration {
+	# Example of command field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	cc="B";
+	dummy;
+	out $key" "$cc" \$1 \$2 \$3 \$4";	
+}
+
+testPulse {
+	# Example of command field(OUT, "@$(protocolFile) testPulse($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	cc="C";
+	dummy;
+	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
+}
+
+
+testPulseSeq {
+	# Example of command field(OUT, "@$(protocolFile) testPulseSeq($(channel),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	cc="D";
+	dummy;
+	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
+}
+
+
+setAmplification {
+	# Example of command field(OUT, "@$(protocolFile) setAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	cc="E";
+	dummy;
+	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
+}
+
+
+resetAmplification {
+	# Example of command field(OUT, "@$(protocolFile) resetAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	cc="F";
+	dummy;
+	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
+}
+
+listId {
+	# Example of command field(OUT, "@$(protocolFile) listId($(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	cc="20";
+	dummy;
+	out $key" "$cc" 1 %x 1 \$1 \$2 \$3";	
+}
+
+listIdSingle {
+	# Example of command field(OUT, "@$(protocolFile) listIdSingle($(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	cc="20";
+	dummy;
+	out $key" "$cc" 1 1 %x \$1 \$2 \$3";	
+}
+
+listIdRange {
+	# Example of command field(OUT, "@$(protocolFile) listIdRange($(pinSet),$(sideSelection),$(port),$(number)) $(device)") 
+
+	cc="20";
+	dummy;
+	out $key" "$cc" 1 \$4 %x \$1 \$2 \$3";	
+}
+
+listIdRange_co {
+	# expecting a calcout record calling this protocol
+	# A: minChipId
+	# B: nChips
+	# C: stepSize
+	# Example of command field(OUT, "@$(protocolFile) listIdRange($(pinSet),$(sideSelection),$(port))) $(device)") 
+
+	cc="20";
+	dummy;
+	out $key" "$cc" 1 %(B)x %(A)x \$1 \$2 \$3";	
+}
+
+listIdStatus_intr {
+	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+
+	ic="list";
+#	in $recvKey" "$ic" port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
+	in "RECV APFEL list \$4 \$2 \$3 \$1 %{no|yes}";	
+}
+
+
+## hadcon
+
+setTrigger {
+	# Example of command field(OUT, "@$(protocolFile) setTrigger $(device)") 
+	# requires calc(out) record
+    # A: status
+    # B: pin
+    # C: port
+    
+	cc="11";
+	dummy;
+	out $key" "$cc" %(A){OFF|ON} %(C)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(B)x";  	
+}
+
+requestTrigger {
+	# Example of command field(OUT, "@$(protocolFile) requestTrigger $(device)") 
+	# requires calc(out) record
+
+	Terminator = LF;
+	cc="11";
+	dummy;
+	out $key" 11";	
+}
+
+
+readTrigger_intr {
+	# Example of command field(OUT, "@$(protocolFile) readTrigger_intr $(device)") 
+	# requires calc(out) record
+    # A: status
+    # B: pin
+    # C: port
+
+	in "RECV APFEL trigger %(A){OFF|ON} %(C)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(B)x";
+}
+
+readTrigger {
+	# Example of command field(OUT, "@$(protocolFile) readTrigger $(device)") 
+	# requires calc(out) record
+
+	requestTrigger;
+	readTrigger_intr;
+}
+
+################################################################################
+## generic
 
 genSetDac {
 	# Example of command field(OUT, "@$(protocolFile) genSetDac $(device)") 
@@ -47,15 +221,17 @@ genSetDac {
 	out $key" "$cc" %x %(E)x "$genSendAddress;	
 }
 
-## read dac
+genReadDac {
+	# Example of command field(INP, "@$(protocolFile) genReadDac $(device)") 
+	# requires calc(out) record
+	#   A: chipId
+	#   B: pinSet
+	#   C: sideSelection
+	#   D: port
+	#   E: dac
 
-requestDac {
-	# Example of command field(INP, "@$(protocolFile) requestDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
-	cc="A";
-	dummy; 
-#	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	 
-	out $key" A \$1 \$2 \$3 \$4 \$5";	 
+	genRequestDac;
+	genReceiveDac;
 }
 
 genRequestDac {
@@ -72,17 +248,6 @@ genRequestDac {
 	out $key" "$cc" %(E)x "$genSendAddress;	 
 }
 
-receiveDac {
-	# Example of command field(INP, "@$(protocolFile) receiveDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
-	ic="dac";
-#	in $recvKey" "$ic" port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
-	in "RECV APFEL dac port:\$5 pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
-	
-	@mismatch{
-	}
-}
-
 genReceiveDac {
 	# Example of command field(OUT, "@$(protocolFile) genReceiveDac $(device)") 
 	# requires calc(out) record
@@ -94,42 +259,6 @@ genReceiveDac {
 
 	ic="dac";
 	in "RECV APFEL "$ic" "$genRecvAddress" dac:%(E)x %x";	
-}
-
-readDac {
-	# Example of command field(INP, "@$(protocolFile) readDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-	ReplyTimeout  = 400;
-	ReadTimeout   = 50;
-
-	requestDac;
-	receiveDac;
-
-	@mismatch{
-     in "ERRA \"APFEL\" -1 \"port:\$5 pinSet:\$3 side:\$4 chip:\$2 dac:\$1 - read validity check failed, raw value:%*x"
-	}
-
-}
-
-genReadDac {
-	# Example of command field(INP, "@$(protocolFile) genReadDac $(device)") 
-	# requires calc(out) record
-	#   A: chipId
-	#   B: pinSet
-	#   C: sideSelection
-	#   D: port
-	#   E: dac
-
-	genRequestDac;
-	genReceiveDac;
-}
-
-
-autoCalibration {
-	# Example of command field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
-	cc="B";
-	dummy;
-	out $key" "$cc" \$1 \$2 \$3 \$4";	
 }
 
 genAutoCalibration {
@@ -145,14 +274,6 @@ genAutoCalibration {
 	out $key" "$cc" "$genSendAddress;	
 }
 
-testPulse {
-	# Example of command field(OUT, "@$(protocolFile) testPulse($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
-	cc="C";
-	dummy;
-	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
-}
-
 genTestPulse {
 	# Example of command field(OUT, "@$(protocolFile) genTestPulse $(device)") 
 	# requires calc(out) record
@@ -164,15 +285,6 @@ genTestPulse {
 	cc="C";
 	dummy;
 	out $key" "$cc" %x "$genSendAddress;	
-}
-
-
-testPulseSeq {
-	# Example of command field(OUT, "@$(protocolFile) testPulseSeq($(channel),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
-	cc="D";
-	dummy;
-	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
 }
 
 genTestPulseSeq {
@@ -189,15 +301,6 @@ genTestPulseSeq {
 	dummy;
 	out $key" "$cc" %(F)x %(E)x "$genSendAddress;	
 }
-
-setAmplification {
-	# Example of command field(OUT, "@$(protocolFile) setAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
-	cc="E";
-	dummy;
-	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
-}
-
 genSetAmplification {
 	# Example of command field(OUT, "@$(protocolFile) genSetAmplification $(device)") 
 	# requires calc(out) record
@@ -209,14 +312,6 @@ genSetAmplification {
 	cc="E";
 	dummy;
 	out $key" "$cc" %x "$genSendAddress;	
-}
-
-resetAmplification {
-	# Example of command field(OUT, "@$(protocolFile) resetAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
-	cc="F";
-	dummy;
-	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
 }
 
 genResetAmplification {
@@ -232,22 +327,6 @@ genResetAmplification {
 	out $key" "$cc" %x "$genSendAddress;	
 }
 
-listId {
-	# Example of command field(OUT, "@$(protocolFile) listId $(device)") 
-
-	cc="10";
-	dummy;
-	out $key" "$cc" 1 %x";	
-}
-
-listIdStatus_intr {
-	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
-	ic="list";
-#	in $recvKey" "$ic" port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
-	in "RECV APFEL list port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
-}
-
 genListIdStatus_intr {
 	# Example of command field(OUT, "@$(protocolFile) ListIdStatus_intr $(device)") 
 	# requires calc(out) record
@@ -260,45 +339,3 @@ genListIdStatus_intr {
 	in "RECV APFEL "$cc" "$genRecvAddress" %{no|yes}";	
                    
 }
-
-## hadcon
-
-setTrigger {
-	# Example of command field(OUT, "@$(protocolFile) setTrigger $(device)") 
-	# requires calc(out) record
-
-	cc="11";
-	dummy;
-	out $key" "$cc" %(A){OFF|ON} %(B)#{A=1|C=3|F=6} %(C)x";  	
-}
-
-requestTrigger {
-	# Example of command field(OUT, "@$(protocolFile) requestTrigger $(device)") 
-	# requires calc(out) record
-
-	Terminator = LF;
-	cc="11";
-	dummy;
-	out $key" "$cc;	
-}
-
-
-readTrigger_intr {
-	# Example of command field(OUT, "@$(protocolFile) readTrigger_intr $(device)") 
-	# requires calc(out) record
-
-	ic="trigger";
-	in "RECV APFEL "$ic" %(A){OFF|ON} %(B)#{A=1|C=3|F=6} %(C)x";
-}
-
-readTrigger {
-	# Example of command field(OUT, "@$(protocolFile) readTrigger $(device)") 
-	# requires calc(out) record
-
-	requestTrigger;
-	readTrigger_intr;
-}
-
-
-
-
