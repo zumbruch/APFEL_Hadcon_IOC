@@ -5,6 +5,6 @@ pattern {
     NAME, SUFFIX                
 }               
 	{ "hadcon_APFEL0.proto" 
-#     "PANDA:" 
-	  "APFEL" "" }  
+      "PANDA:" 
+	  "APFEL:$(HADCON)" "" }  
 }
