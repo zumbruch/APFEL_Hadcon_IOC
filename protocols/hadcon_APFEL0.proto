@@ -169,10 +169,11 @@ setTrigger {
     # A: status
     # B: pin
     # C: port
+    # D: position
     
 	cc="11";
 	dummy;
-	out $key" "$cc" %(A){OFF|ON} %(C)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(B)x";  	
+	out $key" "$cc" %(A){OFF|ON} %(C)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(B)x %(D)x";  	
 }
 
 requestTrigger {
@@ -192,8 +193,9 @@ readTrigger_intr {
     # A: status
     # B: pin
     # C: port
+    # D: position
 
-	in "RECV APFEL trigger %(A){OFF|ON} %(C)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(B)x";
+	in "RECV APFEL trigger %(A){OFF|ON} %(C)#{A=1|B=2|C=3|D=4|E=5|F=6|G=7} %(B)x %(D)x";
 }
 
 readTrigger {
