@@ -1,17 +1,10 @@
-#!../../bin/linux-x86_64/apfel.linux-x86_64
+#!../../bin/linux-arm/apfel
 
-## You may have to change apfel.linux-x86_64 to something else
+## You may have to change apfel to something else
 ## everywhere it appears in this file
 
 < envPaths
 
-#cd ${TOP}
-
-## Register all support components
-dbLoadDatabase "../../dbd/apfel.dbd"
-apfel_registerRecordDeviceDriver pdbbase
-
-< envPaths
 
 epicsEnvSet("STREAM_PROTOCOL_PATH", "../../protocols")
 epicsEnvSet("PATH","${PATH}:../../bin/linux-arm")
@@ -37,20 +30,89 @@ dbLoadRecords ("../../db/hadcon_global.db"      , "device=hadcon2,HADCON=${HOSTN
 #dbLoadRecords("../../db/hadcon_debug_global.db", "device=hadcon2,HADCON=${HOSTNAME}:1, PREFIX=, SUFFIX=")
 dbLoadRecords("../../db/hadcon_stats.db", "IOC=${HOSTNAME}")
 
-dbLoadRecords("../../db/apfelChipId.db",   "chipId=1, pinSet=1, sideSelection=1, port=A, portNumber=1, PREFIX=PANDA:, device=hadcon2")
-dbLoadRecords("../../db/apfelChipId.db",   "chipId=2, pinSet=1, sideSelection=1, port=A, portNumber=1, PREFIX=PANDA:, device=hadcon2")
-dbLoadRecords("../../db/apfelChipId.db",   "chipId=3, pinSet=1, sideSelection=1, port=A, portNumber=1, PREFIX=PANDA:, device=hadcon2")
-dbLoadRecords("../../db/apfelChipId.db",   "chipId=4, pinSet=1, sideSelection=1, port=A, portNumber=1, PREFIX=PANDA:, device=hadcon2")
-dbLoadRecords("../../db/apfelChipId.db", "chipId=255, pinSet=1, sideSelection=1, port=A, portNumber=1, PREFIX=PANDA:, device=hadcon2")
+dbLoadRecords("../../db/apfelHadcon.db", "PREFIX=, HADCON=${HOSTNAME}:1, device=hadcon2")
 
-dbLoadRecords("../../db/apfelHadcon.db",  "PREFIX=PANDA:, device=hadcon2")
+##port A, portNumber 1
+### sideSelection 0
+#### pinSet 1
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=1, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=1, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=1, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=1, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+#### pinSet 2
+# dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+# dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+# dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+# dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=2, sideSelection=0, port=A, portNumber=1, device=hadcon2")
+## sideSelection 1
+### pinSet 1
+dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
+dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
+dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
+dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=1, sideSelection=1, port=A, portNumber=1, device=hadcon2")
+#### pinSet 2
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=2, sideSelection=1, port=A, portNumber=1, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=2, sideSelection=1, port=A, portNumber=1, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=2, sideSelection=1, port=A, portNumber=1, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=2, sideSelection=1, port=A, portNumber=1, device=hadcon2")
 
+##port C, portNumber 3
+### sideSelection 0
+#### pinSet 1
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=1, sideSelection=0, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=1, sideSelection=0, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=1, sideSelection=0, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=1, sideSelection=0, port=C, portNumber=3, device=hadcon2")
+#### pinSet 2
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=2, sideSelection=0, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=2, sideSelection=0, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=2, sideSelection=0, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=2, sideSelection=0, port=C, portNumber=3, device=hadcon2")
+### sideSelection 1
+#### pinSet 1
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=1, sideSelection=1, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=1, sideSelection=1, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=1, sideSelection=1, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=1, sideSelection=1, port=C, portNumber=3, device=hadcon2")
+#### pinSet 2
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=2, sideSelection=1, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=2, sideSelection=1, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=2, sideSelection=1, port=C, portNumber=3, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=2, sideSelection=1, port=C, portNumber=3, device=hadcon2")
+#
+##port F, portNumber 6
+### sideSelection 0
+#### pinSet 1
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=1, sideSelection=0, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=1, sideSelection=0, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=1, sideSelection=0, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=1, sideSelection=0, port=F, portNumber=6, device=hadcon2")
+#### pinSet 2
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=2, sideSelection=0, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=2, sideSelection=0, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=2, sideSelection=0, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=2, sideSelection=0, port=F, portNumber=6, device=hadcon2")
+### sideSelection 1
+#### pinSet 1
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=1, sideSelection=1, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=1, sideSelection=1, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=1, sideSelection=1, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=1, sideSelection=1, port=F, portNumber=6, device=hadcon2")
+#### pinSet 2
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=1,   pinSet=2, sideSelection=1, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=2,   pinSet=2, sideSelection=1, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=3,   pinSet=2, sideSelection=1, port=F, portNumber=6, device=hadcon2")
+#dbLoadRecords("../../db/apfelChipId.db", "HADCON=${HOSTNAME}:1, chipId=4,   pinSet=2, sideSelection=1, port=F, portNumber=6, device=hadcon2")
+#
+
+var streamDebug 0
 ## Load $(HOSTNAME) specific record instances
 
 #< st_${HOSTNAME}.cmd
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit
+var streamDebug 0
 
 dbl > ${HOSTNAME}.dbl
 
