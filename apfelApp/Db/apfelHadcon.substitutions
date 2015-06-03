@@ -1,10 +1,8 @@
 file apfelHadcon.template {
 pattern {
     protocolFile, 
-#   PREFIX, 
-    NAME, SUFFIX                
+    PREFIX, NAME, SUFFIX                
 }               
 	{ "hadcon_APFEL0.proto" 
-      "PANDA:" 
-	  "APFEL:$(HADCON)" "" }  
+      "" "APFEL:$(HADCON)" "" }  
 }
