@@ -12,7 +12,7 @@
 # port                   = $(port)
 # defaultTestPulseHeight = $(defaultTestPulseHeight)
 # channel                = $(channel)
-# #
+# 
 # 
 # test pulse
 record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):testPulse:single$(SUFFIX)") {
@@ -86,6 +86,7 @@ record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run
   field(OOPT, "Transition To Non-zero")
 }
 
+
 record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX)") {
   field(DESC, "test pulse, start,  channel $(channel)")
   field(PINI, "YES")
@@ -98,6 +99,7 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX)
   field(LOPR, "0")
 }
 
+
 record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_") {
   field(DESC, "test pulse, start,  channel $(channel)")
   field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_")
@@ -107,6 +109,7 @@ record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:
   field(OUTC, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY3")
   field(OUTD, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY4")
   field(OUTE, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY5")
+  field(OMSL, "closed_loop")
 }
 
 record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_") {
@@ -116,6 +119,7 @@ record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:
   field(OUTA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY6")
   field(OUTB, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY7")
   field(OUTD, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY9")
+  field(OMSL, "closed_loop")
 }
 
 record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_") {
@@ -127,6 +131,7 @@ record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:
   field(OUTC, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY3")
   field(OUTD, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY4")
   field(OUTE, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY5")
+  field(OMSL, "closed_loop")
 }
 
 record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_") {
@@ -136,6 +141,7 @@ record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:
   field(OUTB, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY7")
   field(OUTC, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY8")
   field(OUTD, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY9")
+  field(OMSL, "closed_loop")
 }
 
 record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_") {
@@ -211,9 +217,9 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(707,632,1.6)
+#! View(390,635,1.0)
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):testPulse:single$(SUFFIX)",2040,542,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):testPulse:single$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX)",2140,1262,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX)")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX)",2140,1266,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).ONVL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).ONVL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).TWVL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).TWVL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).THVL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).THVL")
@@ -232,24 +238,24 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).FFVL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).FFVL")
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq$(SUFFIX)",2440,702,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq$(SUFFIX).VAL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq$(SUFFIX).VAL")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_",2160,987,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_",2160,988,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_.INPA",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_.INPA")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_.INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_/INPA1")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_.VAL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_.VAL")
 #! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:isSweep$(SUFFIX)_/INPA1","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).VAL",2380,1430,16777215,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX)",1100,539,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX)")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX)",1100,540,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX).VAL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX).VAL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX).OUT",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX).OUT")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX).OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX).A")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX)",1380,579,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX)")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX)",1380,580,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX).A",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX).A")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX).OUT",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX).OUT")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:run$(SUFFIX).OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.PROC")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX)",920,757,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX)")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX)",920,739,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).FLNK")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).VAL",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).VAL")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_",1220,791,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_",1220,759,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.DOL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.DOL")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.DOL","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).VAL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.FLNK",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.FLNK")
@@ -264,8 +270,8 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.OUTD","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY4")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.OUTE",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.OUTE")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)_.OUTE","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY5")
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_",1160,1089,16777215,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_",1220,1119,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_")
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_",1160,1076,16777215,"",0)
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_",1220,1106,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.DOL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.DOL")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.DOL","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).VAL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.FLNK",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.FLNK")
@@ -276,8 +282,8 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.OUTB","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY7")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.OUTD",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.OUTD")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_.OUTD","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY9")
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_",1160,1372,16777215,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_",1220,1371,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_")
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:2$(SUFFIX)_/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_",1160,1379,16777215,"",0)
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_",1220,1379,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.DOL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.DOL")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.DOL","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).VAL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.FLNK",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.FLNK")
@@ -292,8 +298,8 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.OUTD","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY4")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.OUTE",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.OUTE")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:3$(SUFFIX)_.OUTE","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY5")
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)3/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_",1162,1669,16777215,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_",1220,1699,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_")
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:1$(SUFFIX)3/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_",1162,1696,16777215,"",0)
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_",1220,1726,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.DOL",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.DOL")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.DOL","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY$(SUFFIX).VAL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.OUTA",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.OUTA")
@@ -304,7 +310,7 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.OUTC","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY8")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.OUTD",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.OUTD")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:DLY:df:4$(SUFFIX)_.OUTD","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DLY9")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_",1660,366,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_",1660,370,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.PROC",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.PROC")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DOLA",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DOLA")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.LNK1",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.LNK1")
@@ -357,8 +363,8 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY9",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.DLY9")
 #! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_/LNKA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.SELN",2000,1460,16777215,"",0)
 #! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_/LNK8","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.SELN",2000,1450,16777215,"",0)
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_",1980,1377,16777215,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_",1660,1389,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_")
+#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_",1980,1378,16777215,"",0)
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_",1660,1392,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.SELN",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.SELN")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DOL1",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DOL1")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.DOL1","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height$(SUFFIX).EIVL")
@@ -404,10 +410,17 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.LNKA",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.LNKA")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep2$(SUFFIX)_.LNKA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:sweep_2$(SUFFIX)_/LNKA1")
 #! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:height:sweep_2$(SUFFIX)_/LNKA1","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX).VAL",840,1480,16777215,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:repeat$(SUFFIX)",560,479,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:repeat$(SUFFIX)")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:repeat$(SUFFIX)",560,480,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:repeat$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:repeat$(SUFFIX).OUT",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:repeat$(SUFFIX).OUT")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:repeat$(SUFFIX).OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).DISV")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX)",820,431,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX)")
+#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX)",820,432,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).OUT",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).OUT")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX).VAL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).DISV",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).DISV")
+#! Box(Box0,1300,1180,1305,1181,1,52224,null)
+#! Box(Box1,1260,1460,1260,1460,1,52224,null)
+#! Box(Box2,1260,1460,1260,1460,1,52224,null)
+#! Box(Box3,1260,1460,1260,1460,1,52224,null)
+#! Box(Box4,1260,1460,1260,1460,1,52224,null)
+#! Box(Box5,1260,1460,1260,1460,1,52224,null)
+#! Box(Box6,1260,1460,1260,1460,1,52224,null)
