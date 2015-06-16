@@ -214,17 +214,6 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SU
   field(DOL, "1")
 }
 
-
-record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:started$(SUFFIX)") {
-  field(DESC, "test pulse, start,  channel $(channel)")
-  field(UDF, "0")
-  field(VAL, "0")
-  field(OUT, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.PROC PP")
-  field(ZNAM, "Waiting")
-  field(ONAM, "Start Sequence")
-  field(HIGH, "0.05")
-}
-
 #! Further lines contain data used by VisualDCT
 #! View(1765,419,1.6)
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):testPulse:single$(SUFFIX)",2200,542,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):testPulse:single$(SUFFIX)")
@@ -426,6 +415,3 @@ record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:started$
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).OUT",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).OUT")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:start$(SUFFIX).VAL")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).DISV",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:freq$(SUFFIX).DISV")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:started$(SUFFIX)",1540,545,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:started$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:started$(SUFFIX).OUT",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:started$(SUFFIX).OUT")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:seq:started$(SUFFIX).OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):tp:sweep1$(SUFFIX)_.PROC")
