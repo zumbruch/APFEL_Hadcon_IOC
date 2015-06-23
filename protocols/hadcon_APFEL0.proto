@@ -1,8 +1,9 @@
 Terminator  = LF;
 LockTimeout  = 5000;
-ReplyTimeout  = 4000;
-ReadTimeout   = 500;
-WriteTimeout  = 3000;
+WriteTimeout  = 100;
+ReplyTimeout  = 200;
+ReadTimeout   = 100;
+PollPeriod    = 10000;
 ExtraInput    = Ignore;
 
 key = "APFEL";
