@@ -180,6 +180,8 @@ record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write:fo$(SUFFIX)
 record(ai, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)") {
   field(SCAN, "1 second")
   field(INP, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read$(SUFFIX).SEVR")
+  field(HIHI, "3")
+  field(HHSV, "INVALID")
 }
 
 #! Further lines contain data used by VisualDCT
@@ -315,9 +317,6 @@ record(ai, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFI
 #! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):write:fo$(SUFFIX)_2/LNK2","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):copy$(SUFFIX).PROC",2740,2590,16711731,"",0)
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)",2820,3160,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).PROC",16711731,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).PROC")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).INPA",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).INPA")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)/INPA")
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX)/INPA","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read$(SUFFIX).SEVR",1840,3070,16777215,"",0)
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).INP",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).INP")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read:status$(SUFFIX).INP","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dac):read$(SUFFIX).SEVR")
 #! TextBox(TB3,2660,2520,2840,2540,0,"Dialog",12,1,16724991,"read triggers update ",null)
