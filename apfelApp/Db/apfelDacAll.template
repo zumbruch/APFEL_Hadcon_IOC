@@ -20,13 +20,13 @@ record(ao, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_") {
 record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write:seq$(SUFFIX)_") {
   field(DESC, "write dac All")
   field(DOL1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_")
-  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac1:set:hex$(SUFFIX) PP")
+  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac1:set:hex$(SUFFIX) CA")
   field(DOL2, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_")
-  field(LNK2, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac2:set:hex$(SUFFIX) PP")
+  field(LNK2, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac2:set:hex$(SUFFIX) CA")
   field(DOL3, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_")
-  field(LNK3, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac3:set:hex$(SUFFIX) PP")
+  field(LNK3, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac3:set:hex$(SUFFIX) CA")
   field(DOL4, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_")
-  field(LNK4, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac4:set:hex$(SUFFIX) PP")
+  field(LNK4, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac4:set:hex$(SUFFIX) CA")
   field(LNK5, "dummy")
 }
 
@@ -145,7 +145,7 @@ record(dfanout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write:DLY:df:1$(
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(1945,1280,0.8)
+#! View(2352,1690,0.8)
 #! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_",3680,2295,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_")
 #! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_.FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_.FLNK")
 #! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write$(SUFFIX)_.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:write:seq$(SUFFIX)_")
