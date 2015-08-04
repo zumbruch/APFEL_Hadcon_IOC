@@ -31,9 +31,6 @@ apfel_DBD += asyn.dbd
 apfel_DBD += drvAsynSerialPort.dbd
 apfel_DBD += stream.dbd
 apfel_DBD += initTrace.dbd
-apfel_DBD += sscan.dbd
-apfel_DBD += sscanSupport.dbd
-apfel_DBD += sscanProgressSupport.dbd
              
 # Include dbd files from all support applications:
 #apfel_DBD += xxx.dbd
