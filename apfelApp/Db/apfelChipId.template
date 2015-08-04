@@ -4,17 +4,18 @@
 #! DBDEND
 
 
-# PREFIX                 = $(PREFIX)
+# PREFIX,P               = $(PREFIX)
 # NAME                   = $(NAME)
-# SUFFIX                 = $(SUFFIX)
+# SUFFIX,S               = $(SUFFIX)
 # chipId                 = $(chipId)
 # pinSet                 = $(pinSet)
 # sideSelection          = $(sideSelection)
 # port                   = $(port)
 # ADDRESS                = $(ADDRESS)
 # defaultTestPulseHeight = $(defaultTestPulseHeight)
-
+# chipIdRecord           = $(chipIdRecord)
 ###
+#
 # address  (list id)
 include "apfelChipIdAddress.template"
 

@@ -2,31 +2,7 @@
 #! DBDSTART
 #! DBD("/home/epics/playground/PANDA/apfelDatabase/dbd/apfel.dbd")
 #! DBDEND
-
-
-record(bo, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX)") {
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_")
-  field(ZNAM, "High")
-  field(ONAM, "Low")
-  field(UDF, "0")
-}
-
-record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_") {
-  field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) resetAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
-  field(DOL, "$(channel)")
-  field(OMSL, "closed_loop")
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_ PP MS")
-}
-
-record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_") {
-  field(DTYP, "stream")
-  field(OUT, "@$(protocolFile) setAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
-  field(DOL, "$(channel)")
-  field(OMSL, "closed_loop")
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_ PP MS")
-}
-
+#
 # PREFIX        = $(PREFIX)
 # NAME          = $(NAME)
 # SUFFIX        = $(SUFFIX)
@@ -40,15 +16,40 @@ record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplificat
 # dacLowAmplificationLimitHigh = $(dacLowAmplificationLimitHigh)
 # dacHighAmplificationLimitLow = $(dacHighAmplificationLimitLow)
 # dacHighAmplificationLimitHigh= $(dacHighAmplificationLimitHigh)
-record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_") {
+
+
+record(bo, "$(chipIdRecord):ch$(channel):amplification$(SUFFIX)") {
+  field(FLNK, "$(chipIdRecord):ch$(channel):amplification:select$(S)_")
+  field(ZNAM, "High")
+  field(ONAM, "Low")
+  field(UDF, "0")
+}
+
+record(longout, "$(chipIdRecord):ch$(channel):amplification:reset$(S)_") {
+  field(DTYP, "stream")
+  field(OUT, "@$(protocolFile) resetAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
+  field(DOL, "$(channel)")
+  field(OMSL, "closed_loop")
+  field(FLNK, "$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_ PP MS")
+}
+
+record(longout, "$(chipIdRecord):ch$(channel):amplification:set$(S)_") {
+  field(DTYP, "stream")
+  field(OUT, "@$(protocolFile) setAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
+  field(DOL, "$(channel)")
+  field(OMSL, "closed_loop")
+  field(FLNK, "$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_ PP MS")
+}
+
+record(calcout, "$(chipIdRecord):ch$(channel):amplification:check$(S)_") {
   field(CALC, "(F&&(A<D||A>E))||(!F&&(A<B||A>C))")
-  field(INPA, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dac$(dacMonitorChannel)$(SUFFIX)")
+  field(INPA, "$(chipIdRecord):dac$(dacMonitorChannel)$(SUFFIX)")
   field(INPB, "$(dacLowAmplificationLimitLow)")
   field(INPC, "$(dacLowAmplificationLimitHigh)")
   field(INPD, "$(dacHighAmplificationLimitLow)")
   field(INPE, "$(dacHighAmplificationLimitHigh)")
-  field(INPF, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).VAL")
-  field(OUT, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX) CA MS")
+  field(INPF, "$(chipIdRecord):ch$(channel):amplification$(SUFFIX).VAL")
+  field(OUT, "$(chipIdRecord):ch$(channel):amplification$(SUFFIX) CA MS")
   field(DOPT, "Use OCAL")
   field(HIGH, "1")
   field(HSV, "MINOR")
@@ -57,50 +58,50 @@ record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplificat
   field(OOPT, "On Change")
 }
 
-record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_") {
-  field(OUT, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.PROC CA")
-  field(SIML, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).VAL")
+record(longout, "$(chipIdRecord):ch$(channel):amplification:select$(S)_") {
+  field(OUT, "$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.PROC CA")
+  field(SIML, "$(chipIdRecord):ch$(channel):amplification$(SUFFIX).VAL")
   field(VAL, "1")
   field(DOL, "1")
   field(OMSL, "closed_loop")
-  field(SIOL, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.PROC CA")
+  field(SIOL, "$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.PROC CA")
   field(SIMS, "NO_ALARM")
 }
 
 #! Further lines contain data used by VisualDCT
 #! View(2479,2878,1.2)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX)",2160,2625,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).FLNK",13369395,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).VAL",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).VAL")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_",2720,2471,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.DOL",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.DOL")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.FLNK",13369395,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):resetAmplification$(SUFFIX)/FLNK")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.PROC",13369395,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.PROC")
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):resetAmplification$(SUFFIX)/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_",3160,2710,13369395,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_",2720,2771,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.DOL",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.DOL")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.FLNK",13369395,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):setAmplification$(SUFFIX)/FLNK1")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.PROC",13369395,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.PROC")
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):setAmplification$(SUFFIX)/FLNK1","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):setAmplification$(SUFFIX)/FLNK",2940,2785,13369395,"",0)
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):setAmplification$(SUFFIX)/FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_",3047,2640,13369395,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_",2960,2662,13369395,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPA",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPA")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPB",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPB")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPC",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPC")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPD",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPD")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPE",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPE")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPF",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPF")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.INPF","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).VAL")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.OUT",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.OUT")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:check$(SUFFIX)_.OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplificationCheck$(SUFFIX)_/OUT")
-#! Connector("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplificationCheck$(SUFFIX)_/OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).VAL",2100,2910,16777215,"",0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_",2440,2643,13369395,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.OUT",13369395,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.OUT")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.OUT","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:reset$(SUFFIX)_.PROC")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.SIML",16777215,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.SIML")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.SIML","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification$(SUFFIX).VAL")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.SIOL",13369395,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.SIOL")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:select$(SUFFIX)_.SIOL","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):ch$(channel):amplification:set$(SUFFIX)_.PROC")
+#! Record("$(chipIdRecord):ch$(channel):amplification$(SUFFIX)",2160,2625,0,1,"$(chipIdRecord):ch$(channel):amplification$(SUFFIX)")
+#! Field("$(chipIdRecord):ch$(channel):amplification$(SUFFIX).FLNK",13369395,1,"$(chipIdRecord):ch$(channel):amplification$(SUFFIX).FLNK")
+#! Link("$(chipIdRecord):ch$(channel):amplification$(SUFFIX).FLNK","$(chipIdRecord):ch$(channel):amplification:select$(S)_")
+#! Field("$(chipIdRecord):ch$(channel):amplification$(SUFFIX).VAL",16777215,1,"$(chipIdRecord):ch$(channel):amplification$(SUFFIX).VAL")
+#! Record("$(chipIdRecord):ch$(channel):amplification:reset$(S)_",2720,2471,0,1,"$(chipIdRecord):ch$(channel):amplification:reset$(S)_")
+#! Field("$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.DOL",16777215,1,"$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.DOL")
+#! Field("$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.FLNK",13369395,1,"$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.FLNK")
+#! Link("$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.FLNK","$(chipIdRecord):ch$(channel):resetAmplification$(SUFFIX)/FLNK")
+#! Field("$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.PROC",13369395,0,"$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.PROC")
+#! Connector("$(chipIdRecord):ch$(channel):resetAmplification$(SUFFIX)/FLNK","$(chipIdRecord):ch$(channel):amplification:check$(S)_",3160,2710,13369395,"",0)
+#! Record("$(chipIdRecord):ch$(channel):amplification:set$(S)_",2720,2771,0,1,"$(chipIdRecord):ch$(channel):amplification:set$(S)_")
+#! Field("$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.DOL",16777215,1,"$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.DOL")
+#! Field("$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.FLNK",13369395,1,"$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.FLNK")
+#! Link("$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.FLNK","$(chipIdRecord):ch$(channel):setAmplification$(SUFFIX)/FLNK1")
+#! Field("$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.PROC",13369395,0,"$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.PROC")
+#! Connector("$(chipIdRecord):ch$(channel):setAmplification$(SUFFIX)/FLNK1","$(chipIdRecord):ch$(channel):setAmplification$(SUFFIX)/FLNK",2940,2785,13369395,"",0)
+#! Connector("$(chipIdRecord):ch$(channel):setAmplification$(SUFFIX)/FLNK","$(chipIdRecord):ch$(channel):amplification:check$(S)_",3047,2640,13369395,"",0)
+#! Record("$(chipIdRecord):ch$(channel):amplification:check$(S)_",2960,2662,13369395,1,"$(chipIdRecord):ch$(channel):amplification:check$(S)_")
+#! Field("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPA",16777215,1,"$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPA")
+#! Field("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPB",16777215,1,"$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPB")
+#! Field("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPC",16777215,1,"$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPC")
+#! Field("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPD",16777215,1,"$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPD")
+#! Field("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPE",16777215,1,"$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPE")
+#! Field("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPF",16777215,0,"$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPF")
+#! Link("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.INPF","$(chipIdRecord):ch$(channel):amplification$(SUFFIX).VAL")
+#! Field("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.OUT",16777215,0,"$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.OUT")
+#! Link("$(chipIdRecord):ch$(channel):amplification:check$(SUFFIX)_.OUT","$(chipIdRecord):ch$(channel):amplificationCheck$(SUFFIX)_/OUT")
+#! Connector("$(chipIdRecord):ch$(channel):amplificationCheck$(SUFFIX)_/OUT","$(chipIdRecord):ch$(channel):amplification$(SUFFIX).VAL",2100,2910,16777215,"",0)
+#! Record("$(chipIdRecord):ch$(channel):amplification:select$(S)_",2440,2643,13369395,0,"$(chipIdRecord):ch$(channel):amplification:select$(S)_")
+#! Field("$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.OUT",13369395,1,"$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.OUT")
+#! Link("$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.OUT","$(chipIdRecord):ch$(channel):amplification:reset$(SUFFIX)_.PROC")
+#! Field("$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.SIML",16777215,0,"$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.SIML")
+#! Link("$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.SIML","$(chipIdRecord):ch$(channel):amplification$(SUFFIX).VAL")
+#! Field("$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.SIOL",13369395,1,"$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.SIOL")
+#! Link("$(chipIdRecord):ch$(channel):amplification:select$(SUFFIX)_.SIOL","$(chipIdRecord):ch$(channel):amplification:set$(SUFFIX)_.PROC")

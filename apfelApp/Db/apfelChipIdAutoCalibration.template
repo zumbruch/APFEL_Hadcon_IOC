@@ -16,11 +16,11 @@
 # 
 # 
 # autocalibration
-record(longout, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX)") {
+record(longout, "$(chipIdRecord):autocalibrate$(SUFFIX)") {
   field(DESC, "autocalibration")
   field(DTYP, "stream")
   field(OUT, "@$(protocolFile) autoCalibration($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
+  field(FLNK, "$(chipIdRecord):autocalibrate:delay$(SUFFIX)")
 }
 
 record(calcout, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)") {
@@ -30,27 +30,27 @@ record(calcout, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)") {
   field(INPB, "$(PREFIX)$(NAME):pinSet$(SUFFIX)")
   field(INPC, "$(PREFIX)$(NAME):sideSelection$(SUFFIX)")
   field(INPD, "$(PREFIX)$(NAME):port$(SUFFIX)")
-  field(FLNK, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
+  field(FLNK, "$(chipIdRecord):autocalibrate:delay$(SUFFIX)")
 }
 
 
-record(seq, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)") {
+record(seq, "$(chipIdRecord):autocalibrate:delay$(SUFFIX)") {
   field(DLY1, "0.15")
   field(DOL1, "1")
-  field(LNK1, "$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):dacAll:read:start$(SUFFIX).PROC CA")
+  field(LNK1, "$(chipIdRecord):dacAll:read:start$(SUFFIX).PROC CA")
 }
 
 #! Further lines contain data used by VisualDCT
 #! View(0,93,1.0)
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX)",60,148,0,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).FLNK",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).FLNK")
-#! Link("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
+#! Record("$(chipIdRecord):autocalibrate$(SUFFIX)",60,148,0,1,"$(chipIdRecord):autocalibrate$(SUFFIX)")
+#! Field("$(chipIdRecord):autocalibrate$(SUFFIX).FLNK",16777215,1,"$(chipIdRecord):autocalibrate$(SUFFIX).FLNK")
+#! Link("$(chipIdRecord):autocalibrate$(SUFFIX).FLNK","$(chipIdRecord):autocalibrate:delay$(SUFFIX)")
 #! Record("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)",60,366,0,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK")
-#! Link("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK","$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
+#! Link("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK","$(chipIdRecord):autocalibrate:delay$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPA",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPA")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPB",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPB")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPC",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPC")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPD",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPD")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)",360,342,0,0,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX).LNK1",16777215,1,"$(PREFIX)$(NAME):$(ADDRESS):id$(chipId):autocalibrate:delay$(SUFFIX).LNK1")
+#! Record("$(chipIdRecord):autocalibrate:delay$(SUFFIX)",360,342,0,0,"$(chipIdRecord):autocalibrate:delay$(SUFFIX)")
+#! Field("$(chipIdRecord):autocalibrate:delay$(SUFFIX).LNK1",16777215,1,"$(chipIdRecord):autocalibrate:delay$(SUFFIX).LNK1")

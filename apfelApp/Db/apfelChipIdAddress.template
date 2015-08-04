@@ -58,7 +58,7 @@ record(mbbo, "$(PREFIX)$(NAME):connector$(SUFFIX)") {
   field(UNSV, "INVALID")
 }
 
-record(mbbo, "$(PREFIX)$(NAME):portNumber$(SUFFIX)_") {
+record(mbbo, "$(PREFIX)$(NAME):portNumber$(S)_") {
   field(UDF, "0")
   field(VAL, "$(portNumber)")
   field(PINI, "YES")
@@ -70,7 +70,7 @@ record(mbbo, "$(PREFIX)$(NAME):portNumber$(SUFFIX)_") {
   field(UNSV, "INVALID")
 }
 
-record(dfanout, "$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_") {
+record(dfanout, "$(PREFIX)$(NAME):portNumber_df$(S)_") {
   field(OUTA, "$(PREFIX)$(NAME):port$(SUFFIX)")
   field(OUTB, "$(PREFIX)$(NAME):connector$(SUFFIX)")
 }
@@ -90,11 +90,11 @@ record(dfanout, "$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_") {
 #! Field("$(PREFIX)$(NAME):connector$(SUFFIX).OUT",16777215,0,"$(PREFIX)$(NAME):connector$(SUFFIX).OUT")
 #! Link("$(PREFIX)$(NAME):connector$(SUFFIX).OUT","$(PREFIX)$(NAME):portNumber$(SUFFIX)_.VAL")
 #! Field("$(PREFIX)$(NAME):connector$(SUFFIX).VAL",16777215,1,"$(PREFIX)$(NAME):connector$(SUFFIX).VAL")
-#! Record("$(PREFIX)$(NAME):portNumber$(SUFFIX)_",2620,1570,0,1,"$(PREFIX)$(NAME):portNumber$(SUFFIX)_")
+#! Record("$(PREFIX)$(NAME):portNumber$(S)_",2620,1570,0,1,"$(PREFIX)$(NAME):portNumber$(S)_")
 #! Field("$(PREFIX)$(NAME):portNumber$(SUFFIX)_.VAL",16777215,1,"$(PREFIX)$(NAME):portNumber$(SUFFIX)_.VAL")
 #! Field("$(PREFIX)$(NAME):portNumber$(SUFFIX)_.OUT",16777215,0,"$(PREFIX)$(NAME):portNumber$(SUFFIX)_.OUT")
 #! Link("$(PREFIX)$(NAME):portNumber$(SUFFIX)_.OUT","$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.VAL")
-#! Record("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_",2600,1807,0,1,"$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_")
+#! Record("$(PREFIX)$(NAME):portNumber_df$(S)_",2600,1807,0,1,"$(PREFIX)$(NAME):portNumber_df$(S)_")
 #! Field("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.VAL",16777215,0,"$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.VAL")
 #! Field("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTA",16777215,0,"$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTA")
 #! Link("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTA","$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_/OUTA")

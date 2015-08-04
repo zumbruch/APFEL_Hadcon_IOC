@@ -3,7 +3,7 @@
 #! DBDEND
 
 
-record(seq, "$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_") {
+record(seq, "$(PREFIX)$(NAME):trigger:dist$(S)_") {
   field(DOL1, "$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.DISV")
   field(LNK1, "$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.DISA")
   field(DOL2, "$(PREFIX)$(NAME):trigger$(SUFFIX).A")
@@ -18,7 +18,7 @@ record(seq, "$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_") {
   field(LNKA, "$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.DISA")
 }
 
-record(calcout, "$(PREFIX)$(NAME):trigger:write$(SUFFIX)_") {
+record(calcout, "$(PREFIX)$(NAME):trigger:write$(S)_") {
   field(DTYP, "stream")
   field(OUT, "@$(protocolFile) setTrigger $(device)")
   field(FLNK, "$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_.PROC CA")
@@ -34,7 +34,7 @@ record(calcout, "$(PREFIX)$(NAME):trigger$(SUFFIX)") {
   field(FLNK, "$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_ PP MS")
 }
 
-record(seq, "$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_") {
+record(seq, "$(PREFIX)$(NAME):trigger:delay$(S)_") {
   field(DOL1, "1")
   field(DLY1, "0.1")
   field(LNK1, "$(PREFIX)$(NAME):trigger$(SUFFIX).PROC")
@@ -47,13 +47,13 @@ record(seq, "$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_") {
 # field(SCAN, "I/O Intr")
 # }
 record(bo, "$(PREFIX)$(NAME):trigger:state:set") {
-  field(FLNK, "$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+  field(FLNK, "$(PREFIX)$(NAME):trigger:write$(S)_")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
 }
 
 record(longout, "$(PREFIX)$(NAME):trigger:pin:set") {
-  field(FLNK, "$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+  field(FLNK, "$(PREFIX)$(NAME):trigger:write$(S)_")
   field(EGU, "Pin Number")
   field(DRVH, "8")
   field(DRVL, "1")
@@ -63,7 +63,7 @@ record(longout, "$(PREFIX)$(NAME):trigger:pin:set") {
 }
 
 record(mbbo, "$(PREFIX)$(NAME):trigger:port:set_") {
-  field(FLNK, "$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+  field(FLNK, "$(PREFIX)$(NAME):trigger:write$(S)_")
   field(ONST, "A")
   field(ONVL, "1")
   field(TWST, "B")
@@ -175,7 +175,7 @@ record(mbbo, "$(PREFIX)$(NAME):trigger:position") {
 }
 
 record(mbbo, "$(PREFIX)$(NAME):trigger:position:set") {
-  field(FLNK, "$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+  field(FLNK, "$(PREFIX)$(NAME):trigger:write$(S)_")
   field(ONVL, "1")
   field(TWVL, "2")
   field(ONST, "set / pos.")
@@ -186,7 +186,7 @@ record(mbbo, "$(PREFIX)$(NAME):trigger:position:set") {
 
 #! Further lines contain data used by VisualDCT
 #! View(1410,1144,0.6)
-#! Record("$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_",3160,3052,0,0,"$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_")
+#! Record("$(PREFIX)$(NAME):trigger:dist$(S)_",3160,3052,0,0,"$(PREFIX)$(NAME):trigger:dist$(S)_")
 #! Field("$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_.LNK2",16777215,1,"$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_.LNK2")
 #! Link("$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_.LNK2","$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_/LNK2")
 #! Field("$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_.LNK3",16777215,1,"$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_.LNK3")
@@ -211,7 +211,7 @@ record(mbbo, "$(PREFIX)$(NAME):trigger:position:set") {
 #! Link("$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_.DOL5","$(PREFIX)$(NAME):trigger$(SUFFIX).D")
 #! Connector("$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_/LNK3","$(PREFIX)$(NAME):trigger:pin.VAL",3400,2990,16777215,"",0)
 #! Connector("$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_/LNK2","$(PREFIX)$(NAME):trigger:state.VAL",3380,2850,16777215,"",0)
-#! Record("$(PREFIX)$(NAME):trigger:write$(SUFFIX)_",4540,3124,16724787,0,"$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+#! Record("$(PREFIX)$(NAME):trigger:write$(S)_",4540,3124,16724787,0,"$(PREFIX)$(NAME):trigger:write$(S)_")
 #! Field("$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.INPC",16777215,1,"$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.INPC")
 #! Link("$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.INPC","$(PREFIX)$(NAME):trigger:write$(SUFFIX)_/INPC")
 #! Field("$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.INPB",16777215,1,"$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.INPB")
@@ -226,33 +226,33 @@ record(mbbo, "$(PREFIX)$(NAME):trigger:position:set") {
 #! Field("$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.DISV",16777215,0,"$(PREFIX)$(NAME):trigger:write$(SUFFIX)_.DISV")
 #! Connector("$(PREFIX)$(NAME):trigger:write$(SUFFIX)_/FLNK1","$(PREFIX)$(NAME):trigger:write$(SUFFIX)_/FLNK",4780,3455,16724787,"",0)
 #! Connector("$(PREFIX)$(NAME):trigger:write$(SUFFIX)_/FLNK","$(PREFIX)$(NAME):trigger:write/FLNK1",3670,3540,16724787,"",0)
-#! Connector("$(PREFIX)$(NAME):trigger:write/FLNK1","$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_",2560,3495,16724787,"",0)
+#! Connector("$(PREFIX)$(NAME):trigger:write/FLNK1","$(PREFIX)$(NAME):trigger:delay$(S)_",2560,3495,16724787,"",0)
 #! Connector("$(PREFIX)$(NAME):trigger:write$(SUFFIX)_/INPC","$(PREFIX)$(NAME):trigger:port:set_.VAL",4820,3180,16777215,"",0)
 #! Connector("$(PREFIX)$(NAME):trigger:write/INPB","$(PREFIX)$(NAME):trigger:pin:set.VAL",4860,3000,16777215,"",0)
 #! Connector("$(PREFIX)$(NAME):trigger:write/INPA","$(PREFIX)$(NAME):trigger:state:set.VAL",4920,2880,16777215,"",0)
 #! Record("$(PREFIX)$(NAME):trigger$(SUFFIX)",2880,3302,16724787,1,"$(PREFIX)$(NAME):trigger$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):trigger$(SUFFIX).FLNK",16777215,1,"$(PREFIX)$(NAME):trigger$(SUFFIX).FLNK")
-#! Link("$(PREFIX)$(NAME):trigger$(SUFFIX).FLNK","$(PREFIX)$(NAME):trigger:dist$(SUFFIX)_")
+#! Link("$(PREFIX)$(NAME):trigger$(SUFFIX).FLNK","$(PREFIX)$(NAME):trigger:dist$(S)_")
 #! Field("$(PREFIX)$(NAME):trigger$(SUFFIX).A",16777215,0,"$(PREFIX)$(NAME):trigger$(SUFFIX).A")
 #! Field("$(PREFIX)$(NAME):trigger$(SUFFIX).B",16777215,0,"$(PREFIX)$(NAME):trigger$(SUFFIX).B")
 #! Field("$(PREFIX)$(NAME):trigger$(SUFFIX).C",16777215,0,"$(PREFIX)$(NAME):trigger$(SUFFIX).C")
 #! Field("$(PREFIX)$(NAME):trigger$(SUFFIX).D",16777215,0,"$(PREFIX)$(NAME):trigger$(SUFFIX).D")
 #! Field("$(PREFIX)$(NAME):trigger$(SUFFIX).PROC",16777215,1,"$(PREFIX)$(NAME):trigger$(SUFFIX).PROC")
-#! Record("$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_",2620,3402,0,0,"$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_")
+#! Record("$(PREFIX)$(NAME):trigger:delay$(S)_",2620,3402,0,0,"$(PREFIX)$(NAME):trigger:delay$(S)_")
 #! Field("$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_.LNK1",16777215,1,"$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_.LNK1")
 #! Link("$(PREFIX)$(NAME):trigger:delay$(SUFFIX)_.LNK1","$(PREFIX)$(NAME):trigger$(SUFFIX).PROC")
 #! Record("$(PREFIX)$(NAME):trigger:state:set",4020,2302,16724787,0,"$(PREFIX)$(NAME):trigger:state:set")
 #! Field("$(PREFIX)$(NAME):trigger:state:set.FLNK",16724787,1,"$(PREFIX)$(NAME):trigger:state:set.FLNK")
-#! Link("$(PREFIX)$(NAME):trigger:state:set.FLNK","$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+#! Link("$(PREFIX)$(NAME):trigger:state:set.FLNK","$(PREFIX)$(NAME):trigger:write$(S)_")
 #! Field("$(PREFIX)$(NAME):trigger:state:set.VAL",16777215,1,"$(PREFIX)$(NAME):trigger:state:set.VAL")
 #! Record("$(PREFIX)$(NAME):trigger:pin:set",4020,2524,16724787,0,"$(PREFIX)$(NAME):trigger:pin:set")
 #! Field("$(PREFIX)$(NAME):trigger:pin:set.VAL",16777215,1,"$(PREFIX)$(NAME):trigger:pin:set.VAL")
 #! Field("$(PREFIX)$(NAME):trigger:pin:set.FLNK",16724787,1,"$(PREFIX)$(NAME):trigger:pin:set.FLNK")
-#! Link("$(PREFIX)$(NAME):trigger:pin:set.FLNK","$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+#! Link("$(PREFIX)$(NAME):trigger:pin:set.FLNK","$(PREFIX)$(NAME):trigger:write$(S)_")
 #! Record("$(PREFIX)$(NAME):trigger:port:set_",4280,2760,16724787,0,"$(PREFIX)$(NAME):trigger:port:set_")
 #! Field("$(PREFIX)$(NAME):trigger:port:set_.VAL",16777215,1,"$(PREFIX)$(NAME):trigger:port:set_.VAL")
 #! Field("$(PREFIX)$(NAME):trigger:port:set_.FLNK",16724787,1,"$(PREFIX)$(NAME):trigger:port:set_.FLNK")
-#! Link("$(PREFIX)$(NAME):trigger:port:set_.FLNK","$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+#! Link("$(PREFIX)$(NAME):trigger:port:set_.FLNK","$(PREFIX)$(NAME):trigger:write$(S)_")
 #! Record("$(PREFIX)$(NAME):trigger:port_",3480,2725,0,0,"$(PREFIX)$(NAME):trigger:port_")
 #! Field("$(PREFIX)$(NAME):trigger:port_.FLNK",16724787,1,"$(PREFIX)$(NAME):trigger:port_.FLNK")
 #! Link("$(PREFIX)$(NAME):trigger:port_.FLNK","$(PREFIX)$(NAME):trigger:port")
@@ -291,5 +291,5 @@ record(mbbo, "$(PREFIX)$(NAME):trigger:position:set") {
 #! Field("$(PREFIX)$(NAME):trigger:position.VAL",16777215,0,"$(PREFIX)$(NAME):trigger:position.VAL")
 #! Record("$(PREFIX)$(NAME):trigger:position:set",4020,3144,16724787,0,"$(PREFIX)$(NAME):trigger:position:set")
 #! Field("$(PREFIX)$(NAME):trigger:position:set.FLNK",16724787,1,"$(PREFIX)$(NAME):trigger:position:set.FLNK")
-#! Link("$(PREFIX)$(NAME):trigger:position:set.FLNK","$(PREFIX)$(NAME):trigger:write$(SUFFIX)_")
+#! Link("$(PREFIX)$(NAME):trigger:position:set.FLNK","$(PREFIX)$(NAME):trigger:write$(S)_")
 #! Field("$(PREFIX)$(NAME):trigger:position:set.VAL",16777215,1,"$(PREFIX)$(NAME):trigger:position:set.VAL")
