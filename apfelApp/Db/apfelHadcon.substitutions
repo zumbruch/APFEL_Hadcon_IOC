@@ -2,9 +2,9 @@ file apfelHadcon.template {
 pattern {
     protocolFile, 
     PREFIX, NAME, SUFFIX, 
-    P, S                
+    HEAD, TAIL, H, T                
 }               
 	{ "hadcon_APFEL0.proto" 
       "" "APFEL:$(HADCON)" "" 
-      "$(PREFIX)" "$(SUFFIX)"}  
+      "$(PREFIX)$(NAME):" "$(SUFFIX)" "$(HEAD)" "$(TAIL)"}  
 }
