@@ -6,6 +6,71 @@ ReadTimeout   = 100;
 PollPeriod    = 10000;
 ExtraInput    = Ignore;
 
+## https://wiki.gsi.de/foswiki/Epics/HadCon2MultipurposeControlsProtocolCmndApfelV0
+## 
+##|task       |command                                                                      |individual arguments     |common address    |comment   |
+##|           |                                                                             |                         |arguments         |          |
+##|=================================================================================================================================================|
+##|=================================================================================================================================================|
+##|           |APFEL 9 <DAC value> <dac> <chipId> <pinSetId> <sideSelectId> <port> [<quiet>]|      <DAC value>        |                  |          |
+##|setDac     |                                                                             |      [ 0 ... 0x3FF ]    |    <chipId>      |writes DAC|
+##|           |answer (if not quiet): → readDac                                           	|           <DAC>         | [ 0 ... 7, 8 ... |channel   |
+##|           |                                                                             |         [ 1 ... 4 ]     |     FE, FF]      |          |
+##|           |APFEL A <dac> <chipId> <pinSetId> <sideSelectId> <port>                		|                         |0xFF: generic call|          |
+##|           |answers:                                                                     |            <DAC>        | to all available |reads     |
+##|readDac    |RECV APFEL dac <port> <pinSetId> <sideSelectId> <chipId> <dac> <DAC value>   |          [ 1 ... 4 ]    |    chip Ids      |single DAC|
+##|           |ERRA APFEL dac <port> <pinSetId> <sideSelectId> <chipId> <dac> <DAC value> - |                         |   <pinSetId>     |channel   |
+##|           |read validity check failed, raw value:                                       |                         |    [ 1, 2 ]      |          |
+##|           |APFEL A 0  <chipId> <pinSetId> <sideSelectId> <port>                  		|                         | <sideSelectId>   |*Not Yet  |
+##|           |answers:                                                                     |                         |     [ 0,1 ]      |Available*|
+##|readAllDacs|RECV APFEL dac <port> <pinSetId> <sideSelectId> <chipId> 0 <DAC value1> <DAC |                         |     <port>       |reads all |
+##|           |value2> <DAC value3> <DAC value4>                                            |                         |  A,C,F <quiet>   |DAC       |
+##|           |ERRA APFEL dac <port> <pinSetId> <sideSelectId> <chipId> <dac> <DAC value> - |                         |      [0,1]       |channels  |
+##|           |read validity check failed, raw value:                                       |                         |                  |of an ch  |
+##|=================================================================================================================================================|
+##|autocalib  |APFEL B <chipId> <pinSetId> <sideSelectId> <port>                       		|                         |auto calibration  |
+##|=================================================================================================================================================|
+##|TP single  |APFEL C <pulse height Pattern> <chipId> <pinSetId> <sideSelectId> <port>		| <pulse height Pattern>  |test pulse        |
+##|           |                                                                             |       [ 2...3FF ]       |                  |
+##|           |                                                                             | <pulse height Pattern>  |                  |
+##|TP reset   |APFEL D <pulse height> <channel> <chipId> <pinSetId> <sideSelectId> <port>	|      [ 1 ... F ]        |test pulse inkl.  |
+##|           |                                                                             |        <channel>        |reset             |
+##|           |                                                                             |        [ 1, 2 ]         |                  |
+##|           |                                                                             |                         |                  |<on/off>  |
+##|           |                                                                             |                         |                  |enables/  |
+##|           |                                                                             |                         |                  |disables  |
+##|           |                                                                             |        <on/off>         |                  |<pin> on  |
+##|           |                                                                             |        [ 0,1 ]          |                  |<port> to |
+##|           |                                                                             |         <port>          |                  |trigger   |
+##|           |                                                                             |   [ A,B,C,D,E,F,G ]     |                  |right in  |
+##|TP trigger |APFEL 11 <on/off> <port> <pin> <trigger position>                      		|         <pin>           |                 |the moment|
+##|           |                                                                             |        [1...8]          |                  |after a   |
+##|           |                                                                             |<trigger after set (1) or|                  |test pulse|
+##|           |                                                                             |    after reset (2)>     |                  |set or    |
+##|           |                                                                             |          [1,2]          |                  |reset     |
+##|           |                                                                             |                         |                  |command   |
+##|           |                                                                             |                         |                  |sequence  |
+##|           |                                                                             |                         |                  |is sent   |
+##|=================================================================================================================================================|
+##|setAmpl    |APFEL E <channel> <chipId> <pinSetId> <sideSelectId> <port>            		|           <channel>     |setAmplification  |
+##|           |                                                                             |           [ 1, 2 ]      |to high           |
+##|resetAmpl  |APFEL F <channel> <chipId> <pinSetId> <sideSelectId> <port>            		|           <channel>     |resetAmplification|
+##|           |                                                                             |           [ 1, 2 ]      |to low            |
+##|=================================================================================================================================================|
+##|           |                                                                             |                         |check  <number of |
+##|           |                                                                             |        <all flag>       |chip Ids> channels|
+##|listId     |APFEL 10 <all> <NChipIds> <pinSetId> <sideSelectId> <port>             		|  [ 1...FF ]  <number of |and list depending|
+##|           |                                                                             |        chip Ids>        |on the  <all flag>|
+##|           |                                                                             |        [ 1...FF ]       |all or only       |
+##|           |                                                                             |                         |positive results  |
+##|           |                                                                             |       <all flag>        |check  <number of |
+##|           |                                                                             | [ 1...FF ]  <number of  |chip Ids> channels|
+##|listId++   |APFEL 20 <all> <NChipIds> <minChipId> <pinSetId> <sideSelectId> <port>		|       chip Ids>         |and list depending|
+##|           |                                                                             |[ 1...FF ]  <min Chip Id>|on the  <all flag>|
+##|           |                                                                             |                         |all or only       |
+##|           |                                                                             |       [ 1...FF ]        |positive results  |
+##===================================================================================================================================================
+
 key = "APFEL";
 recvKey = "%*{\nRECV|RECV} "$key" ";
 
