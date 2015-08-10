@@ -16,7 +16,7 @@
 #
 # status  (list id)
 #
-record(bi, "$(chipIdRecord):status$(SUFFIX)") {
+record(bi, "$(H)status$(SUFFIX)") {
   field(SCAN, "I/O Intr")
   field(DTYP, "stream")
   field(INP, "@$(protocolFile) listIdStatus_intr($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
@@ -25,7 +25,7 @@ record(bi, "$(chipIdRecord):status$(SUFFIX)") {
   field(ONAM, "yes")
 }
 
-record(longout, "$(PREFIX)$(NAME):$(ADDRESS):listId$(SUFFIX)") {
+record(longout, "$(H)listId$(SUFFIX)") {
   field(DESC, "request available ids")
   field(UDF, "0")
   field(DTYP, "stream")
@@ -38,7 +38,7 @@ record(longout, "$(PREFIX)$(NAME):$(ADDRESS):listId$(SUFFIX)") {
   field(IVOV, "254")
 }
 
-record(longout, "$(PREFIX)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)") {
+record(longout, "$(H)listIdSingle$(SUFFIX)") {
   field(DESC, "request available ids")
   field(UDF, "0")
   field(DTYP, "stream")
@@ -51,7 +51,7 @@ record(longout, "$(PREFIX)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)") {
   field(IVOV, "254")
 }
 
-record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):listIdRange$(SUFFIX)") {
+record(calcout, "$(H)listIdRange$(SUFFIX)") {
   field(DESC, "request available ids")
   field(DTYP, "stream")
   field(UDF, "0")
@@ -66,7 +66,7 @@ record(calcout, "$(PREFIX)$(NAME):$(ADDRESS):listIdRange$(SUFFIX)") {
 
 #! Further lines contain data used by VisualDCT
 #! View(0,0,1.0)
-#! Record("$(chipIdRecord):status$(SUFFIX)",20,20,0,0,"$(chipIdRecord):status$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):listId$(SUFFIX)",260,25,0,0,"$(PREFIX)$(NAME):$(ADDRESS):listId$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)",500,25,0,0,"$(PREFIX)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)2",260,292,0,1,"$(PREFIX)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)2")
+#! Record("$(H)status$(SUFFIX)",20,20,0,0,"$(H)status$(SUFFIX)")
+#! Record("$(H)listId$(SUFFIX)",260,25,0,0,"$(H)listId$(SUFFIX)")
+#! Record("$(H)listIdSingle$(SUFFIX)",500,25,0,0,"$(H)listIdSingle$(SUFFIX)")
+#! Record("$(H)listIdSingle$(SUFFIX)2",260,292,0,1,"$(H)listIdSingle$(SUFFIX)2")

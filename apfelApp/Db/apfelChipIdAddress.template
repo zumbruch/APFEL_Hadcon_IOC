@@ -11,10 +11,10 @@
 # pinSet        = $(pinSet)
 # sideSelection = $(sideSelection)
 # port          = $(port)
-record(longin, "$(PREFIX)$(NAME):chipId$(SUFFIX)") {
+record(longin, "$(P)$(NAME):chipId$(SUFFIX)") {
 }
 
-record(mbbi, "$(PREFIX)$(NAME):pinSet$(SUFFIX)") {
+record(mbbi, "$(P)$(NAME):pinSet$(SUFFIX)") {
   field(UDF, "0")
   field(VAL, "$(pinSet)")
   field(INP, "$(pinSet)")
@@ -25,7 +25,7 @@ record(mbbi, "$(PREFIX)$(NAME):pinSet$(SUFFIX)") {
   field(UNSV, "INVALID")
 }
 
-record(mbbi, "$(PREFIX)$(NAME):sideSelection$(SUFFIX)") {
+record(mbbi, "$(P)$(NAME):sideSelection$(SUFFIX)") {
   field(UDF, "0")
   field(VAL, "$(sideSelection)")
   field(INP, "$(sideSelection)")
@@ -36,8 +36,8 @@ record(mbbi, "$(PREFIX)$(NAME):sideSelection$(SUFFIX)") {
   field(UNSV, "INVALID")
 }
 
-record(mbbo, "$(PREFIX)$(NAME):port$(SUFFIX)") {
-  field(OUT, "$(PREFIX)$(NAME):portNumber$(SUFFIX)_ PP")
+record(mbbo, "$(P)$(NAME):port$(SUFFIX)") {
+  field(OUT, "$(P)$(NAME):portNumber$(SUFFIX)_ PP")
   field(ONVL, "1")
   field(THVL, "3")
   field(SXVL, "6")
@@ -47,8 +47,8 @@ record(mbbo, "$(PREFIX)$(NAME):port$(SUFFIX)") {
   field(UNSV, "INVALID")
 }
 
-record(mbbo, "$(PREFIX)$(NAME):connector$(SUFFIX)") {
-  field(OUT, "$(PREFIX)$(NAME):portNumber$(SUFFIX)_ PP")
+record(mbbo, "$(P)$(NAME):connector$(SUFFIX)") {
+  field(OUT, "$(P)$(NAME):portNumber$(SUFFIX)_ PP")
   field(ONVL, "1")
   field(THVL, "3")
   field(SXVL, "6")
@@ -58,11 +58,11 @@ record(mbbo, "$(PREFIX)$(NAME):connector$(SUFFIX)") {
   field(UNSV, "INVALID")
 }
 
-record(mbbo, "$(PREFIX)$(NAME):portNumber$(S)_") {
+record(mbbo, "$(P)$(NAME):portNumber$(S)_") {
   field(UDF, "0")
   field(VAL, "$(portNumber)")
   field(PINI, "YES")
-  field(OUT, "$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_ PP")
+  field(OUT, "$(P)$(NAME):portNumber_df$(SUFFIX)_ PP")
   field(ONVL, "1")
   field(THVL, "3")
   field(SXVL, "6")
@@ -70,35 +70,35 @@ record(mbbo, "$(PREFIX)$(NAME):portNumber$(S)_") {
   field(UNSV, "INVALID")
 }
 
-record(dfanout, "$(PREFIX)$(NAME):portNumber_df$(S)_") {
-  field(OUTA, "$(PREFIX)$(NAME):port$(SUFFIX)")
-  field(OUTB, "$(PREFIX)$(NAME):connector$(SUFFIX)")
+record(dfanout, "$(P)$(NAME):portNumber_df$(S)_") {
+  field(OUTA, "$(P)$(NAME):port$(SUFFIX)")
+  field(OUTB, "$(P)$(NAME):connector$(SUFFIX)")
 }
 
 #! Further lines contain data used by VisualDCT
 #! View(1360,1127,0.9)
-#! Record("$(PREFIX)$(NAME):chipId$(SUFFIX)",1760,1544,0,1,"$(PREFIX)$(NAME):chipId$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):pinSet$(SUFFIX)",1940,1530,0,1,"$(PREFIX)$(NAME):pinSet$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):pinSet$(SUFFIX).INP",16777215,1,"$(PREFIX)$(NAME):pinSet$(SUFFIX).INP")
-#! Record("$(PREFIX)$(NAME):sideSelection$(SUFFIX)",2120,1530,0,1,"$(PREFIX)$(NAME):sideSelection$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):sideSelection$(SUFFIX).INP",16777215,1,"$(PREFIX)$(NAME):sideSelection$(SUFFIX).INP")
-#! Record("$(PREFIX)$(NAME):port$(SUFFIX)",2340,1543,0,1,"$(PREFIX)$(NAME):port$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):port$(SUFFIX).OUT",16777215,1,"$(PREFIX)$(NAME):port$(SUFFIX).OUT")
-#! Link("$(PREFIX)$(NAME):port$(SUFFIX).OUT","$(PREFIX)$(NAME):portNumber$(SUFFIX)_.VAL")
-#! Field("$(PREFIX)$(NAME):port$(SUFFIX).VAL",16777215,0,"$(PREFIX)$(NAME):port$(SUFFIX).VAL")
-#! Record("$(PREFIX)$(NAME):connector$(SUFFIX)",2880,1543,0,1,"$(PREFIX)$(NAME):connector$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):connector$(SUFFIX).OUT",16777215,0,"$(PREFIX)$(NAME):connector$(SUFFIX).OUT")
-#! Link("$(PREFIX)$(NAME):connector$(SUFFIX).OUT","$(PREFIX)$(NAME):portNumber$(SUFFIX)_.VAL")
-#! Field("$(PREFIX)$(NAME):connector$(SUFFIX).VAL",16777215,1,"$(PREFIX)$(NAME):connector$(SUFFIX).VAL")
-#! Record("$(PREFIX)$(NAME):portNumber$(S)_",2620,1570,0,1,"$(PREFIX)$(NAME):portNumber$(S)_")
-#! Field("$(PREFIX)$(NAME):portNumber$(SUFFIX)_.VAL",16777215,1,"$(PREFIX)$(NAME):portNumber$(SUFFIX)_.VAL")
-#! Field("$(PREFIX)$(NAME):portNumber$(SUFFIX)_.OUT",16777215,0,"$(PREFIX)$(NAME):portNumber$(SUFFIX)_.OUT")
-#! Link("$(PREFIX)$(NAME):portNumber$(SUFFIX)_.OUT","$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.VAL")
-#! Record("$(PREFIX)$(NAME):portNumber_df$(S)_",2600,1807,0,1,"$(PREFIX)$(NAME):portNumber_df$(S)_")
-#! Field("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.VAL",16777215,0,"$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.VAL")
-#! Field("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTA",16777215,0,"$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTA")
-#! Link("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTA","$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_/OUTA")
-#! Field("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTB",16777215,1,"$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTB")
-#! Link("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_.OUTB","$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_/OUTB")
-#! Connector("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_/OUTB","$(PREFIX)$(NAME):connector$(SUFFIX).VAL",3100,1870,16777215,"",0)
-#! Connector("$(PREFIX)$(NAME):portNumber_df$(SUFFIX)_/OUTA","$(PREFIX)$(NAME):port$(SUFFIX).VAL",2280,1860,16777215,"",0)
+#! Record("$(P)$(NAME):chipId$(SUFFIX)",1760,1544,0,1,"$(P)$(NAME):chipId$(SUFFIX)")
+#! Record("$(P)$(NAME):pinSet$(SUFFIX)",1940,1530,0,1,"$(P)$(NAME):pinSet$(SUFFIX)")
+#! Field("$(P)$(NAME):pinSet$(SUFFIX).INP",16777215,1,"$(P)$(NAME):pinSet$(SUFFIX).INP")
+#! Record("$(P)$(NAME):sideSelection$(SUFFIX)",2120,1530,0,1,"$(P)$(NAME):sideSelection$(SUFFIX)")
+#! Field("$(P)$(NAME):sideSelection$(SUFFIX).INP",16777215,1,"$(P)$(NAME):sideSelection$(SUFFIX).INP")
+#! Record("$(P)$(NAME):port$(SUFFIX)",2340,1543,0,1,"$(P)$(NAME):port$(SUFFIX)")
+#! Field("$(P)$(NAME):port$(SUFFIX).OUT",16777215,1,"$(P)$(NAME):port$(SUFFIX).OUT")
+#! Link("$(P)$(NAME):port$(SUFFIX).OUT","$(P)$(NAME):portNumber$(SUFFIX)_.VAL")
+#! Field("$(P)$(NAME):port$(SUFFIX).VAL",16777215,0,"$(P)$(NAME):port$(SUFFIX).VAL")
+#! Record("$(P)$(NAME):connector$(SUFFIX)",2880,1543,0,1,"$(P)$(NAME):connector$(SUFFIX)")
+#! Field("$(P)$(NAME):connector$(SUFFIX).OUT",16777215,0,"$(P)$(NAME):connector$(SUFFIX).OUT")
+#! Link("$(P)$(NAME):connector$(SUFFIX).OUT","$(P)$(NAME):portNumber$(SUFFIX)_.VAL")
+#! Field("$(P)$(NAME):connector$(SUFFIX).VAL",16777215,1,"$(P)$(NAME):connector$(SUFFIX).VAL")
+#! Record("$(P)$(NAME):portNumber$(S)_",2620,1570,0,1,"$(P)$(NAME):portNumber$(S)_")
+#! Field("$(P)$(NAME):portNumber$(SUFFIX)_.VAL",16777215,1,"$(P)$(NAME):portNumber$(SUFFIX)_.VAL")
+#! Field("$(P)$(NAME):portNumber$(SUFFIX)_.OUT",16777215,0,"$(P)$(NAME):portNumber$(SUFFIX)_.OUT")
+#! Link("$(P)$(NAME):portNumber$(SUFFIX)_.OUT","$(P)$(NAME):portNumber_df$(SUFFIX)_.VAL")
+#! Record("$(P)$(NAME):portNumber_df$(S)_",2600,1807,0,1,"$(P)$(NAME):portNumber_df$(S)_")
+#! Field("$(P)$(NAME):portNumber_df$(SUFFIX)_.VAL",16777215,0,"$(P)$(NAME):portNumber_df$(SUFFIX)_.VAL")
+#! Field("$(P)$(NAME):portNumber_df$(SUFFIX)_.OUTA",16777215,0,"$(P)$(NAME):portNumber_df$(SUFFIX)_.OUTA")
+#! Link("$(P)$(NAME):portNumber_df$(SUFFIX)_.OUTA","$(P)$(NAME):portNumber_df$(SUFFIX)_/OUTA")
+#! Field("$(P)$(NAME):portNumber_df$(SUFFIX)_.OUTB",16777215,1,"$(P)$(NAME):portNumber_df$(SUFFIX)_.OUTB")
+#! Link("$(P)$(NAME):portNumber_df$(SUFFIX)_.OUTB","$(P)$(NAME):portNumber_df$(SUFFIX)_/OUTB")
+#! Connector("$(P)$(NAME):portNumber_df$(SUFFIX)_/OUTB","$(P)$(NAME):connector$(SUFFIX).VAL",3100,1870,16777215,"",0)
+#! Connector("$(P)$(NAME):portNumber_df$(SUFFIX)_/OUTA","$(P)$(NAME):port$(SUFFIX).VAL",2280,1860,16777215,"",0)

@@ -6,24 +6,24 @@ pattern {
 	defaultTestPulseHeight, EGU, ASLO, AOFF, LOPR, HOPR, DRVL, DRVH, DRVL_HEX, DRVH_HEX, 
 	dacMonitorChannel, dacLowAmplificationLimitLow, dacLowAmplificationLimitHigh, dacHighAmplificationLimitLow, dacHighAmplificationLimitHigh, 
 	WRITE_ALL_DELAY, READ_ALL_DELAY, 
-	P, S, chipIdRecord
+	P, S, chipIdRecord, H, T
 }               
 
 	{ "hadcon_APFEL0.proto" "" "APFEL:$(HADCON)" "" "1" 
 #      "1" "1" "A" "1" 
 	  "$(port):ps$(pinSet):s$(sideSelection)" "0x1" "mV" "3.0" "0." "0" "3069" "0" "3069" "0" "0x3ff" "4" "1200" "1600" "1601" "2200" "0.2" "0.2" 
-	  "$(PREFIX)" "$(SUFFIX)" "$(P)$(NAME):$(ADDRESS):id$(chipId)"}  
+	  "$(PREFIX)" "$(SUFFIX)" "$(P)$(NAME):$(ADDRESS):id$(chipId)" "$(chipIdRecord):" "$(S)"}  
 	{ "hadcon_APFEL0.proto" "" "APFEL:$(HADCON)" "" "2" 
 #      "1" "1" "A" "1" 
 	  "$(port):ps$(pinSet):s$(sideSelection)" "0x1" "mV" "3.0" "0." "0" "3069" "0" "3069" "0" "0x3ff" "4" "1200" "1600" "1601" "2200" "0.2" "0.2" 
-	  "$(PREFIX)" "$(SUFFIX)" "$(P)$(NAME):$(ADDRESS):id$(chipId)"}  
+	  "$(PREFIX)" "$(SUFFIX)" "$(P)$(NAME):$(ADDRESS):id$(chipId)" "$(chipIdRecord):" "$(S)"}  
 	{ "hadcon_APFEL0.proto" "" "APFEL:$(HADCON)" "" "3" 
 #      "1" "1" "A" "1" 
 	  "$(port):ps$(pinSet):s$(sideSelection)" "0x1" "mV" "3.0" "0." "0" "3069" "0" "3069" "0" "0x3ff" "4" "1200" "1600" "1601" "2200" "0.2" "0.2" 
-	  "$(PREFIX)" "$(SUFFIX)" "$(P)$(NAME):$(ADDRESS):id$(chipId)"}  
+	  "$(PREFIX)" "$(SUFFIX)" "$(P)$(NAME):$(ADDRESS):id$(chipId)" "$(chipIdRecord):" "$(S)"}  
 	{ "hadcon_APFEL0.proto" "" "APFEL:$(HADCON)" "" "4" 
 #      "1" "1" "A" "1" 
 	  "$(port):ps$(pinSet):s$(sideSelection)" "0x1" "mV" "3.0" "0." "0" "3069" "0" "3069" "0" "0x3ff" "4" "1200" "1600" "1601" "2200" "0.2" "0.2" 
-	  "$(PREFIX)" "$(SUFFIX)" "$(P)$(NAME):$(ADDRESS):id$(chipId)"}  
+	  "$(PREFIX)" "$(SUFFIX)" "$(P)$(NAME):$(ADDRESS):id$(chipId)" "$(chipIdRecord):" "$(S)"}  
 
 }

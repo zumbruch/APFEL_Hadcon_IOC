@@ -4,42 +4,42 @@
 #! DBDEND
 
 
-record(calcout, "$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX)") {
+record(calcout, "$(P)$(NAME):genTestPulse:single$(SUFFIX)") {
   field(DESC, "test pulse, single")
   field(DTYP, "stream")
   field(OUT, "@$(protocolFile) genTestPulse $(device)")
-  field(INPA, "$(PREFIX)$(NAME):chipId$(SUFFIX)")
-  field(INPB, "$(PREFIX)$(NAME):pinSet$(SUFFIX)")
-  field(INPC, "$(PREFIX)$(NAME):sideSelection$(SUFFIX)")
-  field(INPD, "$(PREFIX)$(NAME):port$(SUFFIX)")
+  field(INPA, "$(P)$(NAME):chipId$(SUFFIX)")
+  field(INPB, "$(P)$(NAME):pinSet$(SUFFIX)")
+  field(INPC, "$(P)$(NAME):sideSelection$(SUFFIX)")
+  field(INPD, "$(P)$(NAME):port$(SUFFIX)")
 }
 
-record(calcout, "$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX)") {
+record(calcout, "$(P)$(NAME):genTestPulse:sequence:$(SUFFIX)") {
   field(DESC, "test pulse, sequence")
   field(DTYP, "stream")
   field(OUT, "@$(protocolFile) genTestPUlse $(device)")
-  field(INPA, "$(PREFIX)$(NAME):chipId$(SUFFIX)")
-  field(INPB, "$(PREFIX)$(NAME):pinSet$(SUFFIX)")
-  field(INPC, "$(PREFIX)$(NAME):sideSelection$(SUFFIX)")
-  field(INPD, "$(PREFIX)$(NAME):port$(SUFFIX)")
-  field(E, "$(PREFIX)$(NAME):genTestPulse:sequence:channel$(SUFFIX)")
+  field(INPA, "$(P)$(NAME):chipId$(SUFFIX)")
+  field(INPB, "$(P)$(NAME):pinSet$(SUFFIX)")
+  field(INPC, "$(P)$(NAME):sideSelection$(SUFFIX)")
+  field(INPD, "$(P)$(NAME):port$(SUFFIX)")
+  field(E, "$(P)$(NAME):genTestPulse:sequence:channel$(SUFFIX)")
   field(F, "$(defaultTestPulseHeight)")
 }
 
-record(longout, "$(PREFIX)$(NAME):genTestPulse:sequence:channel$(SUFFIX)") {
+record(longout, "$(P)$(NAME):genTestPulse:sequence:channel$(SUFFIX)") {
   field(DESC, "test pulse, seq. ch#")
 }
 
 #! Further lines contain data used by VisualDCT
 #! View(-28,457,1.4)
-#! Record("$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX)",20,446,0,0,"$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX).INPA",16777215,1,"$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX).INPA")
-#! Field("$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX).INPB",16777215,1,"$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX).INPB")
-#! Field("$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX).INPC",16777215,1,"$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX).INPC")
-#! Field("$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX).INPD",16777215,1,"$(PREFIX)$(NAME):genTestPulse:single$(SUFFIX).INPD")
-#! Record("$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX)",200,438,0,0,"$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX)")
-#! Field("$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX).INPA",16777215,1,"$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX).INPA")
-#! Field("$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX).INPB",16777215,1,"$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX).INPB")
-#! Field("$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX).INPC",16777215,1,"$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX).INPC")
-#! Field("$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX).INPD",16777215,1,"$(PREFIX)$(NAME):genTestPulse:sequence:$(SUFFIX).INPD")
-#! Record("$(PREFIX)$(NAME):genTestPulse:sequence:channel$(SUFFIX)",380,450,0,0,"$(PREFIX)$(NAME):genTestPulse:sequence:channel$(SUFFIX)")
+#! Record("$(P)$(NAME):genTestPulse:single$(SUFFIX)",20,446,0,0,"$(P)$(NAME):genTestPulse:single$(SUFFIX)")
+#! Field("$(P)$(NAME):genTestPulse:single$(SUFFIX).INPA",16777215,1,"$(P)$(NAME):genTestPulse:single$(SUFFIX).INPA")
+#! Field("$(P)$(NAME):genTestPulse:single$(SUFFIX).INPB",16777215,1,"$(P)$(NAME):genTestPulse:single$(SUFFIX).INPB")
+#! Field("$(P)$(NAME):genTestPulse:single$(SUFFIX).INPC",16777215,1,"$(P)$(NAME):genTestPulse:single$(SUFFIX).INPC")
+#! Field("$(P)$(NAME):genTestPulse:single$(SUFFIX).INPD",16777215,1,"$(P)$(NAME):genTestPulse:single$(SUFFIX).INPD")
+#! Record("$(P)$(NAME):genTestPulse:sequence:$(SUFFIX)",200,438,0,0,"$(P)$(NAME):genTestPulse:sequence:$(SUFFIX)")
+#! Field("$(P)$(NAME):genTestPulse:sequence:$(SUFFIX).INPA",16777215,1,"$(P)$(NAME):genTestPulse:sequence:$(SUFFIX).INPA")
+#! Field("$(P)$(NAME):genTestPulse:sequence:$(SUFFIX).INPB",16777215,1,"$(P)$(NAME):genTestPulse:sequence:$(SUFFIX).INPB")
+#! Field("$(P)$(NAME):genTestPulse:sequence:$(SUFFIX).INPC",16777215,1,"$(P)$(NAME):genTestPulse:sequence:$(SUFFIX).INPC")
+#! Field("$(P)$(NAME):genTestPulse:sequence:$(SUFFIX).INPD",16777215,1,"$(P)$(NAME):genTestPulse:sequence:$(SUFFIX).INPD")
+#! Record("$(P)$(NAME):genTestPulse:sequence:channel$(SUFFIX)",380,450,0,0,"$(P)$(NAME):genTestPulse:sequence:channel$(SUFFIX)")
