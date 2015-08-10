@@ -25,7 +25,7 @@ record(bi, "$(H)status$(SUFFIX)") {
   field(ONAM, "yes")
 }
 
-record(longout, "$(H)listId$(SUFFIX)") {
+record(longout, "$(P)$(NAME):$(ADDRESS):listId$(SUFFIX)") {
   field(DESC, "request available ids")
   field(UDF, "0")
   field(DTYP, "stream")
@@ -38,7 +38,7 @@ record(longout, "$(H)listId$(SUFFIX)") {
   field(IVOV, "254")
 }
 
-record(longout, "$(H)listIdSingle$(SUFFIX)") {
+record(longout, "$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)") {
   field(DESC, "request available ids")
   field(UDF, "0")
   field(DTYP, "stream")
@@ -51,7 +51,7 @@ record(longout, "$(H)listIdSingle$(SUFFIX)") {
   field(IVOV, "254")
 }
 
-record(calcout, "$(H)listIdRange$(SUFFIX)") {
+record(calcout, "$(P)$(NAME):$(ADDRESS):listIdRange$(SUFFIX)") {
   field(DESC, "request available ids")
   field(DTYP, "stream")
   field(UDF, "0")
@@ -66,7 +66,7 @@ record(calcout, "$(H)listIdRange$(SUFFIX)") {
 
 #! Further lines contain data used by VisualDCT
 #! View(0,0,1.0)
-#! Record("$(H)status$(SUFFIX)",20,20,0,0,"$(H)status$(SUFFIX)")
-#! Record("$(H)listId$(SUFFIX)",260,25,0,0,"$(H)listId$(SUFFIX)")
-#! Record("$(H)listIdSingle$(SUFFIX)",500,25,0,0,"$(H)listIdSingle$(SUFFIX)")
-#! Record("$(H)listIdSingle$(SUFFIX)2",260,292,0,1,"$(H)listIdSingle$(SUFFIX)2")
+#! Record("$(H)status$(SUFFIX)",20,20,0,0,"$(chipIdRecord):status$(SUFFIX)")
+#! Record("$(P)$(NAME):$(ADDRESS):listId$(SUFFIX)",260,25,0,0,"$(P)$(NAME):$(ADDRESS):listId$(SUFFIX)")
+#! Record("$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)",500,25,0,0,"$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)")
+#! Record("$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)2",260,292,0,1,"$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)2")
