@@ -129,6 +129,7 @@ record(ai, "$(H)dac$(dac):read$(S)") {
   field(SCAN, "Passive")
 }
 
+
 record(mbbo, "$(H)dac$(dac):copy:mode$(S)_") {
   field(OUT, "$(H)dac$(dac):copy$(S)_.SELN PP")
   field(ONVL, "0x13")
@@ -157,14 +158,14 @@ record(stringout, "$(H)dac$(dac):copy:write$(S)_") {
 record(seq, "$(H)dac$(dac):copy$(S)_") {
   field(DESC, "init set dac $(dac)")
   field(DOL1, "1")
-  field(LNK1, "$(H)dac$(dac):write:inhibit.B")
+  field(LNK1, "$(H)dac$(dac):write:inhibit:set PP")
   field(DOL2, "$(H)dac$(dac)$(S)")
   field(LNK2, "$(H)dac$(dac):set$(S) PP")
   field(DOL3, "1")
   field(LNK3, "$(H)dac$(dac):read$(S).PROC")
   field(SELM, "Mask")
   field(DOL5, "0")
-  field(LNK5, "$(H)dac$(dac):write:inhibit.B")
+  field(LNK5, "$(H)dac$(dac):write:inhibit:set PP")
   field(DOL4, "$(H)dac$(dac)$(S).VAL")
   field(LNK4, "$(H)dac$(dac):set$(S).VAL")
   field(DOL6, "1")
@@ -198,6 +199,12 @@ record(calcout, "$(H)dac$(dac):write:check$(S)_") {
   field(OOPT, "When Non-zero")
   field(DOPT, "Use OCAL")
   field(OCAL, "1")
+}
+
+record(bo, "$(H)dac$(dac):write:inhibit:set") {
+  field(OUT, "$(H)dac$(dac):write:inhibit.B")
+  field(ZNAM, "write active")
+  field(ONAM, "write inhibit")
 }
 
 #! Further lines contain data used by VisualDCT
@@ -309,10 +316,10 @@ record(calcout, "$(H)dac$(dac):write:check$(S)_") {
 #! Field("$(H)dac$(dac):copy$(S)_.SELN",16763904,1,"$(H)dac$(dac):copy$(S)_.SELN")
 #! Field("$(H)dac$(dac):copy$(S)_.DOL2",3407616,1,"$(H)dac$(dac):copy$(S)_.DOL2")
 #! Link("$(H)dac$(dac):copy$(S)_.DOL2","$(H)dac$(dac):copy:read$(S)_/DOL2")
-#! Connector("$(H)dac$(dac):copy:read$(S)_/LNK5","$(H)dac$(dac):write:inhibit.B",2220,2200,16777215,"",0)
+#! Connector("$(H)dac$(dac):copy:read$(S)_/LNK5","$(H)dac$(dac):write:inhibit:set.VAL",2220,2280,16777215,"",0)
 #! Connector("$(H)dac$(dac):copy$(S)_/LNK3","$(H)dac$(dac):read$(S).PROC",1580,2570,16724787,"",0)
 #! Connector("$(H)dac$(dac):copy:read$(S)_/LNK2","$(H)dac$(dac):set$(S).VAL",1900,2170,3407616,"",0)
-#! Connector("$(H)dac$(dac):copy:read$(S)_/LNK1","$(H)dac$(dac):write:inhibit.B",2200,2160,16777215,"",0)
+#! Connector("$(H)dac$(dac):copy:read$(S)_/LNK1","$(H)dac$(dac):write:inhibit:set.VAL",2200,2240,16777215,"",0)
 #! Connector("$(H)dac$(dac):copy:read$(S)_/DOL2","$(H)dac$(dac)$(S).VAL",2240,2610,3407616,"",0)
 #! Field("$(H)dac$(dac):copy$(S)_.DOL4",52275,1,"$(H)dac$(dac):copy$(S)_.DOL4")
 #! Link("$(H)dac$(dac):copy$(S)_.DOL4","$(H)dac$(dac)$(S).VAL")
@@ -345,3 +352,7 @@ record(calcout, "$(H)dac$(dac):write:check$(S)_") {
 #! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT","$(H)dac$(dac):write:fo$(S)_3/OUT1",1990,1540,16711731,"",0)
 #! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT1","$(H)dac$(dac):read$(S).PROC",980,2155,16711731,"",0)
 #! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT2","$(H)dac$(dac):write:fo$(S)_3/OUT",3000,1755,16711731,"",0)
+#! Record("$(H)dac$(dac):write:inhibit:set",2260,2042,0,1,"$(H)dac$(dac):write:inhibit:set")
+#! Field("$(H)dac$(dac):write:inhibit:set.OUT",16777215,0,"$(H)dac$(dac):write:inhibit:set.OUT")
+#! Link("$(H)dac$(dac):write:inhibit:set.OUT","$(H)dac$(dac):write:inhibit.B")
+#! Field("$(H)dac$(dac):write:inhibit:set.VAL",16777215,0,"$(H)dac$(dac):write:inhibit:set.VAL")
