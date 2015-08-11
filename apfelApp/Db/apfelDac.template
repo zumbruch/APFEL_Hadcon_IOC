@@ -16,7 +16,7 @@ record(ao, "$(H)dac$(dac):set$(S)") {
   field(DRVL, "$(DRVL)")
   field(DRVH, "$(DRVH)")
   field(IVOA, "Don't drive outputs")
-  field(OUT, "$(H)dac$(dac):write$(S)_ PP")
+  field(OUT, "$(H)dac$(dac):write:inhibit.A PP")
   field(FLNK, "$(H)dac$(dac):set:hex:refresh$(S)_")
 }
 
@@ -68,7 +68,7 @@ record(ao, "$(H)dac$(dac):write$(S)_") {
   field(DRVH, "$(DRVH_HEX)")
   field(IVOA, "Don't drive outputs")
   field(OUT, "@$(protocolFile) setDac($(dac),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
-  field(FLNK, "$(H)dac$(dac):write:fo$(S)_3")
+  field(FLNK, "$(H)dac$(dac):write:check$(S)_")
 }
 
 record(calcout, "$(H)dac$(dac)$(S)") {
@@ -140,16 +140,6 @@ record(mbbo, "$(H)dac$(dac):copy:mode$(S)_") {
   field(THST, "copy triggers")
 }
 
-record(calcout, "$(H)dac$(dac):write:fo$(S)_3") {
-  field(DESC, "trigger read dac #$(dac)")
-  field(CALC, "A<3")
-  field(INPA, "$(H)dac$(dac):write$(S)_.SEVR")
-  field(OUT, "$(H)dac$(dac):read$(S).PROC")
-  field(OOPT, "When Non-zero")
-  field(DOPT, "Use OCAL")
-  field(OCAL, "1")
-}
-
 record(stringout, "$(H)dac$(dac):copy$(S)") {
   field(DESC, "copy dac->set #$(dac)")
   field(DOL, "$(H)dac$(dac):copy:mode$(S)_.THST")
@@ -167,14 +157,14 @@ record(stringout, "$(H)dac$(dac):copy:write$(S)_") {
 record(seq, "$(H)dac$(dac):copy$(S)_") {
   field(DESC, "init set dac $(dac)")
   field(DOL1, "1")
-  field(LNK1, "$(H)dac$(dac):write$(S)_.DISA")
+  field(LNK1, "$(H)dac$(dac):write:inhibit.B")
   field(DOL2, "$(H)dac$(dac)$(S)")
   field(LNK2, "$(H)dac$(dac):set$(S) PP")
   field(DOL3, "1")
   field(LNK3, "$(H)dac$(dac):read$(S).PROC")
   field(SELM, "Mask")
   field(DOL5, "0")
-  field(LNK5, "$(H)dac$(dac):write$(S)_.DISA CA")
+  field(LNK5, "$(H)dac$(dac):write:inhibit.B")
   field(DOL4, "$(H)dac$(dac)$(S).VAL")
   field(LNK4, "$(H)dac$(dac):set$(S).VAL")
   field(DOL6, "1")
@@ -188,6 +178,28 @@ record(stringout, "$(H)dac$(dac):copy:read$(S)_") {
   field(OUT, "$(H)dac$(dac):copy:mode$(S)_ PP")
 }
 
+
+record(calcout, "$(H)dac$(dac):write:inhibit") {
+  field(DESC, "block write #$(dac)")
+  field(CALC, "B")
+  field(OUT, "$(H)dac$(dac):write$(S)_ PP")
+  field(OOPT, "When Zero")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "A")
+  field(VAL, "0")
+}
+
+
+record(calcout, "$(H)dac$(dac):write:check$(S)_") {
+  field(DESC, "trigger read dac #$(dac)")
+  field(CALC, "A<3")
+  field(INPA, "$(H)dac$(dac):write$(S)_.SEVR")
+  field(OUT, "$(H)dac$(dac):read$(S).PROC")
+  field(OOPT, "When Non-zero")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "1")
+}
+
 #! Further lines contain data used by VisualDCT
 #! View(1756,1444,1.0)
 #! SpreadsheetView(R,"dfanout",Column("LLSV","true",36),Column("VAL","false",46),Column("TSEL","true",25),Column("HHSV","true",35),Column("HIGH","true",33),Column("DISS","true",28),Column("PREC","true",41),Column("DTYP","true",6),Column("DISV","true",26),Column("PRIO","true",29),Column("DESC","false",3),Column("Name","false",1),Column("PHAS","true",22),Column("HYST","true",39),Column("PINI","true",21),Column("OMSL","false",12),Column("ADEL","true",44),Column("ASG","true",4),Column("ACKT","true",30),Column("UDF","false",5),Column("EVNT","true",23),Column("MDEL","true",45),Column("SCAN","true",20),Column("SDIS","true",27),Column("DOL","false",10),Column("Comment","true",2),Column("FLNK","true",7),Column("HIHI","true",31),Column("LOLO","true",32),Column("LOPR","true",43),Column("TSE","true",24),Column("HOPR","true",42),Column("HSV","true",37),Column("LSV","true",38),Column("OUTC","false",14),Column("OUTB","false",13),Column("OUTE","false",16),Column("EGU","true",40),Column("OUTD","false",15),Column("SELL","true",9),Column("SELM","true",8),Column("LOW","true",34),Column("OUTA","false",11),Column("OUTG","false",18),Column("OUTF","false",17),Column("OUTH","true",19))
@@ -196,8 +208,8 @@ record(stringout, "$(H)dac$(dac):copy:read$(S)_") {
 #! Link("$(H)dac$(dac):set$(S).FLNK","$(H)dac$(dac):set$(S)/FLNK")
 #! Field("$(H)dac$(dac):set$(S).RVAL",52224,0,"$(H)dac$(dac):set$(S).RVAL")
 #! Field("$(H)dac$(dac):set$(S).OUT",52275,1,"$(H)dac$(dac):set$(S).OUT")
-#! Link("$(H)dac$(dac):set$(S).OUT","$(H)dac$(dac):write$(S)_.VAL")
-#! Field("$(H)dac$(dac):set$(S).VAL",52275,0,"$(H)dac$(dac):set$(S).VAL")
+#! Link("$(H)dac$(dac):set$(S).OUT","$(H)dac$(dac):write:inhibit.A")
+#! Field("$(H)dac$(dac):set$(S).VAL",3407616,0,"$(H)dac$(dac):set$(S).VAL")
 #! Connector("$(H)dac$(dac):set$(S)/FLNK","$(H)dac$(dac):set:hex:refresh$(S)_",1820,1830,16724838,"",0)
 #! Record("$(H)dac$(dac):set:hex:conv1$(S)_",1360,1799,16724838,0,"$(H)dac$(dac):set:hex:conv1$(S)_")
 #! Field("$(H)dac$(dac):set:hex:conv1$(S)_.INP",65331,0,"$(H)dac$(dac):set:hex:conv1$(S)_.INP")
@@ -221,14 +233,13 @@ record(stringout, "$(H)dac$(dac):copy:read$(S)_") {
 #! Field("$(H)dac$(dac):set:hex$(S).FLNK",16724838,1,"$(H)dac$(dac):set:hex$(S).FLNK")
 #! Link("$(H)dac$(dac):set:hex$(S).FLNK","$(H)dac$(dac):set:hex:conv1$(S)_")
 #! Field("$(H)dac$(dac):set:hex$(S).VAL",65331,0,"$(H)dac$(dac):set:hex$(S).VAL")
-#! Record("$(H)dac$(dac):write$(S)_",2280,1826,0,1,"$(H)dac$(dac):write$(S)_")
+#! Record("$(H)dac$(dac):write$(S)_",2520,1766,0,1,"$(H)dac$(dac):write$(S)_")
 #! Field("$(H)dac$(dac):write$(S)_.FLNK",16711731,1,"$(H)dac$(dac):write$(S)_.FLNK")
-#! Link("$(H)dac$(dac):write$(S)_.FLNK","$(H)dac$(dac):write:fo$(S)_3")
+#! Link("$(H)dac$(dac):write$(S)_.FLNK","$(H)dac$(dac):write:check$(S)_")
 #! Field("$(H)dac$(dac):write$(S)_.SEVR",16777215,0,"$(H)dac$(dac):write$(S)_.SEVR")
-#! Field("$(H)dac$(dac):write$(S)_.VAL",52275,0,"$(H)dac$(dac):write$(S)_.VAL")
-#! Field("$(H)dac$(dac):write$(S)_.DISA",16777215,0,"$(H)dac$(dac):write$(S)_.DISA")
+#! Field("$(H)dac$(dac):write$(S)_.VAL",52275,1,"$(H)dac$(dac):write$(S)_.VAL")
 #! Record("$(H)dac$(dac)$(S)",2000,2557,16711731,0,"$(H)dac$(dac)$(S)")
-#! Field("$(H)dac$(dac)$(S).VAL",52275,1,"$(H)dac$(dac)$(S).VAL")
+#! Field("$(H)dac$(dac)$(S).VAL",3407616,1,"$(H)dac$(dac)$(S).VAL")
 #! Field("$(H)dac$(dac)$(S).INPA",52275,0,"$(H)dac$(dac)$(S).INPA")
 #! Link("$(H)dac$(dac)$(S).INPA","$(H)dac$(dac):read$(S).VAL")
 #! Field("$(H)dac$(dac)$(S).INPB",16777215,0,"$(H)dac$(dac)$(S).INPB")
@@ -272,14 +283,6 @@ record(stringout, "$(H)dac$(dac):copy:read$(S)_") {
 #! Field("$(H)dac$(dac):copy:mode$(S)_.OUT",16763904,0,"$(H)dac$(dac):copy:mode$(S)_.OUT")
 #! Link("$(H)dac$(dac):copy:mode$(S)_.OUT","$(H)dac$(dac):copy$(S)_.SELN")
 #! Field("$(H)dac$(dac):copy:mode$(S)_.ONST",16777215,1,"$(H)dac$(dac):copy:mode$(S)_.ONST")
-#! Record("$(H)dac$(dac):write:fo$(S)_3",2540,1846,16711731,0,"$(H)dac$(dac):write:fo$(S)_3")
-#! Field("$(H)dac$(dac):write:fo$(S)_3.INPA",16777215,0,"$(H)dac$(dac):write:fo$(S)_3.INPA")
-#! Link("$(H)dac$(dac):write:fo$(S)_3.INPA","$(H)dac$(dac):write$(S)_.SEVR")
-#! Field("$(H)dac$(dac):write:fo$(S)_3.OUT",16711731,1,"$(H)dac$(dac):write:fo$(S)_3.OUT")
-#! Link("$(H)dac$(dac):write:fo$(S)_3.OUT","$(H)dac$(dac):write:fo$(S)_3/OUT2")
-#! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT","$(H)dac$(dac):write:fo$(S)_3/OUT1",1890,1540,16711731,"",0)
-#! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT1","$(H)dac$(dac):read$(S).PROC",980,2155,16711731,"",0)
-#! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT2","$(H)dac$(dac):write:fo$(S)_3/OUT",2800,1785,16711731,"",0)
 #! Record("$(H)dac$(dac):copy$(S)",2820,2248,0,1,"$(H)dac$(dac):copy$(S)")
 #! Field("$(H)dac$(dac):copy$(S).DOL",16777215,0,"$(H)dac$(dac):copy$(S).DOL")
 #! Link("$(H)dac$(dac):copy$(S).DOL","$(H)dac$(dac):copy:mode$(S)_.THST")
@@ -306,10 +309,10 @@ record(stringout, "$(H)dac$(dac):copy:read$(S)_") {
 #! Field("$(H)dac$(dac):copy$(S)_.SELN",16763904,1,"$(H)dac$(dac):copy$(S)_.SELN")
 #! Field("$(H)dac$(dac):copy$(S)_.DOL2",3407616,1,"$(H)dac$(dac):copy$(S)_.DOL2")
 #! Link("$(H)dac$(dac):copy$(S)_.DOL2","$(H)dac$(dac):copy:read$(S)_/DOL2")
-#! Connector("$(H)dac$(dac):copy:read$(S)_/LNK5","$(H)dac$(dac):write$(S)_.DISA",2220,2220,16777215,"",0)
+#! Connector("$(H)dac$(dac):copy:read$(S)_/LNK5","$(H)dac$(dac):write:inhibit.B",2220,2200,16777215,"",0)
 #! Connector("$(H)dac$(dac):copy$(S)_/LNK3","$(H)dac$(dac):read$(S).PROC",1580,2570,16724787,"",0)
 #! Connector("$(H)dac$(dac):copy:read$(S)_/LNK2","$(H)dac$(dac):set$(S).VAL",1900,2170,3407616,"",0)
-#! Connector("$(H)dac$(dac):copy:read$(S)_/LNK1","$(H)dac$(dac):write$(S)_.DISA",2200,2180,16777215,"",0)
+#! Connector("$(H)dac$(dac):copy:read$(S)_/LNK1","$(H)dac$(dac):write:inhibit.B",2200,2160,16777215,"",0)
 #! Connector("$(H)dac$(dac):copy:read$(S)_/DOL2","$(H)dac$(dac)$(S).VAL",2240,2610,3407616,"",0)
 #! Field("$(H)dac$(dac):copy$(S)_.DOL4",52275,1,"$(H)dac$(dac):copy$(S)_.DOL4")
 #! Link("$(H)dac$(dac):copy$(S)_.DOL4","$(H)dac$(dac)$(S).VAL")
@@ -329,3 +332,16 @@ record(stringout, "$(H)dac$(dac):copy:read$(S)_") {
 #! TextBox(TB2,2820,2020,3000,2040,0,"Dialog",12,1,16724991,"write triggers read",null)
 #! TextBox(TB1,1720,2500,1600,2540,0,"Dialog",36,1,16777215,"READ",null)
 #! TextBox(TB8,2100,2540,2040,2520,0,"Dialog",12,1,16777215,"dac",null)
+#! Record("$(H)dac$(dac):write:inhibit",2260,1806,0,1,"$(H)dac$(dac):write:inhibit")
+#! Field("$(H)dac$(dac):write:inhibit.OUT",52275,1,"$(H)dac$(dac):write:inhibit.OUT")
+#! Link("$(H)dac$(dac):write:inhibit.OUT","$(H)dac$(dac):write$(S)_.VAL")
+#! Field("$(H)dac$(dac):write:inhibit.A",52275,0,"$(H)dac$(dac):write:inhibit.A")
+#! Field("$(H)dac$(dac):write:inhibit.B",16777215,0,"$(H)dac$(dac):write:inhibit.B")
+#! Record("$(H)dac$(dac):write:check$(S)_",2780,1786,16711731,0,"$(H)dac$(dac):write:check$(S)_")
+#! Field("$(H)dac$(dac):write:check$(S)_.INPA",16777215,0,"$(H)dac$(dac):write:check$(S)_.INPA")
+#! Link("$(H)dac$(dac):write:check$(S)_.INPA","$(H)dac$(dac):write$(S)_.SEVR")
+#! Field("$(H)dac$(dac):write:check$(S)_.OUT",16711731,1,"$(H)dac$(dac):write:check$(S)_.OUT")
+#! Link("$(H)dac$(dac):write:check$(S)_.OUT","$(H)dac$(dac):write:fo$(S)_3/OUT2")
+#! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT","$(H)dac$(dac):write:fo$(S)_3/OUT1",1990,1540,16711731,"",0)
+#! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT1","$(H)dac$(dac):read$(S).PROC",980,2155,16711731,"",0)
+#! Connector("$(H)dac$(dac):write:fo$(S)_3/OUT2","$(H)dac$(dac):write:fo$(S)_3/OUT",3000,1755,16711731,"",0)
