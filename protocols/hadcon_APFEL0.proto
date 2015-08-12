@@ -3,7 +3,7 @@ LockTimeout  = 5000;
 WriteTimeout  = 100;
 ReplyTimeout  = 200;
 ReadTimeout   = 100;
-PollPeriod    = 10000;
+PollPeriod    = 1000;
 ExtraInput    = Ignore;
 
 ## https://wiki.gsi.de/foswiki/Epics/HadCon2MultipurposeControlsProtocolCmndApfelV0
