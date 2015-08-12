@@ -88,6 +88,7 @@ record(calcout, "$(H)status:event:enable$(S)_") {
   field(EVNT, "$(EVENT_STATUS_ENABLE_RECEIVE)")
   field(INPA, "$(H)status:receive$(S)_.DISV")
   field(OUT, "$(H)status:receive$(S)_.DISA")
+  field(CALC, "!A")
 }
 
 record(longout, "$(P)$(NAME):$(ADDRESS):listId$(S)_") {
@@ -146,12 +147,12 @@ record(event, "$(P)$(NAME):$(ADDRESS):listId:event:post:disable$(S)_") {
 #! Field("$(H)status:receive$(S)_.VAL",52275,1,"$(H)status:receive$(S)_.VAL")
 #! Field("$(H)status:receive$(S)_.DISV",16777215,0,"$(H)status:receive$(S)_.DISV")
 #! Field("$(H)status:receive$(S)_.DISA",16777215,0,"$(H)status:receive$(S)_.DISA")
-#! Record("$(H)status:event:disable$(S)_",80,121,0,1,"$(H)status:event:disable$(S)_")
+#! Record("$(H)status:event:disable$(S)_",80,101,0,1,"$(H)status:event:disable$(S)_")
 #! Field("$(H)status:event:disable$(S)_.DOL",16777215,1,"$(H)status:event:disable$(S)_.DOL")
 #! Link("$(H)status:event:disable$(S)_.DOL","$(H)status:receive$(S)_.DISV")
 #! Field("$(H)status:event:disable$(S)_.OUT",16777215,1,"$(H)status:event:disable$(S)_.OUT")
 #! Link("$(H)status:event:disable$(S)_.OUT","$(H)status:receive$(S)_.DISA")
-#! Record("$(H)status:event:enable$(S)_",80,314,0,1,"$(H)status:event:enable$(S)_")
+#! Record("$(H)status:event:enable$(S)_",80,301,0,1,"$(H)status:event:enable$(S)_")
 #! Field("$(H)status:event:enable$(S)_.OUT",16777215,1,"$(H)status:event:enable$(S)_.OUT")
 #! Link("$(H)status:event:enable$(S)_.OUT","$(H)status:receive$(S)_.DISA")
 #! Field("$(H)status:event:enable$(S)_.INPA",16777215,1,"$(H)status:event:enable$(S)_.INPA")
