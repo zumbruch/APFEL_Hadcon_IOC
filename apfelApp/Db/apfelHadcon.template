@@ -141,6 +141,7 @@ record(mbbo, "$(H)trigger:port:set$(T)") {
 }
 
 record(mbbi, "$(H)trigger:position$(T)") {
+  field(DTYP, "Raw Soft Channel")
   field(FLNK, "$(H)trigger:position:set$(T)")
   field(UNSV, "INVALID")
 }
@@ -149,7 +150,7 @@ record(mbbo, "$(H)trigger:position:set$(T)") {
   field(FLNK, "$(H)trigger:write$(T)_")
   field(IVOA, "Don't drive outputs")
   field(UNSV, "INVALID")
-  field(DOL, "$(H)trigger:position$(T)")
+  field(DOL, "$(H)trigger:position$(T).RVAL")
 }
 
 record(mbbi, "$(H)trigger:port:set$(T)_") {
@@ -252,7 +253,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(2240,2508,1.0)
+#! View(1387,2798,1.0)
 #! Record("$(H)trigger:dist$(T)_",1860,3057,0,0,"$(H)trigger:dist$(T)_")
 #! Field("$(H)trigger:dist$(T)_.LNK2",52275,1,"$(H)trigger:dist$(T)_.LNK2")
 #! Link("$(H)trigger:dist$(T)_.LNK2","$(H)trigger:dist$(T)_/LNK2")
@@ -339,19 +340,20 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger:port:set$(T).FLNK",16724787,1,"$(H)trigger:port:set$(T).FLNK")
 #! Link("$(H)trigger:port:set$(T).FLNK","$(H)trigger:port:set$(T)_")
 #! Field("$(H)trigger:port:set$(T).VAL",52275,1,"$(H)trigger:port:set$(T).VAL")
-#! Record("$(H)trigger:position$(T)",2480,2976,0,1,"$(H)trigger:position$(T)")
+#! Record("$(H)trigger:position$(T)",2480,2962,0,1,"$(H)trigger:position$(T)")
 #! Field("$(H)trigger:position$(T).FLNK",16711680,1,"$(H)trigger:position$(T).FLNK")
 #! Link("$(H)trigger:position$(T).FLNK","$(H)trigger:position:set$(T)")
-#! Field("$(H)trigger:position$(T).VAL",52275,1,"$(H)trigger:position$(T).VAL")
+#! Field("$(H)trigger:position$(T).VAL",52275,0,"$(H)trigger:position$(T).VAL")
 #! Field("$(H)trigger:position$(T).ZRVL",16777215,0,"$(H)trigger:position$(T).ZRVL")
 #! Field("$(H)trigger:position$(T).ONVL",16777215,0,"$(H)trigger:position$(T).ONVL")
 #! Field("$(H)trigger:position$(T).ZRST",16777215,0,"$(H)trigger:position$(T).ZRST")
 #! Field("$(H)trigger:position$(T).ONST",16777215,0,"$(H)trigger:position$(T).ONST")
+#! Field("$(H)trigger:position$(T).RVAL",16777215,0,"$(H)trigger:position$(T).RVAL")
 #! Record("$(H)trigger:position:set$(T)",2760,2948,16711680,0,"$(H)trigger:position:set$(T)")
 #! Field("$(H)trigger:position:set$(T).FLNK",16724787,1,"$(H)trigger:position:set$(T).FLNK")
 #! Link("$(H)trigger:position:set$(T).FLNK","$(H)trigger:position:set$(T)/FLNK")
 #! Field("$(H)trigger:position:set$(T).DOL",16777215,0,"$(H)trigger:position:set$(T).DOL")
-#! Link("$(H)trigger:position:set$(T).DOL","$(H)trigger:position$(T).VAL")
+#! Link("$(H)trigger:position:set$(T).DOL","$(H)trigger:position$(T).RVAL")
 #! Field("$(H)trigger:position:set$(T).ZRVL",16777215,0,"$(H)trigger:position:set$(T).ZRVL")
 #! Field("$(H)trigger:position:set$(T).ONVL",16777215,0,"$(H)trigger:position:set$(T).ONVL")
 #! Field("$(H)trigger:position:set$(T).ZRST",16777215,0,"$(H)trigger:position:set$(T).ZRST")
