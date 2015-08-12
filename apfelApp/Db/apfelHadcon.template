@@ -140,9 +140,8 @@ record(mbbo, "$(H)trigger:port:set$(T)") {
   field(IVOA, "Don't drive outputs")
 }
 
-record(mbbo, "$(H)trigger:position$(T)") {
-  field(OUT, "$(H)trigger:position:set$(T) PP")
-  field(IVOA, "Don't drive outputs")
+record(mbbi, "$(H)trigger:position$(T)") {
+  field(FLNK, "$(H)trigger:position:set$(T)")
   field(UNSV, "INVALID")
 }
 
@@ -150,6 +149,7 @@ record(mbbo, "$(H)trigger:position:set$(T)") {
   field(FLNK, "$(H)trigger:write$(T)_")
   field(IVOA, "Don't drive outputs")
   field(UNSV, "INVALID")
+  field(DOL, "$(H)trigger:position$(T)")
 }
 
 record(mbbi, "$(H)trigger:port:set$(T)_") {
@@ -277,7 +277,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger:dist$(T)_.DOL5",52275,0,"$(H)trigger:dist$(T)_.DOL5")
 #! Link("$(H)trigger:dist$(T)_.DOL5","$(H)trigger$(T).D")
 #! Connector("$(H)trigger:dist$(T)_/LNKA","$(H)trigger:write$(T)_.DISA",3240,3370,16777215,"",0)
-#! Connector("$(H)trigger:dist$(T)_/LNK5","$(H)trigger:position$(T).VAL",2180,3230,52275,"",0)
+#! Connector("$(H)trigger:dist$(T)_/LNK5","$(H)trigger:position$(T).VAL",2180,3220,52275,"",0)
 #! Connector("$(H)trigger:dist$(T)_/LNK4","$(H)trigger:port$(T)_.VAL",2160,3130,52275,"",0)
 #! Connector("$(H)trigger:dist$(T)_/LNK3","$(H)trigger:pin$(T).VAL",2140,2910,52275,"",0)
 #! Connector("$(H)trigger:dist$(T)_/LNK2","$(H)trigger:state$(T).VAL",2120,2790,52275,"",0)
@@ -339,18 +339,19 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger:port:set$(T).FLNK",16724787,1,"$(H)trigger:port:set$(T).FLNK")
 #! Link("$(H)trigger:port:set$(T).FLNK","$(H)trigger:port:set$(T)_")
 #! Field("$(H)trigger:port:set$(T).VAL",52275,1,"$(H)trigger:port:set$(T).VAL")
-#! Record("$(H)trigger:position$(T)",2500,2982,0,1,"$(H)trigger:position$(T)")
-#! Field("$(H)trigger:position$(T).OUT",52275,1,"$(H)trigger:position$(T).OUT")
-#! Link("$(H)trigger:position$(T).OUT","$(H)trigger:position:set$(T).VAL")
-#! Field("$(H)trigger:position$(T).VAL",52275,0,"$(H)trigger:position$(T).VAL")
+#! Record("$(H)trigger:position$(T)",2480,2976,0,1,"$(H)trigger:position$(T)")
+#! Field("$(H)trigger:position$(T).FLNK",16711680,1,"$(H)trigger:position$(T).FLNK")
+#! Link("$(H)trigger:position$(T).FLNK","$(H)trigger:position:set$(T)")
+#! Field("$(H)trigger:position$(T).VAL",52275,1,"$(H)trigger:position$(T).VAL")
 #! Field("$(H)trigger:position$(T).ZRVL",16777215,0,"$(H)trigger:position$(T).ZRVL")
 #! Field("$(H)trigger:position$(T).ONVL",16777215,0,"$(H)trigger:position$(T).ONVL")
 #! Field("$(H)trigger:position$(T).ZRST",16777215,0,"$(H)trigger:position$(T).ZRST")
 #! Field("$(H)trigger:position$(T).ONST",16777215,0,"$(H)trigger:position$(T).ONST")
-#! Record("$(H)trigger:position:set$(T)",2760,2962,16724787,0,"$(H)trigger:position:set$(T)")
+#! Record("$(H)trigger:position:set$(T)",2760,2948,16711680,0,"$(H)trigger:position:set$(T)")
 #! Field("$(H)trigger:position:set$(T).FLNK",16724787,1,"$(H)trigger:position:set$(T).FLNK")
 #! Link("$(H)trigger:position:set$(T).FLNK","$(H)trigger:position:set$(T)/FLNK")
-#! Field("$(H)trigger:position:set$(T).VAL",52275,1,"$(H)trigger:position:set$(T).VAL")
+#! Field("$(H)trigger:position:set$(T).DOL",16777215,0,"$(H)trigger:position:set$(T).DOL")
+#! Link("$(H)trigger:position:set$(T).DOL","$(H)trigger:position$(T).VAL")
 #! Field("$(H)trigger:position:set$(T).ZRVL",16777215,0,"$(H)trigger:position:set$(T).ZRVL")
 #! Field("$(H)trigger:position:set$(T).ONVL",16777215,0,"$(H)trigger:position:set$(T).ONVL")
 #! Field("$(H)trigger:position:set$(T).ZRST",16777215,0,"$(H)trigger:position:set$(T).ZRST")
