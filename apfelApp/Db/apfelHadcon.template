@@ -171,6 +171,7 @@ record(mbbo, "$(H)trigger:port:set$(T)_") {
   field(UNSV, "INVALID")
   field(IVOA, "Don't drive outputs")
   field(DOL, "$(H)trigger:port:set$(T).VAL")
+  field(DTYP, "Raw Soft Channel")
 }
 
 record(bo, "$(H)trigger:state$(T)") {
@@ -217,7 +218,6 @@ record(dfanout, "$(H)trigger:position:ONVL:df$(T)_") {
   field(OMSL, "closed_loop")
 }
 
-
 record(stringout, "$(H)trigger:position:ONST:1$(T)_") {
   field(PINI, "YES")
   field(VAL, "reset/negative")
@@ -234,7 +234,6 @@ record(stringout, "$(H)trigger:position:ONST:2$(T)_") {
   field(OMSL, "closed_loop")
   field(OUT, "$(H)trigger:position:set$(T).ONST")
 }
-
 
 record(stringout, "$(H)trigger:position:ZRST:1$(T)_") {
   field(PINI, "YES")
@@ -254,7 +253,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(1141,3410,1.0)
+#! View(2240,2508,1.0)
 #! Record("$(H)trigger:dist$(T)_",1860,3057,0,0,"$(H)trigger:dist$(T)_")
 #! Field("$(H)trigger:dist$(T)_.LNK2",52275,1,"$(H)trigger:dist$(T)_.LNK2")
 #! Link("$(H)trigger:dist$(T)_.LNK2","$(H)trigger:dist$(T)_/LNK2")
@@ -358,7 +357,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger:position:set$(T).ZRST",16777215,0,"$(H)trigger:position:set$(T).ZRST")
 #! Field("$(H)trigger:position:set$(T).ONST",16777215,0,"$(H)trigger:position:set$(T).ONST")
 #! Connector("$(H)trigger:position:set$(T)/FLNK","$(H)trigger:write$(T)_",3580,3116,16724787,"",0)
-#! Record("$(H)trigger:port:set$(T)_",3020,2574,16724787,0,"$(H)trigger:port:set$(T)_")
+#! Record("$(H)trigger:port:set$(T)_",3020,2560,16724787,0,"$(H)trigger:port:set$(T)_")
 #! Field("$(H)trigger:port:set$(T)_.FLNK",16711731,1,"$(H)trigger:port:set$(T)_.FLNK")
 #! Link("$(H)trigger:port:set$(T)_.FLNK","$(H)trigger:port:set$(T)_/FLNK")
 #! Field("$(H)trigger:port:set$(T)_.VAL",52275,1,"$(H)trigger:port:set$(T)_.VAL")
@@ -399,17 +398,6 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Link("$(H)trigger:position:ONVL:df$(T)_.OUTA","$(H)trigger:position$(T).ONVL")
 #! Field("$(H)trigger:position:ONVL:df$(T)_.OUTB",16777215,1,"$(H)trigger:position:ONVL:df$(T)_.OUTB")
 #! Link("$(H)trigger:position:ONVL:df$(T)_.OUTB","$(H)trigger:position:set$(T).ONVL")
-#! Line(Line2,2820,2020,2857,1982,0,0,0,16777215,null)
-#! Line(Line1,2820,1940,2855,1979,0,0,0,16777215,null)
-#! Line(Line0,2520,1980,2859,1980,0,0,0,16777215,null)
-#! Box(Box0,1280,2020,2720,3540,1,16776960,null)
-#! Box(Box1,3600,3540,2740,2020,1,16776960,null)
-#! TextBox(TB0,1340,3340,1420,3380,0,"Dialog",24,1,16777215,"read",null)
-#! TextBox(TB5,2920,3580,3340,3660,0,"Dialog",28,1,16777215,"trigger read process",null)
-#! TextBox(TB4,2520,1940,2820,1980,0,"Dialog",28,1,16777215,"update set values",null)
-#! TextBox(TB3,2760,2080,3180,2160,0,"Dialog",36,1,16777215,"set and write",null)
-#! TextBox(TB2,1300,2040,1720,2120,0,"Dialog",36,1,16777215,"read and distribute",null)
-#! TextBox(TB1,3420,3040,3500,3080,0,"Dialog",24,1,16777215,"write",null)
 #! Record("$(H)trigger:position:ONST:1$(T)_",1020,3840,0,1,"$(H)trigger:position:ONST:1$(T)_")
 #! Field("$(H)trigger:position:ONST:1$(T)_.DOL",16777215,0,"$(H)trigger:position:ONST:1$(T)_.DOL")
 #! Link("$(H)trigger:position:ONST:1$(T)_.DOL","$(H)trigger:position:ONST$(T).VAL")
@@ -434,3 +422,14 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Link("$(H)trigger:position:ZRST:2$(T)_.DOL","$(H)trigger:position:ZRST$(T).VAL")
 #! Field("$(H)trigger:position:ZRST:2$(T)_.OUT",16777215,1,"$(H)trigger:position:ZRST:2$(T)_.OUT")
 #! Link("$(H)trigger:position:ZRST:2$(T)_.OUT","$(H)trigger:position:set$(T).ZRST")
+#! Line(Line2,2820,2020,2857,1982,0,0,0,16777215,null)
+#! Line(Line1,2820,1940,2855,1979,0,0,0,16777215,null)
+#! Line(Line0,2520,1980,2859,1980,0,0,0,16777215,null)
+#! Box(Box0,1280,2020,2720,3540,1,16776960,null)
+#! Box(Box1,3600,3540,2740,2020,1,16776960,null)
+#! TextBox(TB0,1340,3340,1420,3380,0,"Dialog",24,1,16777215,"read",null)
+#! TextBox(TB5,2920,3580,3340,3660,0,"Dialog",28,1,16777215,"trigger read process",null)
+#! TextBox(TB4,2520,1940,2820,1980,0,"Dialog",28,1,16777215,"update set values",null)
+#! TextBox(TB3,2760,2080,3180,2160,0,"Dialog",36,1,16777215,"set and write",null)
+#! TextBox(TB2,1300,2040,1720,2120,0,"Dialog",36,1,16777215,"read and distribute",null)
+#! TextBox(TB1,3420,3040,3500,3080,0,"Dialog",24,1,16777215,"write",null)
