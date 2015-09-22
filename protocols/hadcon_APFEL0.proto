@@ -89,12 +89,6 @@ dummy {
 	out "";
 }
 
-debug {
-    ExtraInput = Ignore;
-    in "%s"; in "%39c"
-}
-
-
 ## write dac
 
 setDac {

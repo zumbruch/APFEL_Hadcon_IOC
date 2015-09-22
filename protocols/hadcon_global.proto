@@ -11,7 +11,8 @@ ExtraInput    = Ignore;
 
 debug {
     ExtraInput = Ignore;
-    out "%s"; in "%39c"
+    out "%s";
+	in "%39c"
 }
 
 SYST {
