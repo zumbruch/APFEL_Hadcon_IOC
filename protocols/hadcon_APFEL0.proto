@@ -3,7 +3,7 @@ LockTimeout  = 5000;
 WriteTimeout  = 100;
 ReplyTimeout  = 200;
 ReadTimeout   = 100;
-PollPeriod    = 100;
+PollPeriod    = 1000;
 ExtraInput    = Ignore;
 
 ## https://wiki.gsi.de/foswiki/Epics/HadCon2MultipurposeControlsProtocolCmndApfelV0
@@ -214,7 +214,7 @@ listIdRange_co {
 
 listIdStatus_intr {
 	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
+PollPeriod    = 60000;
 	ic="list";
 #	in $recvKey" "$ic" port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
 	in "RECV APFEL list \$4 \$2 \$3 \$1 %{no|yes}";	

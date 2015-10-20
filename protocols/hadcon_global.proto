@@ -16,6 +16,7 @@ debug {
 }
 
 SYST {
+    PollPeriod = 60000;
     ExtraInput = Ignore;
 	Terminator  = LF;
     key = "SYST";
@@ -23,6 +24,7 @@ SYST {
 }
 
 PING {
+    PollPeriod = 60000;
     ExtraInput = Ignore;
 	Terminator  = LF;
     key = "PING";
