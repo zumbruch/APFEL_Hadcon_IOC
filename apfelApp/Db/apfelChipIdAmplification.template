@@ -3,22 +3,18 @@
 #! DBDEND
 
 
+
 record(longout, "$(H)ch$(channel):amplification:reset$(T)_") {
   field(DTYP, "stream")
   field(OUT, "@$(protocolFile) resetAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
-  field(DOL, "$(channel)")
-  field(OMSL, "closed_loop")
   field(FLNK, "$(H)ch$(channel):amplification:check$(T)_ PP MS")
 }
 
 record(longout, "$(H)ch$(channel):amplification:set$(T)_") {
   field(DTYP, "stream")
   field(OUT, "@$(protocolFile) setAmplification($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)")
-  field(DOL, "$(channel)")
-  field(OMSL, "closed_loop")
   field(FLNK, "$(H)ch$(channel):amplification:check$(T)_ PP MS")
 }
-
 
 record(calcout, "$(H)ch$(channel):amplification:check$(T)_") {
   field(CALC, "F=0?(B<A&&A<C):(D<A&&A<E)")
@@ -35,67 +31,50 @@ record(calcout, "$(H)ch$(channel):amplification:check$(T)_") {
   field(OOPT, "Transition To Non-zero")
 }
 
-record(longout, "$(H)ch$(channel):amplification:select$(T)_") {
-  field(OUT, "$(H)ch$(channel):amplification:reset$(T)_.PROC CA")
-  field(SIML, "$(H)ch$(channel):amplification$(T)_.VAL")
-  field(VAL, "1")
-  field(DOL, "1")
+
+record(dfanout, "$(H)ch$(channel):amplification:select$(T)_") {
+  field(SELM, "Specified")
+  field(OUTA, "$(H)ch$(channel):amplification:reset$(T)_ PP")
+  field(OUTB, "$(H)ch$(channel):amplification:set$(T)_ PP")
+  field(DOL, "$(H)ch$(channel):amplification:channel$(T)_")
   field(OMSL, "closed_loop")
-  field(SIOL, "$(H)ch$(channel):amplification:set$(T)_.PROC CA")
-  field(SIMS, "NO_ALARM")
 }
 
-# H             = $(H)
-# S             = $(S)
-# T             = $(T)
-# PREFIX        = $(PREFIX)
-# NAME          = $(NAME)
-# SUFFIX        = $(SUFFIX)
-# chipId        = $(chipId)
-# pinSet        = $(pinSet)
-# sideSelection = $(sideSelection)
-# port          = $(port)
-# channel       = $(channel)
-# dacMonitorChannel            = $(dacMonitorChannel)
-# dacLowAmplificationLimitLow  = $(dacLowAmplificationLimitLow)
-# dacLowAmplificationLimitHigh = $(dacLowAmplificationLimitHigh)
-# dacHighAmplificationLimitLow = $(dacHighAmplificationLimitLow)
-# dacHighAmplificationLimitHigh= $(dacHighAmplificationLimitHigh)
-record(bo, "$(H)ch$(channel):amplification$(T)_") {
-  field(FLNK, "$(H)ch$(channel):amplification:select$(T)_")
-  field(ZNAM, "Set")
-  field(ONAM, "Reset")
+
+record(mbbo, "$(H)ch$(channel):amplification$(T)_") {
+  field(DTYP, "Raw Soft Channel")
   field(UDF, "0")
-  field(DOL, "$(H)ch$(channel):amplification:convert$(T)_")
+  field(DOL, "$(H)ch$(channel):amplification$(T)")
+  field(OUT, "$(H)ch$(channel):amplification:select$(T)_.SELN")
+  field(ZRVL, "1")
+  field(ONVL, "2")
+  field(ZRST, "Reset")
+  field(ONST, "Set")
+  field(IVOA, "Don't drive outputs")
 }
-
 
 record(bo, "$(H)ch$(channel):amplification$(T)") {
   field(ZNAM, "Low")
   field(ONAM, "High")
   field(UDF, "0")
-  field(OUT, "$(H)ch$(channel):amplification:convert$(T)_.A PP")
+  field(FLNK, "$(H)ch$(channel):amplification$(T)_")
 }
 
-record(calc, "$(H)ch$(channel):amplification:convert$(T)_") {
-  field(UDF, "0")
-  field(FLNK, "$(H)ch$(channel):amplification$(T)_")
-  field(CALC, "A?0:1")
+record(longout, "$(H)ch$(channel):amplification:channel$(T)_") {
+  field(VAL, "$(channel)")
 }
 
 #! Further lines contain data used by VisualDCT
 #! View(2382,2565,1.2)
-#! Record("$(H)ch$(channel):amplification:reset$(T)_",2720,2431,0,1,"$(H)ch$(channel):amplification:reset$(T)_")
-#! Field("$(H)ch$(channel):amplification:reset$(T)_.DOL",16777215,1,"$(H)ch$(channel):amplification:reset$(T)_.DOL")
+#! Record("$(H)ch$(channel):amplification:reset$(T)_",2760,2480,0,1,"$(H)ch$(channel):amplification:reset$(T)_")
 #! Field("$(H)ch$(channel):amplification:reset$(T)_.FLNK",16777215,1,"$(H)ch$(channel):amplification:reset$(T)_.FLNK")
 #! Link("$(H)ch$(channel):amplification:reset$(T)_.FLNK","$(H)ch$(channel):amplification:check$(T)_")
-#! Field("$(H)ch$(channel):amplification:reset$(T)_.PROC",16777215,0,"$(H)ch$(channel):amplification:reset$(T)_.PROC")
-#! Record("$(H)ch$(channel):amplification:set$(T)_",2720,2631,0,1,"$(H)ch$(channel):amplification:set$(T)_")
-#! Field("$(H)ch$(channel):amplification:set$(T)_.DOL",16777215,1,"$(H)ch$(channel):amplification:set$(T)_.DOL")
+#! Field("$(H)ch$(channel):amplification:reset$(T)_.VAL",16777215,0,"$(H)ch$(channel):amplification:reset$(T)_.VAL")
+#! Record("$(H)ch$(channel):amplification:set$(T)_",2760,2660,0,1,"$(H)ch$(channel):amplification:set$(T)_")
 #! Field("$(H)ch$(channel):amplification:set$(T)_.FLNK",16777215,1,"$(H)ch$(channel):amplification:set$(T)_.FLNK")
 #! Link("$(H)ch$(channel):amplification:set$(T)_.FLNK","$(H)ch$(channel):amplification:check$(T)_")
-#! Field("$(H)ch$(channel):amplification:set$(T)_.PROC",16777215,0,"$(H)ch$(channel):amplification:set$(T)_.PROC")
-#! Record("$(H)ch$(channel):amplification:check$(T)_",2980,2470,13369395,0,"$(H)ch$(channel):amplification:check$(T)_")
+#! Field("$(H)ch$(channel):amplification:set$(T)_.VAL",16777215,0,"$(H)ch$(channel):amplification:set$(T)_.VAL")
+#! Record("$(H)ch$(channel):amplification:check$(T)_",3020,2470,13369395,0,"$(H)ch$(channel):amplification:check$(T)_")
 #! Field("$(H)ch$(channel):amplification:check$(T)_.INPA",16777215,1,"$(H)ch$(channel):amplification:check$(T)_.INPA")
 #! Field("$(H)ch$(channel):amplification:check$(T)_.INPB",16777215,1,"$(H)ch$(channel):amplification:check$(T)_.INPB")
 #! Field("$(H)ch$(channel):amplification:check$(T)_.INPC",16777215,1,"$(H)ch$(channel):amplification:check$(T)_.INPC")
@@ -105,27 +84,27 @@ record(calc, "$(H)ch$(channel):amplification:convert$(T)_") {
 #! Link("$(H)ch$(channel):amplification:check$(T)_.INPF","$(H)ch$(channel):amplification:check$(T)_/INPF")
 #! Field("$(H)ch$(channel):amplification:check$(T)_.OUT",16777215,0,"$(H)ch$(channel):amplification:check$(T)_.OUT")
 #! Link("$(H)ch$(channel):amplification:check$(T)_.OUT","$(H)ch$(channel):amplification:check$(T)_/OUT")
-#! Connector("$(H)ch$(channel):amplification:check$(T)_/OUT","$(H)ch$(channel):amplification$(T).VAL",2040,2600,16777215,"",0)
-#! Connector("$(H)ch$(channel):amplification:check$(T)_/INPF","$(H)ch$(channel):amplification$(T).VAL",3220,2590,16777215,"",0)
-#! Record("$(H)ch$(channel):amplification:select$(T)_",2440,2543,13369395,0,"$(H)ch$(channel):amplification:select$(T)_")
-#! Field("$(H)ch$(channel):amplification:select$(T)_.OUT",16777215,1,"$(H)ch$(channel):amplification:select$(T)_.OUT")
-#! Link("$(H)ch$(channel):amplification:select$(T)_.OUT","$(H)ch$(channel):amplification:reset$(T)_.PROC")
-#! Field("$(H)ch$(channel):amplification:select$(T)_.SIML",16777215,0,"$(H)ch$(channel):amplification:select$(T)_.SIML")
-#! Link("$(H)ch$(channel):amplification:select$(T)_.SIML","$(H)ch$(channel):amplification$(T)_.VAL")
-#! Field("$(H)ch$(channel):amplification:select$(T)_.SIOL",16777215,1,"$(H)ch$(channel):amplification:select$(T)_.SIOL")
-#! Link("$(H)ch$(channel):amplification:select$(T)_.SIOL","$(H)ch$(channel):amplification:set$(T)_.PROC")
-#! Record("$(H)ch$(channel):amplification$(T)_",2160,2571,0,1,"$(H)ch$(channel):amplification$(T)_")
-#! Field("$(H)ch$(channel):amplification$(T)_.FLNK",13369395,1,"$(H)ch$(channel):amplification$(T)_.FLNK")
-#! Link("$(H)ch$(channel):amplification$(T)_.FLNK","$(H)ch$(channel):amplification:select$(T)_")
-#! Field("$(H)ch$(channel):amplification$(T)_.VAL",16777215,1,"$(H)ch$(channel):amplification$(T)_.VAL")
+#! Connector("$(H)ch$(channel):amplification:check$(T)_/INPF","$(H)ch$(channel):amplification$(T).VAL",3260,2620,16777215,"",0)
+#! Connector("$(H)ch$(channel):amplification:check$(T)_/OUT","$(H)ch$(channel):amplification$(T).VAL",2060,2630,16777215,"",0)
+#! Record("$(H)ch$(channel):amplification:select$(T)_",2480,2611,13369395,0,"$(H)ch$(channel):amplification:select$(T)_")
+#! Field("$(H)ch$(channel):amplification:select$(T)_.DOL",16777215,0,"$(H)ch$(channel):amplification:select$(T)_.DOL")
+#! Link("$(H)ch$(channel):amplification:select$(T)_.DOL","$(H)ch$(channel):amplification:channel$(T)_.VAL")
+#! Field("$(H)ch$(channel):amplification:select$(T)_.OUTA",16777215,1,"$(H)ch$(channel):amplification:select$(T)_.OUTA")
+#! Link("$(H)ch$(channel):amplification:select$(T)_.OUTA","$(H)ch$(channel):amplification:reset$(T)_.VAL")
+#! Field("$(H)ch$(channel):amplification:select$(T)_.OUTB",16777215,1,"$(H)ch$(channel):amplification:select$(T)_.OUTB")
+#! Link("$(H)ch$(channel):amplification:select$(T)_.OUTB","$(H)ch$(channel):amplification:set$(T)_.VAL")
+#! Field("$(H)ch$(channel):amplification:select$(T)_.SELN",16777215,0,"$(H)ch$(channel):amplification:select$(T)_.SELN")
+#! Record("$(H)ch$(channel):amplification$(T)_",2200,2594,0,1,"$(H)ch$(channel):amplification$(T)_")
 #! Field("$(H)ch$(channel):amplification$(T)_.DOL",16777215,0,"$(H)ch$(channel):amplification$(T)_.DOL")
-#! Link("$(H)ch$(channel):amplification$(T)_.DOL","$(H)ch$(channel):amplification:convert$(T)_.VAL")
-#! Record("$(H)ch$(channel):amplification$(T)",2140,2245,0,1,"$(H)ch$(channel):amplification$(T)")
+#! Link("$(H)ch$(channel):amplification$(T)_.DOL","$(H)ch$(channel):amplification$(T).VAL")
+#! Field("$(H)ch$(channel):amplification$(T)_.OUT",16777215,1,"$(H)ch$(channel):amplification$(T)_.OUT")
+#! Link("$(H)ch$(channel):amplification$(T)_.OUT","$(H)ch$(channel):amplification:select$(T)_.SELN")
+#! Record("$(H)ch$(channel):amplification$(T)",2140,2305,0,1,"$(H)ch$(channel):amplification$(T)")
 #! Field("$(H)ch$(channel):amplification$(T).VAL",16777215,1,"$(H)ch$(channel):amplification$(T).VAL")
-#! Field("$(H)ch$(channel):amplification$(T).OUT",16777215,0,"$(H)ch$(channel):amplification$(T).OUT")
-#! Link("$(H)ch$(channel):amplification$(T).OUT","$(H)ch$(channel):amplification:convert$(T)_.A")
-#! Record("$(H)ch$(channel):amplification:convert$(T)_",2120,2400,0,1,"$(H)ch$(channel):amplification:convert$(T)_")
-#! Field("$(H)ch$(channel):amplification:convert$(T)_.A",16777215,0,"$(H)ch$(channel):amplification:convert$(T)_.A")
-#! Field("$(H)ch$(channel):amplification:convert$(T)_.VAL",16777215,0,"$(H)ch$(channel):amplification:convert$(T)_.VAL")
-#! Field("$(H)ch$(channel):amplification:convert$(T)_.FLNK",16777215,1,"$(H)ch$(channel):amplification:convert$(T)_.FLNK")
-#! Link("$(H)ch$(channel):amplification:convert$(T)_.FLNK","$(H)ch$(channel):amplification$(T)_")
+#! Field("$(H)ch$(channel):amplification$(T).FLNK",16777215,1,"$(H)ch$(channel):amplification$(T).FLNK")
+#! Link("$(H)ch$(channel):amplification$(T).FLNK","$(H)ch$(channel):amplification$(T)_")
+#! Record("$(H)ch$(channel):amplification:channel$(T)_",2480,2509,0,1,"$(H)ch$(channel):amplification:channel$(T)_")
+#! Field("$(H)ch$(channel):amplification:channel$(T)_.VAL",16777215,0,"$(H)ch$(channel):amplification:channel$(T)_.VAL")
+#! TextBox(TB0,2820,2460,2860,2480,0,"Dialog",12,1,16777215,"low",null)
+#! TextBox(TB1,2820,2640,2860,2660,0,"Dialog",12,1,16777215,"high",null)
+#! Box(Box0,2700,2460,2980,2820,1,13421568,null)
