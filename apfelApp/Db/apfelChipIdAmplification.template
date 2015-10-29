@@ -45,7 +45,7 @@ record(mbbo, "$(H)ch$(channel):amplification$(T)_") {
   field(DTYP, "Raw Soft Channel")
   field(UDF, "0")
   field(DOL, "$(H)ch$(channel):amplification$(T)")
-  field(OUT, "$(H)ch$(channel):amplification:select$(T)_.SELN")
+  field(OUT, "$(H)ch$(channel):amplification:select$(T)_.SELN PP")
   field(ZRVL, "1")
   field(ONVL, "2")
   field(ZRST, "Reset")
