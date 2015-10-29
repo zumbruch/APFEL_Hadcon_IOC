@@ -44,3 +44,15 @@ writeRead {
     in $readRecvKey " \${1} %x";
 }
 
+RGWR {
+#requieres calcout
+# Example of command field(OUT, "@hadcon_RGWR.proto write() <port>")
+	ExtraInput = Ignore;
+    out $key " %(B)x %(A)x";
+    in $readRecvKey
+    @mismatch
+    {
+    	in "ERR%*1c";
+    }
+}
+
