@@ -33,9 +33,9 @@ include "apfelChipIdAutoCalibration.template"
 ###
 # test pulse
 
-substitute "channel=1"
+substitute "ch=1"
 include "apfelChipIdTestPulse.template"
-substitute "channel=2"
+substitute "ch=2"
 include "apfelChipIdTestPulse.template"
 
 ###
