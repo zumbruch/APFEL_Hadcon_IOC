@@ -151,7 +151,7 @@ record(mbbo, "$(H)trigger:position:set$(T)") {
   field(FLNK, "$(H)trigger:write$(T)_")
   field(IVOA, "Don't drive outputs")
   field(UNSV, "INVALID")
-  field(DTYP, "Raw Soft Channel")
+  field(DTYP, "Soft Channel")
 }
 
 record(mbbi, "$(H)trigger:port:set$(T)_") {
