@@ -33,7 +33,7 @@ record(calcout, "$(H)trigger:write$(T)_") {
   field(INPA, "$(H)trigger:state:set$(T).VAL")
   field(INPB, "$(H)trigger:pin:set$(T).VAL")
   field(INPC, "$(H)trigger:port:set$(T)_.RVAL")
-  field(INPD, "$(H)trigger:position:set$(T).VAL")
+  field(INPD, "$(H)trigger:position:set$(T).RVAL")
 }
 
 record(calcout, "$(H)trigger$(T)") {
@@ -294,7 +294,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger:write$(T)_.INPC",52275,0,"$(H)trigger:write$(T)_.INPC")
 #! Link("$(H)trigger:write$(T)_.INPC","$(H)trigger:write$(T)_/INPC")
 #! Field("$(H)trigger:write$(T)_.INPD",52275,0,"$(H)trigger:write$(T)_.INPD")
-#! Link("$(H)trigger:write$(T)_.INPD","$(H)trigger:position:set$(T).VAL")
+#! Link("$(H)trigger:write$(T)_.INPD","$(H)trigger:position:set$(T).RVAL")
 #! Field("$(H)trigger:write$(T)_.FLNK",16711731,1,"$(H)trigger:write$(T)_.FLNK")
 #! Link("$(H)trigger:write$(T)_.FLNK","$(H)trigger:write$(T)_/FLNK2")
 #! Field("$(H)trigger:write$(T)_.DISA",16777215,0,"$(H)trigger:write$(T)_.DISA")
@@ -355,11 +355,12 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Record("$(H)trigger:position:set$(T)",2760,3085,16711680,0,"$(H)trigger:position:set$(T)")
 #! Field("$(H)trigger:position:set$(T).FLNK",16724787,1,"$(H)trigger:position:set$(T).FLNK")
 #! Link("$(H)trigger:position:set$(T).FLNK","$(H)trigger:position:set$(T)/FLNK")
-#! Field("$(H)trigger:position:set$(T).VAL",16777215,1,"$(H)trigger:position:set$(T).VAL")
+#! Field("$(H)trigger:position:set$(T).VAL",16777215,0,"$(H)trigger:position:set$(T).VAL")
 #! Field("$(H)trigger:position:set$(T).ZRVL",16777215,0,"$(H)trigger:position:set$(T).ZRVL")
 #! Field("$(H)trigger:position:set$(T).ONVL",16777215,0,"$(H)trigger:position:set$(T).ONVL")
 #! Field("$(H)trigger:position:set$(T).ZRST",16777215,0,"$(H)trigger:position:set$(T).ZRST")
 #! Field("$(H)trigger:position:set$(T).ONST",16777215,0,"$(H)trigger:position:set$(T).ONST")
+#! Field("$(H)trigger:position:set$(T).RVAL",52275,1,"$(H)trigger:position:set$(T).RVAL")
 #! Connector("$(H)trigger:position:set$(T)/FLNK","$(H)trigger:write$(T)_",3580,3185,16724787,"",0)
 #! Record("$(H)trigger:port:set$(T)_",3020,2565,16724787,0,"$(H)trigger:port:set$(T)_")
 #! Field("$(H)trigger:port:set$(T)_.FLNK",16711731,1,"$(H)trigger:port:set$(T)_.FLNK")
