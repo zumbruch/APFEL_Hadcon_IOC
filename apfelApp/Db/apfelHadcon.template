@@ -262,8 +262,16 @@ record(stringout, "$(H)trigger:position:rbk$(T)_") {
   field(OUT, "$(H)trigger:position:set$(T) PP")
 }
 
+
+record(seq, "$(H)trigger:initial$(T)") {
+  field(DOL1, "1")
+  field(DLY1, "5")
+  field(LNK1, "$(H)trigger$(T).PROC PP")
+  field(PINI, "YES")
+}
+
 #! Further lines contain data used by VisualDCT
-#! View(2861,3086,1.2)
+#! View(1036,3558,1.2)
 #! Record("$(H)trigger:dist$(T)_",1840,3050,0,0,"$(H)trigger:dist$(T)_")
 #! Field("$(H)trigger:dist$(T)_.LNK2",52275,1,"$(H)trigger:dist$(T)_.LNK2")
 #! Link("$(H)trigger:dist$(T)_.LNK2","$(H)trigger:dist$(T)_/LNK2")
@@ -308,19 +316,19 @@ record(stringout, "$(H)trigger:position:rbk$(T)_") {
 #! Link("$(H)trigger:write$(T)_.FLNK","$(H)trigger:write$(T)_/FLNK2")
 #! Connector("$(H)trigger:write$(T)_/FLNK2","$(H)trigger:write$(T)_/FLNK1",3640,3475,16711731,"",0)
 #! Connector("$(H)trigger:write$(T)_/FLNK1","$(H)trigger:write$(T)_/FLNK",2440,3580,16711731,"",0)
-#! Connector("$(H)trigger:write$(T)_/FLNK","$(H)trigger:delay$(T)_",1240,3515,16711731,"",0)
+#! Connector("$(H)trigger:write$(T)_/FLNK","$(H)trigger:delay$(T)_",1240,3505,16711731,"",0)
 #! Connector("$(H)trigger:write$(T)_/INPC","$(H)trigger:port:set$(T)_.RVAL",3260,3110,52275,"",0)
 #! Connector("$(H)trigger:write$(T)_/INPB","$(H)trigger:pin:set$(T).VAL",3280,2900,52275,"",0)
 #! Connector("$(H)trigger:write$(T)_/INPA","$(H)trigger:state:set$(T).VAL",3300,2780,52275,"",0)
-#! Record("$(H)trigger$(T)",1520,3300,16724787,1,"$(H)trigger$(T)")
+#! Record("$(H)trigger$(T)",1580,3300,16724787,1,"$(H)trigger$(T)")
 #! Field("$(H)trigger$(T).FLNK",16777215,1,"$(H)trigger$(T).FLNK")
 #! Link("$(H)trigger$(T).FLNK","$(H)trigger:dist$(T)_")
-#! Field("$(H)trigger$(T).A",52275,1,"$(H)trigger$(T).A")
-#! Field("$(H)trigger$(T).B",52275,1,"$(H)trigger$(T).B")
-#! Field("$(H)trigger$(T).C",52275,1,"$(H)trigger$(T).C")
-#! Field("$(H)trigger$(T).PROC",16777215,1,"$(H)trigger$(T).PROC")
+#! Field("$(H)trigger$(T).A",52275,0,"$(H)trigger$(T).A")
+#! Field("$(H)trigger$(T).B",52275,0,"$(H)trigger$(T).B")
+#! Field("$(H)trigger$(T).C",52275,0,"$(H)trigger$(T).C")
+#! Field("$(H)trigger$(T).PROC",16777215,0,"$(H)trigger$(T).PROC")
 #! Field("$(H)trigger$(T).D",52275,1,"$(H)trigger$(T).D")
-#! Record("$(H)trigger:delay$(T)_",1300,3400,16711731,0,"$(H)trigger:delay$(T)_")
+#! Record("$(H)trigger:delay$(T)_",1300,3380,16711731,0,"$(H)trigger:delay$(T)_")
 #! Field("$(H)trigger:delay$(T)_.LNK1",16777215,1,"$(H)trigger:delay$(T)_.LNK1")
 #! Link("$(H)trigger:delay$(T)_.LNK1","$(H)trigger$(T).PROC")
 #! Record("$(H)trigger:state:set$(T)",2760,2180,16724787,0,"$(H)trigger:state:set$(T)")
@@ -452,3 +460,6 @@ record(stringout, "$(H)trigger:position:rbk$(T)_") {
 #! Link("$(H)trigger:position:rbk$(T)_.DOL","$(H)trigger:position$(T).VAL")
 #! Field("$(H)trigger:position:rbk$(T)_.OUT",52275,1,"$(H)trigger:position:rbk$(T)_.OUT")
 #! Link("$(H)trigger:position:rbk$(T)_.OUT","$(H)trigger:position:set$(T).VAL")
+#! Record("$(H)trigger:initial$(T)",1300,3165,0,1,"$(H)trigger:initial$(T)")
+#! Field("$(H)trigger:initial$(T).LNK1",16777215,1,"$(H)trigger:initial$(T).LNK1")
+#! Link("$(H)trigger:initial$(T).LNK1","$(H)trigger$(T).PROC")
