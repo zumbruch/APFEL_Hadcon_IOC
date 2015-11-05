@@ -188,7 +188,7 @@ listId {
 	cc="20";
 	dummy;
 	out $key" "$cc" 1 %x 1 \$1 \$2 \$3";	
-    unsetSetStreamDebug;	
+    unsetSetStreamDebug;
 }
 
 listIdSingle {
@@ -197,7 +197,7 @@ listIdSingle {
 	cc="20";
 	dummy;
 	out $key" "$cc" 1 1 %x \$1 \$2 \$3";
-	unsetSetStreamDebug;	
+	unsetSetStreamDebug;
 }
 
 listIdRange {
@@ -219,7 +219,7 @@ listIdRange_co {
 	cc="20";
 	dummy;
 	out $key" "$cc" 1 %(B)x %(A)x \$1 \$2 \$3";
-	unsetSetStreamDebug;	
+	unsetSetStreamDebug;
 }
 
 listIdStatus_intr {
