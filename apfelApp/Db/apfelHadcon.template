@@ -259,7 +259,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 
 record(stringout, "$(H)trigger:position:rbk$(T)_") {
   field(DOL, "$(H)trigger:position$(T)")
-  field(OUT, "$(H)trigger:position:set$(T)")
+  field(OUT, "$(H)trigger:position:set$(T) PP")
 }
 
 #! Further lines contain data used by VisualDCT
