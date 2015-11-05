@@ -29,7 +29,7 @@ record(seq, "$(H)trigger:dist$(T)_") {
 record(calcout, "$(H)trigger:write$(T)_") {
   field(DTYP, "stream")
   field(OUT, "@$(protocolFile) setTrigger $(device)")
-  field(FLNK, "$(H)trigger:delay$(T)_.PROC CA")
+  field(FLNK, "$(H)trigger:delay$(T)_.PROC PP")
   field(INPA, "$(H)trigger:state:set$(T).VAL")
   field(INPB, "$(H)trigger:pin:set$(T).VAL")
   field(INPC, "$(H)trigger:port:set$(T)_.RVAL")
@@ -44,7 +44,7 @@ record(calcout, "$(H)trigger$(T)") {
 
 record(seq, "$(H)trigger:delay$(T)_") {
   field(DOL1, "1")
-  field(DLY1, "0.1")
+  field(DLY1, "0.5")
   field(LNK1, "$(H)trigger$(T).PROC")
 }
 
@@ -55,7 +55,7 @@ record(seq, "$(H)trigger:delay$(T)_") {
 # field(SCAN, "I/O Intr")
 # }
 record(bo, "$(H)trigger:state:set$(T)") {
-  field(FLNK, "$(H)trigger:write$(T)_")
+  field(FLNK, "$(H)trigger:write$(T)_ PP MS")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
 }
@@ -111,7 +111,7 @@ record(mbbo, "$(H)trigger:port$(T)") {
 }
 
 record(longout, "$(H)trigger:pin:set$(T)") {
-  field(FLNK, "$(H)trigger:write$(T)_")
+  field(FLNK, "$(H)trigger:write$(T)_ PP MS")
   field(EGU, "Pin Number")
   field(DRVH, "8")
   field(DRVL, "1")
@@ -143,21 +143,22 @@ record(mbbo, "$(H)trigger:port:set$(T)") {
 
 record(mbbi, "$(H)trigger:position$(T)") {
   field(DTYP, "Raw Soft Channel")
-  field(FLNK, "$(H)trigger:position:rbk$(T)")
+  field(FLNK, "$(H)trigger:position:rbk$(T)_")
   field(INP, "$(H)trigger$(T).D")
   field(UNSV, "INVALID")
 }
 
 record(mbbo, "$(H)trigger:position:set$(T)") {
-  field(FLNK, "$(H)trigger:write$(T)_")
+  field(FLNK, "$(H)trigger:write$(T)_ PP MS")
   field(IVOA, "Don't drive outputs")
   field(UNSV, "INVALID")
   field(DTYP, "Raw Soft Channel")
+  field(OMSL, "supervisory")
 }
 
 record(mbbi, "$(H)trigger:port:set$(T)_") {
   field(DTYP, "Raw Soft Channel")
-  field(FLNK, "$(H)trigger:write$(T)_")
+  field(FLNK, "$(H)trigger:write$(T)_ PP MS")
   field(INP, "$(H)trigger:port:set$(T)")
   field(ONVL, "1")
   field(TWVL, "2")
@@ -246,6 +247,7 @@ record(stringout, "$(H)trigger:position:ZRST:1$(T)_") {
   field(OUT, "$(H)trigger:position$(T).ZRST")
 }
 
+
 record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
   field(PINI, "YES")
   field(VAL, "reset/negative")
@@ -254,13 +256,14 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
   field(OUT, "$(H)trigger:position:set$(T).ZRST")
 }
 
-record(stringout, "$(H)trigger:position:rbk$(T)") {
+
+record(stringout, "$(H)trigger:position:rbk$(T)_") {
   field(DOL, "$(H)trigger:position$(T)")
   field(OUT, "$(H)trigger:position:set$(T)")
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(3000,3294,1.2)
+#! View(2861,3086,1.2)
 #! Record("$(H)trigger:dist$(T)_",1840,3050,0,0,"$(H)trigger:dist$(T)_")
 #! Field("$(H)trigger:dist$(T)_.LNK2",52275,1,"$(H)trigger:dist$(T)_.LNK2")
 #! Link("$(H)trigger:dist$(T)_.LNK2","$(H)trigger:dist$(T)_/LNK2")
@@ -348,7 +351,7 @@ record(stringout, "$(H)trigger:position:rbk$(T)") {
 #! Field("$(H)trigger:port:set$(T).VAL",16777215,1,"$(H)trigger:port:set$(T).VAL")
 #! Record("$(H)trigger:position$(T)",2240,3005,0,1,"$(H)trigger:position$(T)")
 #! Field("$(H)trigger:position$(T).FLNK",16724787,1,"$(H)trigger:position$(T).FLNK")
-#! Link("$(H)trigger:position$(T).FLNK","$(H)trigger:position:rbk$(T)")
+#! Link("$(H)trigger:position$(T).FLNK","$(H)trigger:position:rbk$(T)_")
 #! Field("$(H)trigger:position$(T).PROC",16724787,0,"$(H)trigger:position$(T).PROC")
 #! Field("$(H)trigger:position$(T).INP",52275,0,"$(H)trigger:position$(T).INP")
 #! Link("$(H)trigger:position$(T).INP","$(H)trigger:position$(T)/INP")
@@ -358,7 +361,7 @@ record(stringout, "$(H)trigger:position:rbk$(T)") {
 #! Field("$(H)trigger:position$(T).ZRST",16777215,0,"$(H)trigger:position$(T).ZRST")
 #! Field("$(H)trigger:position$(T).ONST",16777215,0,"$(H)trigger:position$(T).ONST")
 #! Connector("$(H)trigger:position$(T)/INP","$(H)trigger$(T).D",2140,3340,52275,"",0)
-#! Record("$(H)trigger:position:set$(T)",2840,3065,16711680,0,"$(H)trigger:position:set$(T)")
+#! Record("$(H)trigger:position:set$(T)",2840,3051,16711680,0,"$(H)trigger:position:set$(T)")
 #! Field("$(H)trigger:position:set$(T).FLNK",16724787,1,"$(H)trigger:position:set$(T).FLNK")
 #! Link("$(H)trigger:position:set$(T).FLNK","$(H)trigger:write$(T)_")
 #! Field("$(H)trigger:position:set$(T).VAL",52275,0,"$(H)trigger:position:set$(T).VAL")
@@ -444,8 +447,8 @@ record(stringout, "$(H)trigger:position:rbk$(T)") {
 #! TextBox(TB2,1300,2040,1720,2120,0,"Dialog",36,1,16777215,"read and distribute",null)
 #! TextBox(TB1,3420,3040,3500,3080,0,"Dialog",24,1,16777215,"write",null)
 #! Box(Box3,1960,3340,1960,3340,1,16711731,null)
-#! Record("$(H)trigger:position:rbk$(T)",2520,3095,16724787,0,"$(H)trigger:position:rbk$(T)")
-#! Field("$(H)trigger:position:rbk$(T).DOL",52275,0,"$(H)trigger:position:rbk$(T).DOL")
-#! Link("$(H)trigger:position:rbk$(T).DOL","$(H)trigger:position$(T).VAL")
-#! Field("$(H)trigger:position:rbk$(T).OUT",52275,1,"$(H)trigger:position:rbk$(T).OUT")
-#! Link("$(H)trigger:position:rbk$(T).OUT","$(H)trigger:position:set$(T).VAL")
+#! Record("$(H)trigger:position:rbk$(T)_",2520,3095,16724787,0,"$(H)trigger:position:rbk$(T)_")
+#! Field("$(H)trigger:position:rbk$(T)_.DOL",52275,0,"$(H)trigger:position:rbk$(T)_.DOL")
+#! Link("$(H)trigger:position:rbk$(T)_.DOL","$(H)trigger:position$(T).VAL")
+#! Field("$(H)trigger:position:rbk$(T)_.OUT",52275,1,"$(H)trigger:position:rbk$(T)_.OUT")
+#! Link("$(H)trigger:position:rbk$(T)_.OUT","$(H)trigger:position:set$(T).VAL")
