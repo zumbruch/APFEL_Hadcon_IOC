@@ -104,7 +104,7 @@ requestDac {
 	# Example of command field(INP, "@$(protocolFile) requestDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="A";
-	dummy; 
+	dummy;
 	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	 
 }
 
