@@ -122,6 +122,8 @@ readDac {
 	ReplyTimeout  = 400;
 	ReadTimeout   = 500;
 
+    cc="A";
+    ic="dac";
 	requestDac;
 	receiveDac;
 
