@@ -105,8 +105,7 @@ requestDac {
 
 	cc="A";
 	dummy; 
-#	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	 
-	out $key" A \$1 \$2 \$3 \$4 \$5";	 
+	out $key" "$cc" \$1 \$2 \$3 \$4 \$5;	 
 }
 
 
@@ -114,7 +113,7 @@ receiveDac {
 	# Example of command field(INP, "@$(protocolFile) receiveDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	ic="dac";
-#	in $recvKey" "$ic" port:%(\$5)#{A=1|C=3|F=6} pinSet:\$3 side:\$4 chip:\$2 dac:\$1 %x";	
+#	in $recvKey" "$ic" \$5 \$3 \$4 \$2 dac:\$1 %x";	
 	in "RECV APFEL dac \$5 \$3 \$4 \$2 dac:\$1 %x";	
 }
 
@@ -129,7 +128,6 @@ readDac {
 	@mismatch{
      in "ERRA -1 \"APFEL dac \$5 \$3 \$4 \$2 dac:\$1\_-\_read validity check failed, raw value:%x\""
 	}
-
 }
 
 
@@ -176,12 +174,19 @@ resetAmplification {
 	out $key" "$cc" %x \$1 \$2 \$3 \$4";	
 }
 
+unsetSetStreamDebug {
+	exec "var streamDebug 0";
+	wait 30000;
+	exec "var streamDebug 1";
+}
+
 listId {
 	# Example of command field(OUT, "@$(protocolFile) listId($(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="20";
 	dummy;
 	out $key" "$cc" 1 %x 1 \$1 \$2 \$3";	
+    unsetSetStreamDebug;	
 }
 
 listIdSingle {
@@ -189,7 +194,8 @@ listIdSingle {
 
 	cc="20";
 	dummy;
-	out $key" "$cc" 1 1 %x \$1 \$2 \$3";	
+	out $key" "$cc" 1 1 %x \$1 \$2 \$3";
+	unsetSetStreamDebug;	
 }
 
 listIdRange {
@@ -197,7 +203,8 @@ listIdRange {
 
 	cc="20";
 	dummy;
-	out $key" "$cc" 1 \$4 %x \$1 \$2 \$3";	
+	out $key" "$cc" 1 \$4 %x \$1 \$2 \$3";
+	unsetSetStreamDebug;
 }
 
 listIdRange_co {
@@ -209,14 +216,15 @@ listIdRange_co {
 
 	cc="20";
 	dummy;
-	out $key" "$cc" 1 %(B)x %(A)x \$1 \$2 \$3";	
+	out $key" "$cc" 1 %(B)x %(A)x \$1 \$2 \$3";
+	unsetSetStreamDebug;	
 }
 
 listIdStatus_intr {
 	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-PollPeriod    = 60000;
+	PollPeriod    = 30000;
 	ic="list";
-#	in $recvKey" "$ic" port:\$4 pinSet:\$2 side:\$3 chip:\$1 %{no|yes}";	
+#	in $recvKey" "$ic" \$4 \$2 \$3 \$1 %{no|yes}";	
 	in "RECV APFEL list \$4 \$2 \$3 \$1 %{no|yes}";	
 }
 
