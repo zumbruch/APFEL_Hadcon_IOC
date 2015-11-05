@@ -140,13 +140,11 @@ record(mbbo, "$(H)trigger:port:set$(T)") {
   field(IVOA, "Don't drive outputs")
 }
 
-record(mbbo, "$(H)trigger:position$(T)") {
-  field(DTYP, "Soft Channel")
+record(mbbi, "$(H)trigger:position$(T)") {
+  field(DTYP, "Raw Soft Channel")
   field(FLNK, "$(H)trigger:position:set$(T)")
-  field(OUT, "$(H)trigger:position:set$(T)")
   field(UNSV, "INVALID")
 }
-
 
 record(mbbo, "$(H)trigger:position:set$(T)") {
   field(FLNK, "$(H)trigger:write$(T)_")
@@ -255,7 +253,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(2687,3086,1.2)
+#! View(1821,3416,1.2)
 #! Record("$(H)trigger:dist$(T)_",1860,3050,0,0,"$(H)trigger:dist$(T)_")
 #! Field("$(H)trigger:dist$(T)_.LNK2",52275,1,"$(H)trigger:dist$(T)_.LNK2")
 #! Link("$(H)trigger:dist$(T)_.LNK2","$(H)trigger:dist$(T)_/LNK2")
@@ -280,7 +278,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger:dist$(T)_.DOL5",52275,0,"$(H)trigger:dist$(T)_.DOL5")
 #! Link("$(H)trigger:dist$(T)_.DOL5","$(H)trigger$(T).D")
 #! Connector("$(H)trigger:dist$(T)_/LNKA","$(H)trigger:write$(T)_.DISA",3240,3370,16777215,"",0)
-#! Connector("$(H)trigger:dist$(T)_/LNK5","$(H)trigger:position$(T).VAL",2180,3230,52275,"",0)
+#! Connector("$(H)trigger:dist$(T)_/LNK5","$(H)trigger:position$(T).VAL",2180,3260,52275,"",0)
 #! Connector("$(H)trigger:dist$(T)_/LNK4","$(H)trigger:port$(T)_.VAL",2160,3120,52275,"",0)
 #! Connector("$(H)trigger:dist$(T)_/LNK3","$(H)trigger:pin$(T).VAL",2140,2910,52275,"",0)
 #! Connector("$(H)trigger:dist$(T)_/LNK2","$(H)trigger:state$(T).VAL",2120,2790,52275,"",0)
@@ -313,7 +311,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger$(T).C",52275,0,"$(H)trigger$(T).C")
 #! Field("$(H)trigger$(T).D",52275,0,"$(H)trigger$(T).D")
 #! Field("$(H)trigger$(T).PROC",16777215,1,"$(H)trigger$(T).PROC")
-#! Record("$(H)trigger:delay$(T)_",1320,3400,16711731,0,"$(H)trigger:delay$(T)_")
+#! Record("$(H)trigger:delay$(T)_",1300,3400,16711731,0,"$(H)trigger:delay$(T)_")
 #! Field("$(H)trigger:delay$(T)_.LNK1",16777215,1,"$(H)trigger:delay$(T)_.LNK1")
 #! Link("$(H)trigger:delay$(T)_.LNK1","$(H)trigger$(T).PROC")
 #! Record("$(H)trigger:state:set$(T)",2760,2180,16724787,0,"$(H)trigger:state:set$(T)")
@@ -342,7 +340,7 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger:port:set$(T).FLNK",16724787,1,"$(H)trigger:port:set$(T).FLNK")
 #! Link("$(H)trigger:port:set$(T).FLNK","$(H)trigger:port:set$(T)_")
 #! Field("$(H)trigger:port:set$(T).VAL",16777215,1,"$(H)trigger:port:set$(T).VAL")
-#! Record("$(H)trigger:position$(T)",2460,2965,0,1,"$(H)trigger:position$(T)")
+#! Record("$(H)trigger:position$(T)",2460,3040,0,1,"$(H)trigger:position$(T)")
 #! Field("$(H)trigger:position$(T).FLNK",16711680,1,"$(H)trigger:position$(T).FLNK")
 #! Link("$(H)trigger:position$(T).FLNK","$(H)trigger:position:set$(T)")
 #! Field("$(H)trigger:position$(T).VAL",52275,0,"$(H)trigger:position$(T).VAL")
@@ -350,12 +348,9 @@ record(stringout, "$(H)trigger:position:ZRST:2$(T)_") {
 #! Field("$(H)trigger:position$(T).ONVL",16777215,0,"$(H)trigger:position$(T).ONVL")
 #! Field("$(H)trigger:position$(T).ZRST",16777215,0,"$(H)trigger:position$(T).ZRST")
 #! Field("$(H)trigger:position$(T).ONST",16777215,0,"$(H)trigger:position$(T).ONST")
-#! Field("$(H)trigger:position$(T).OUT",16777215,1,"$(H)trigger:position$(T).OUT")
-#! Link("$(H)trigger:position$(T).OUT","$(H)trigger:position:set$(T).VAL")
 #! Record("$(H)trigger:position:set$(T)",2760,3085,16711680,0,"$(H)trigger:position:set$(T)")
 #! Field("$(H)trigger:position:set$(T).FLNK",16724787,1,"$(H)trigger:position:set$(T).FLNK")
 #! Link("$(H)trigger:position:set$(T).FLNK","$(H)trigger:position:set$(T)/FLNK")
-#! Field("$(H)trigger:position:set$(T).VAL",16777215,0,"$(H)trigger:position:set$(T).VAL")
 #! Field("$(H)trigger:position:set$(T).ZRVL",16777215,0,"$(H)trigger:position:set$(T).ZRVL")
 #! Field("$(H)trigger:position:set$(T).ONVL",16777215,0,"$(H)trigger:position:set$(T).ONVL")
 #! Field("$(H)trigger:position:set$(T).ZRST",16777215,0,"$(H)trigger:position:set$(T).ZRST")
