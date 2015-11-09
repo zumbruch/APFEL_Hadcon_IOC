@@ -31,7 +31,6 @@ PING {
 	in $key " %39c";
 }
 
-EXIT 
-{
+EXIT {
     exec "exit";
 }

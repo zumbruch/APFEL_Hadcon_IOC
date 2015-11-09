@@ -38,7 +38,7 @@ record(bo, "$(PREFIX)$(HADCON):exit$(SUFFIX)") {
   field(SCAN, "I/O Intr")
   field(HIGH, "0.1")
   field(VAL, "0")
-  field(INP, "@hadcon_global.proto EXIT $(device)")
+  field(OUT, "@hadcon_global.proto EXIT $(device)")
 }
 
 
