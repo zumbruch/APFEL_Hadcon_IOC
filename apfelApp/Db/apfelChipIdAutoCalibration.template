@@ -33,24 +33,23 @@ record(calcout, "$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)") {
   field(FLNK, "$(H)autocalibrate:delay$(SUFFIX)")
 }
 
-
 record(seq, "$(H)autocalibrate:delay$(SUFFIX)") {
-  field(DLY1, "0.15")
+  field(DLY1, "0.2")
   field(DOL1, "1")
   field(LNK1, "$(H)dacAll:read:start$(SUFFIX).PROC CA")
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(0,93,1.0)
-#! Record("$(H)autocalibrate$(SUFFIX)",60,148,0,1,"$(H)autocalibrate$(SUFFIX)")
+#! View(-14,161,1.6)
+#! Record("$(H)autocalibrate$(SUFFIX)",60,147,0,1,"$(H)autocalibrate$(SUFFIX)")
 #! Field("$(H)autocalibrate$(SUFFIX).FLNK",16777215,1,"$(H)autocalibrate$(SUFFIX).FLNK")
 #! Link("$(H)autocalibrate$(SUFFIX).FLNK","$(H)autocalibrate:delay$(SUFFIX)")
-#! Record("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)",60,366,0,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)")
+#! Record("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)",60,325,0,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK")
 #! Link("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).FLNK","$(H)autocalibrate:delay$(SUFFIX)")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPA",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPA")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPB",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPB")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPC",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPC")
 #! Field("$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPD",16777215,1,"$(PREFIX)$(NAME):genAutocalibrate$(SUFFIX).INPD")
-#! Record("$(H)autocalibrate:delay$(SUFFIX)",360,342,0,0,"$(H)autocalibrate:delay$(SUFFIX)")
+#! Record("$(H)autocalibrate:delay$(SUFFIX)",360,222,0,0,"$(H)autocalibrate:delay$(SUFFIX)")
 #! Field("$(H)autocalibrate:delay$(SUFFIX).LNK1",16777215,1,"$(H)autocalibrate:delay$(SUFFIX).LNK1")
