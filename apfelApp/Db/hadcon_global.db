@@ -32,13 +32,13 @@ record(stringin, "$(PREFIX)$(HADCON):atmelPING$(SUFFIX)") {
   field(INP, "@hadcon_global.proto PING $(device)")
 }
 
-record(bo, "$(PREFIX)$(HADCON):exit$(SUFFIX)") {
-  field(DESC, "exit: $(HADCON)")
-  field(DTYP, "stream")
-  field(HIGH, "0.1")
-  field(VAL, "0")
-  field(OUT, "@hadcon_global.proto EXIT $(device)")
-}
+#record(bo, "$(PREFIX)$(HADCON):exit$(SUFFIX)") {
+#  field(DESC, "exit: $(HADCON)")
+#  field(DTYP, "stream")
+#  field(HIGH, "0.1")
+#  field(VAL, "0")
+#  field(OUT, "@hadcon_global.proto EXIT $(device)")
+#}
 
 
 #! Further lines contain data used by VisualDCT
