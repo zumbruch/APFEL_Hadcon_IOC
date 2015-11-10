@@ -35,7 +35,6 @@ record(stringin, "$(PREFIX)$(HADCON):atmelPING$(SUFFIX)") {
 record(bo, "$(PREFIX)$(HADCON):exit$(SUFFIX)") {
   field(DESC, "exit: $(HADCON)")
   field(DTYP, "stream")
-  field(SCAN, "I/O Intr")
   field(HIGH, "0.1")
   field(VAL, "0")
   field(OUT, "@hadcon_global.proto EXIT $(device)")
