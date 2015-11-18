@@ -66,8 +66,8 @@ record(calcout, "$(P)$(NAME):$(ADDRESS):listIdRange$(SUFFIX)") {
 }
 
 #! Further lines contain data used by VisualDCT
-#! View(0,0,1.0)
+#! View(-1,5,2.1)
 #! Record("$(H)status$(SUFFIX)",20,20,0,0,"$(H)status$(SUFFIX)")
-#! Record("$(P)$(NAME):$(ADDRESS):listId$(SUFFIX)",260,25,0,0,"$(P)$(NAME):$(ADDRESS):listId$(SUFFIX)")
-#! Record("$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)",500,25,0,0,"$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)")
-#! Record("$(P)$(NAME):$(ADDRESS):listIdRange$(SUFFIX)",20,185,0,0,"$(P)$(NAME):$(ADDRESS):listIdRange$(SUFFIX)")
+#! Record("$(P)$(NAME):$(ADDRESS):listId$(SUFFIX)",260,24,0,0,"$(P)$(NAME):$(ADDRESS):listId$(SUFFIX)")
+#! Record("$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)",500,24,0,0,"$(P)$(NAME):$(ADDRESS):listIdSingle$(SUFFIX)")
+#! Record("$(P)$(NAME):$(ADDRESS):listIdRange$(SUFFIX)",20,184,0,0,"$(P)$(NAME):$(ADDRESS):listIdRange$(SUFFIX)")
