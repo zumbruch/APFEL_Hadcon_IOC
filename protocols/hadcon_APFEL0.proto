@@ -21,7 +21,7 @@ ExtraInput    = Ignore;
 ##|readDac    |RECV APFEL dac <port> <pinSetId> <sideSelectId> <chipId> <dac> <DAC value>   |          [ 1 ... 4 ]    |    chip Ids      |single DAC|
 ##|           |ERRA APFEL dac <port> <pinSetId> <sideSelectId> <chipId> <dac> <DAC value> - |                         |   <pinSetId>     |channel   |
 ##|           |read validity check failed, raw value:                                       |                         |    [ 1, 2 ]      |          |
-##|           |APFEL A 0  <chipId> <pinSetId> <sideSelectId> <port>                  		|                         | <sideSelectId>   |*Not Yet  |
+##|           |APFEL A 0  <chipId> <pinSetId> <sideSelectId> <port>                		    |                         | <sideSelectId>   |*Not Yet  |
 ##|           |answers:                                                                     |                         |     [ 0,1 ]      |Available*|
 ##|readAllDacs|RECV APFEL dac <port> <pinSetId> <sideSelectId> <chipId> 0 <DAC value1> <DAC |                         |     <port>       |reads all |
 ##|           |value2> <DAC value3> <DAC value4>                                            |                         |  A,C,F <quiet>   |DAC       |
@@ -43,7 +43,7 @@ ExtraInput    = Ignore;
 ##|           |                                                                             |        [ 0,1 ]          |                  |<port> to |
 ##|           |                                                                             |         <port>          |                  |trigger   |
 ##|           |                                                                             |   [ A,B,C,D,E,F,G ]     |                  |right in  |
-##|TP trigger |APFEL 11 <on/off> <port> <pin> <trigger position>                      		|         <pin>           |                 |the moment|
+##|TP trigger |APFEL 11 <on/off> <port> <pin> <trigger position>                      		|         <pin>           |                  |the moment|
 ##|           |                                                                             |        [1...8]          |                  |after a   |
 ##|           |                                                                             |<trigger after set (1) or|                  |test pulse|
 ##|           |                                                                             |    after reset (2)>     |                  |set or    |
@@ -91,12 +91,21 @@ dummy {
 
 ## write dac
 
+setDacQuiet {
+	# Example of command field(OUT, "@$(protocolFile) setDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+    # sets quietly without response
+	cc="9";
+	dummy;
+	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5 1";	
+}
+
 setDac {
 	# Example of command field(OUT, "@$(protocolFile) setDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
 
 	cc="9";
 	dummy;
 	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
+    in "RECV APFEL dac \$5 \$3 \$4 \$2 dac:\$1 %x";	
 }
 
 ## read dac
@@ -107,7 +116,6 @@ requestDac {
 	dummy;
 	out $key" "$cc" \$1 \$2 \$3 \$4 \$5";	 
 }
-
 
 receiveDac {
 	# Example of command field(INP, "@$(protocolFile) receiveDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
@@ -177,10 +185,20 @@ resetAmplification {
 }
 
 unsetSetStreamDebug {
-	exec "var streamDebug 0";
-	wait 30000;
-	exec "var streamDebug 1";
+ 	exec "var streamDebug 0";
+ 	wait 10000;
+ 	exec "var streamDebug 1";
 }
+
+setStreamDebug {
+ 	exec "var streamDebug %i";
+}
+
+getStreamDebug {
+ 	exec "var streamDebug";
+ 	in "%i";
+}
+
 
 listId {
 	# Example of command field(OUT, "@$(protocolFile) listId($(pinSet),$(sideSelection),$(port)) $(device)") 
@@ -224,7 +242,7 @@ listIdRange_co {
 
 listIdStatus_intr {
 	# Example of command field(INP, "@$(protocolFile) listIdStatus($(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-	PollPeriod    = 30000;
+	PollPeriod    = 10000;
 	ic="list";
 #	in $recvKey" "$ic" \$4 \$2 \$3 \$1 %{no|yes}";	
 	in "RECV APFEL list \$4 \$2 \$3 \$1 %{no|yes}";	
