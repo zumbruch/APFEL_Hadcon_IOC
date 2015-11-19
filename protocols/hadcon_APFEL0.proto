@@ -101,7 +101,6 @@ setDacQuiet {
 
 setDac {
 	# Example of command field(OUT, "@$(protocolFile) setDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
-
 	cc="9";
 	dummy;
 	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
