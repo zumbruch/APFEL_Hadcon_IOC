@@ -1,8 +1,14 @@
 #!/bin/bash
-. epics -q 
 
-pgrep caRepeater || caRepeater &
+#if available start EPICS's caRepeater
+which caRepeater >/dev/null 2>&1 
+if [ $? -eq 0 ] 
+then
+ pgrep caRepeater || caRepeater &
+fi
 
-cd ~/EPICS/apps/apfel/iocBoot/iocapfel && LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}../../lib/linux-arm HOSTNAME=$(hostname) ../../bin/linux-arm/apfel st.cmd
+export myIOCBOOT=~/EPICS/apps/apfel/iocBoot/iocapfel
+export myARCH=linux-arm
+cd ${myIOCBOOT} && LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}../../lib/${myARCH} HOSTNAME=$(hostname) ../../bin/${myARCH}/apfel st.cmd
 
 
