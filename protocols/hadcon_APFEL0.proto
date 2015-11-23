@@ -1,5 +1,5 @@
 Terminator  = LF;
-LockTimeout  = 5000;
+LockTimeout   = 500;
 WriteTimeout  = 100;
 ReplyTimeout  = 200;
 ReadTimeout   = 100;
@@ -101,10 +101,13 @@ setDacQuiet {
 
 setDac {
 	# Example of command field(OUT, "@$(protocolFile) setDac($(DAC),$(chipId),$(pinSet),$(sideSelection),$(port)) $(device)") 
+	# requieres calcout record as caller with:
+	#    A input value
+	#    D output value
 	cc="9";
 	dummy;
-	out $key" "$cc" %x \$1 \$2 \$3 \$4 \$5";	
-    in "RECV APFEL dac \$5 \$3 \$4 \$2 dac:\$1 %x";	
+	out $key" "$cc" %(A)x \$1 \$2 \$3 \$4 \$5";	
+    in "RECV APFEL dac \$5 \$3 \$4 \$2 dac:\$1 %(D)x";	
 }
 
 ## read dac
@@ -184,9 +187,9 @@ resetAmplification {
 }
 
 unsetSetStreamDebug {
- 	exec "var streamDebug 0";
- 	wait 10000;
- 	exec "var streamDebug 1";
+# 	exec "var streamDebug 0";
+# 	wait 10000;
+# 	exec "var streamDebug 1";
 }
 
 setStreamDebug {

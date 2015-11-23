@@ -58,7 +58,7 @@ var streamDebug 0
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit
-var streamDebug 1
+#var streamDebug 1
 
 dbl > ${HOSTNAME}.dbl
 
